@@ -1,0 +1,27 @@
+[alias]
+	ci = commit
+	st = status
+	co = checkout
+	br = branch
+	wsfix = !git diff HEAD >P.diff && git reset --hard HEAD && git apply --index --whitespace=fix P.diff && rm -f P.diff
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	civ = commit --verbose
+        hist2 = log --graph --pretty=\"format:%C(yellow bold)%h%Creset by %C(red)%an%Creset (%ar)%C(cyan bold)%d%Creset%n%s%n%b\" --all
+        filesofcommit = diff-tree --no-commit-id --name-only -r
+        logf = log --name-status
+	ss = status -sb
+	ls = ls-tree --name-only HEAD
+	ssu = status -sb -uno
+[color]
+	ui = true
+[user]
+	name = Nicolas Vincent
+	email = nvincent@sequans.com
+[core]
+	excludesfile = ~/.git/gitignore_global
+[commit]
+	template = ~/.git/git_commit_template.txt
+[merge]
+	defaulttoupstream = true
+[push]
+	default = tracking

@@ -1,0 +1,40 @@
+#!/usr/bin/csh -f
+##
+## VARIABLE D'ENVIRONNEMENT
+##
+
+## PROMPT
+set prompt = "%{\033[1;34m%}%P %{\033[1;30m%}%D.%W%{\033[01;35m%}[%n@%{\033[0;32m%}%m%{\033[1;35m%}%b][%h] %{\033[0m%}%b%~ %B%#%b %{\033[00m%}"
+set nobeep
+
+setenv ASIC_TEAM 1
+
+##
+## TOOLS PART
+##
+setenv NEWT "1"
+#source ~/bin/asic_env.csh
+
+if (-e $HOME/.sc-completion.tcsh ) then
+    source $HOME/.sc-completion.tcsh
+endif
+
+if (-e $HOME/.mycsh_aliases ) then
+    source $HOME/.mycsh_aliases
+endif
+
+if (-e $HOME/.git-completion.tcsh ) then
+  source $HOME/.git-completion.tcsh
+endif
+
+if (-e $HOME/.pystartup) then
+  setenv PYTHONSTARTUP $HOME/.pystartup
+endif
+## Setup manpath for git 
+#if ($?MANPATH) then
+#  setenv MANPATH "`git --it_home`:${MANPATH}"
+#else
+#  setenv MANPATH "`git --it_home`:`manpath`"
+#endif
+
+setenv PATH "${HOME}/bin:${PATH}"

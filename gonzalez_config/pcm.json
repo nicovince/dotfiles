@@ -1,0 +1,70 @@
+{"Konsoles" : [ {
+                  "Name" : "PCM"
+                 ,"Tabs" : [
+                             {
+                               "Name" : "placebo"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/placebo/nvincent/placebo/placebo"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "vim.placebo"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/placebo/nvincent/placebo/placebo"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "make.placebo"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/placebo/nvincent/placebo/placebo"
+                                          }
+                                         ,{
+                                            "Cmd" : "echo make PRODUCT=SQN3220-ES2 BOARD=RD VERBOSE=1 unit_test"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "test.plans"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/docs/pi-docs/trunk/platform/testPlans"
+                                          }
+                                         ,{
+                                            "Cmd" : "echo make PRODUCT=SQN3220-ES2 BOARD=RD VERBOSE=1 unit_test"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "Si.Logic"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /public/Asic/Projects/SQN12x0/Studies/VOIP/SiLabs/Si3226 Source Code Rev0.26"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "vim.sqn1210"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/wimax/sqn1210"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "sqn1210"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/wimax/sqn1210"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "SiLabs"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /public/Asic/Projects/SQN12x0/Studies/VOIP/SiLabs"
+                                          }
+                                        ]
+                             }
+                          ]
+               }
+             ]
+}
+

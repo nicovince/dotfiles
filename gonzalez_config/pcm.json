@@ -31,7 +31,7 @@
                                             "Cmd" : "cd /home/nvincent/work/PI/docs/pi-docs/trunk/platform/testPlans"
                                           }
                                          ,{
-                                            "Cmd" : "echo make PRODUCT=SQN3220-ES2 BOARD=RD VERBOSE=1 unit_test"
+                                            "Cmd" : "echo ENG.PLT.PI-TP-044 JANUS MIPS PLATFORM.odt"
                                           }
                                         ]
                              }

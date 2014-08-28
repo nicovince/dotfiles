@@ -16,7 +16,8 @@
                             ,
                              {
                                "Name" : "bar"
-                              ,"Cmds" : [ {
+                              ,"Cmds" : [
+                                          {
                                             "Cmd" : "bar"
                                           }
                                         ]

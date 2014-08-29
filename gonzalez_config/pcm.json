@@ -21,6 +21,9 @@
                                             "Cmd" : "cd /home/nvincent/work/PI/src/placebo/nvincent/placebo/placebo"
                                           }
                                          ,{
+                                            "Cmd" : "setenv PL_ROOT $PWD"
+                                          }
+                                         ,{
                                             "Cmd" : "echo make PRODUCT=SQN3220-ES2 BOARD=RD VERBOSE=1 unit_test"
                                           }
                                         ]

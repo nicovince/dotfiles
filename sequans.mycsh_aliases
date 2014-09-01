@@ -87,3 +87,9 @@ alias wm_sceclean '/usr/bin/make -f ../../GNUmakefile VERLIB=latest4-1 sceclean'
 alias lte_sceclean '/usr/bin/make -f ../../GNUmakefile VERLIB=latest5-2 sceclean'
 alias msgdone 'kdialog --msgbox "done"'
 alias it_v2 'setenv NEWT 1 && source ~/.mycshrc'
+
+# setup konsole with gonzalez
+alias setup_env 'gonzalez.py -f ~/configrc/gonzalez_config/env.json'
+alias setup_pi 'gonzalez.py -f ~/configrc/gonzalez_config/pi.json'
+alias setup_pcm 'gonzalez.py -f ~/configrc/gonzalez_config/pcm.json'
+alias setup_palladium 'gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'

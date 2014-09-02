@@ -64,6 +64,9 @@
                               ,"Cmds" : [ {
                                             "Cmd" : "cd /public/Asic/Projects/SQN12x0/Studies/VOIP/SiLabs"
                                           }
+                                         ,{
+                                            "Cmd" : "echo /public/Asic/Projects/SQN12x0/Studies/VOIP/SiLabs/si3226-7mmb8-9evbrev0_2.pdf"
+                                          }
                                         ]
                              }
                           ]

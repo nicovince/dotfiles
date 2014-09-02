@@ -1,29 +1,30 @@
-{"Konsoles" : [ {
-                  "Name" : "foobar"
-                 ,"Tabs" : [
-                             {
-                               "Name" : "foo"
-                              ,"Cmds" : [ 
-                                          {
-                                            "Cmd" : "foo"
-                                           ,"delay" : 0
-                                          }
-                                         ,{
-                                            "Cmd" : "foobar"
-                                          }
-                                        ]
-                             }
-                            ,
-                             {
-                               "Name" : "bar"
-                              ,"Cmds" : [
-                                          {
-                                            "Cmd" : "bar"
-                                          }
-                                        ]
-                             }
-                          ]
-               }
-             ]
+{
+    "Konsoles": [
+        {
+            "Name": "foobar",
+            "Tabs": [
+                {
+                    "Cmds": [
+                        {
+                            "Cmd": "foo",
+                            "delay": 0
+                        },
+                        {
+                            "Cmd": "foobar"
+                        }
+                    ],
+                    "Name": "foo"
+                },
+                {
+                    "Cmds": [
+                        {
+                            "Cmd": "bar"
+                        }
+                    ],
+                    "Name": "bar"
+                }
+            ]
+        }
+    ]
 }
 

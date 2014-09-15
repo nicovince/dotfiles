@@ -1,4 +1,6 @@
 #!/bin/bash
+# Usage :
+# revit.sh /path/to/file/to/config.rc suffix
 
 FILE=$1
 PREFIX=$2

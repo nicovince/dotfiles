@@ -7,5 +7,9 @@ defscrollback 10000
 #caption always "%{=b kg} [%n %t] %{=s ky}%W  %= %{=b}%H"
 
 #http://www.debian-administration.org/article/560/An_introduction_to_the_visual_features_of_GNU_Screen
-#hardstatus alwayslastline
+hardstatus alwayslastline
+# status line with window number + names, the current is highlighted, hostname on the right with date and hour
 #hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %d/%m %C%a "
+
+# status line with window number + names, the current is highlighted, hostname on the right
+hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y}"

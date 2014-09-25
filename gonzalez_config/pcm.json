@@ -29,6 +29,16 @@
                                         ]
                              }
                             ,{
+                               "Name" : "uart"
+                              ,"Cmds" : [ {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/placebo/nvincent/placebo"
+                                          }
+                                         ,{
+                                            "Cmd" : "telnet piopengear11 2006"
+                                          }
+                                        ]
+                             }
+                            ,{
                                "Name" : "test.plans"
                               ,"Cmds" : [ {
                                             "Cmd" : "cd /home/nvincent/work/PI/docs/pi-docs/trunk/platform/testPlans"

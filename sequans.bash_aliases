@@ -19,7 +19,7 @@ alias sudo='sudo env PATH=$PATH'
 vman() { `which man` $* | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }
 alias boxdone='kdialog --msgbox'
 alias wakeup='kdialog --msgbox "wake up"'
-alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com
+alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
 
 #alias cdlast='cd `ls -1t -d */ | head -n1`'
 alias tclsh='rlwrap tclsh'
@@ -46,11 +46,11 @@ alias diff='diff -U 2'
 
 alias ivm='vim'
 alias vimaliases='vim ~/.bash_aliases'
-alias vimweekly 'vim $HOME/work/weekly.txt +999999'
-alias vimhowto  'vim $HOME/work/howto'
-alias cathowto  'cat $HOME/work/howto'
-alias vimaar    'vim $HOME/work/aar'
-alias sap 'rdesktop -d sequans -u "nvincent" -p - -r disk:home=/home/$USER/ -g 1660x960  192.168.200.16'
+alias vimweekly='vim $HOME/work/weekly.txt +999999'
+alias vimhowto='vim $HOME/work/howto'
+alias cathowto='cat $HOME/work/howto'
+alias vimaar='vim $HOME/work/aar'
+alias sap='rdesktop -d sequans -u "nvincent" -p - -r disk:home=/home/$USER/ -g 1660x960  192.168.200.16'
 
 # cd to file's directory
 fcd()

@@ -50,6 +50,7 @@ alias vimaliases='vim ~/.bash_aliases'
 alias vimweekly='vim $HOME/work/weekly.txt +999999'
 alias vimhowto='vim $HOME/work/howto'
 alias cathowto='cat $HOME/work/howto'
+alias lesshowto='less $HOME/work/howto'
 alias vimaar='vim $HOME/work/aar'
 alias sap='rdesktop -d sequans -u "nvincent" -p - -r disk:home=/home/$USER/ -g 1660x960  192.168.200.16'
 

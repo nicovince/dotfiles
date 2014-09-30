@@ -20,6 +20,11 @@ compinit
 autoload -U colors && colors
 PROMPT="%(?..$fg_bold[red][%?]$reset_color)$fg_bold[blue]%D{%T}$reset_color $fg_bold[black]%D{%d.%m}$reset_color %F{yellow}%n@%m%k %B%F{cyan}%~%F{white} %# %b%f%k"
 
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'

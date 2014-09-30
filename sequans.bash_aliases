@@ -7,6 +7,7 @@ alias ls='ls --color=auto'
 alias ll='ls -l --time-style="+%F %H:%M:%S"'
 alias la='ls -A --color=tty'
 alias l='ls'
+alias lt='ls -lrt'
 alias xt='xterm -vb -sb&'
 alias tree="tree -CAFa --dirsfirst -I 'CVS|*.*.package|.svn|.git'"
 alias cp='cp -p'

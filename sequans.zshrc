@@ -11,14 +11,14 @@ bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
-SAVEHIST=1000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
 compinit
 autoload -U colors && colors
-PROMPT="%(?..$fg_bold[red][%?]$reset_color)$fg_bold[blue]%D{%T}$reset_color $fg_bold[black]%D{%d.%m}$reset_color %F{yellow}%n@%m%k %B%F{cyan}%~%F{white} %# %b%f%k"
+PROMPT="%(?..%B%F{red}[%?]%b%f)%B%F{blue}%D{%T}%f%b %B%F{black}%D{%d.%m}%f%b %F{yellow}%n@%m%k %B%F{cyan}%~%F{white} %# %b%f%k"
 
 
 autoload edit-command-line

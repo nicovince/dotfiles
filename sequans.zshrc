@@ -44,5 +44,10 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 PATH="$PATH:$HOME/bin"
+
+# map alt-p and alt-n to search history
+bindkey "^[p" history-beginning-search-backward
+bindkey "^[n" history-beginning-search-forward
+
 # aliases 
 source ~/.bash_aliases

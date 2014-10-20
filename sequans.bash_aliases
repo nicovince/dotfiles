@@ -85,6 +85,7 @@ svnblame()
 # setup konsole with gonzalez
 alias setup_env='gonzalez.py -f ~/configrc/gonzalez_config/env.json'
 alias setup_pi='gonzalez.py -f ~/configrc/gonzalez_config/pi.json'
+alias setup_placebo='gonzalez.py -f ~/configrc/gonzalez_config/placebo.json'
 alias setup_pcm='gonzalez.py -f ~/configrc/gonzalez_config/pcm.json'
 alias setup_palladium='gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'
 

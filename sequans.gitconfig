@@ -19,8 +19,6 @@
 	email = nvincent@sequans.com
 [core]
 	excludesfile = ~/.git/gitignore_global
-[commit]
-	template = ~/.git/git_commit_template.txt
 [merge]
 	defaulttoupstream = true
 [push]

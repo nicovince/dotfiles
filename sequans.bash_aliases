@@ -14,7 +14,6 @@ alias cp='cp -p'
 
 #admin
 alias clocksync='sudo ntpdate fr.pool.ntp.org'
-#alias sudo='sudo env PATH=$PATH'
 
 #alias vman="col -b | view -c 'set ft=man nomod nolist' -"
 vman() { `which man` $* | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }

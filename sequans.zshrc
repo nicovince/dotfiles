@@ -2,9 +2,7 @@
 
 autoload -Uz promptinit
 promptinit
-#prompt adam1
 
-#setopt histignorealldups sharehistory
 setopt histignorealldups
 
 # Use emacs keybindings even if our EDITOR is set to vi
@@ -19,6 +17,7 @@ HISTFILE=~/.zsh_history
 autoload -Uz compinit
 compinit
 autoload -U colors && colors
+# Custom prompt : return code if non zero, time, date, user, workstation, current folder
 PROMPT="%(?..%B%F{red}[%?]%b%f)%B%F{blue}%D{%T}%f%b %B%F{black}%D{%d.%m}%f%b %F{yellow}%n@%m%k %B%F{cyan}%~%F{white} %# %b%f%k"
 
 

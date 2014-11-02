@@ -1,0 +1,18 @@
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	civ = ci
+	civ = commit --verbose
+        logf = log --name-status
+	ss = status -sb
+	ls = ls-tree --name-only HEAD
+	ssu = status -sb -uno
+[user]
+	email = nico.vince@gmail.com
+	name = Nicolas Vincent
+[core]
+	excludesfile = ~/.git/gitignore_global
+[color]
+	ui = true

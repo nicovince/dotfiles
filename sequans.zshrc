@@ -5,6 +5,11 @@ promptinit
 
 setopt histignorealldups
 
+# Allows shell to be exited if some gui application launched from the shell is still running
+setopt NO_HUP
+# Disable warning that there is an existing job running
+setopt NO_CHECK_JOBS
+
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 

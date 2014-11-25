@@ -13,7 +13,7 @@
                                "Name" : "svn.tnc"
                               ,"Cmds" : [ 
                                           {
-                                            "Cmd" : "cd /home/nvincent/work/PI/src/titanic/nvincent"
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/git/lte-titanic"
                                           }
                                         ]
                              }
@@ -31,13 +31,19 @@
                                           {
                                             "Cmd" : "cd /home/nvincent/work/PI/src/iceberg/nvincent"
                                           }
+                                         ,{
+                                            "Cmd" : "screen -ls"
+                                          }
                                         ]
                              }
                             ,{
                                "Name" : "vim.tnc"
                               ,"Cmds" : [ 
                                           {
-                                            "Cmd" : "cd /home/nvincent/work/PI/src/titanic/nvincent"
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/git/lte-titanic"
+                                          }
+                                         ,{
+                                            "Cmd" : "screen -ls"
                                           }
                                         ]
                              }
@@ -46,9 +52,6 @@
                               ,"Cmds" : [ 
                                           {
                                             "Cmd" : "cd /home/nvincent/work/PI/src/iceberg/nvincent"
-                                          }
-                                         ,{
-                                            "Cmd" : "zsh"
                                           }
                                          ,{
                                             "Cmd" : "export ICEBERG_ROOT=$PWD"
@@ -62,9 +65,6 @@
                                             "Cmd" : "cd /home/nvincent/work/PI/src/iceberg/nvincent"
                                           }
                                          ,{
-                                            "Cmd" : "zsh"
-                                          }
-                                         ,{
                                             "Cmd" : "export ICEBERG_ROOT=$PWD"
                                           }
                                         ]
@@ -76,9 +76,6 @@
                                             "Cmd" : "cd /home/nvincent/work/PI/src/iceberg/nvincent"
                                           }
                                          ,{
-                                            "Cmd" : "zsh"
-                                          }
-                                         ,{
                                             "Cmd" : "export ICEBERG_ROOT=$PWD"
                                           }
                                         ]
@@ -87,10 +84,50 @@
                                "Name" : "build.tnc"
                               ,"Cmds" : [ 
                                           {
-                                            "Cmd" : "cd /home/nvincent/work/PI/src/titanic/nvincent"
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/git/lte-titanic"
                                           }
                                          ,{
                                             "Cmd" : "echo make -s PRODUCT=SQN3220-ES2 PU_INC=1 ZSP_INC=1 ICE=1"
+                                          }
+                                        ]
+                             }
+                          ]
+               },
+               {
+                  "Name" : "TARGET"
+                 ,"Tabs" : [
+                             {
+                               "Name" : "git.swpla"
+                              ,"Cmds" : [ 
+                                          {
+                                            "Cmd" : "cd /home/nvincent/work/sw_pla/src/ue"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "vim.swpla"
+                              ,"Cmds" : [ 
+                                          {
+                                            "Cmd" : "cd /home/nvincent/work/sw_pla/src/ue"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "quasar"
+                              ,"Cmds" : [ 
+                                          {
+                                            "Cmd" : "cd /home/nvincent/work/PI/src/iceberg/nvincent"
+                                          }
+                                         ,{
+                                            "Cmd" : "echo 'ssh to target, then ./cli <target> and t._rstQuasar.reset()'"
+                                          }
+                                        ]
+                             }
+                            ,{
+                               "Name" : "uart"
+                              ,"Cmds" : [ 
+                                          {
+                                            "Cmd" : "echo 'telnet piopengear11 2006'"
                                           }
                                         ]
                              }

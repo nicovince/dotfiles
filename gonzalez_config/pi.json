@@ -10,7 +10,7 @@
                                         ]
                              }
                             ,{
-                               "Name" : "svn.tnc"
+                               "Name" : "git.tnc"
                               ,"Cmds" : [ 
                                           {
                                             "Cmd" : "cd /home/nvincent/work/PI/src/git/lte-titanic"

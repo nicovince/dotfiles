@@ -22,4 +22,4 @@
 [merge]
 	defaulttoupstream = true
 [push]
-	default = tracking
+	default = upstream

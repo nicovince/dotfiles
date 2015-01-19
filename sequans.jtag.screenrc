@@ -1,18 +1,4 @@
-# To be able to scroll with the console scroll
-#termcapinfo xterm ti@:te@
-
-# Number of lines of scrolling
-defscrollback 10000
-
-#caption always "%{=b kg} [%n %t] %{=s ky}%W  %= %{=b}%H"
-
-#http://www.debian-administration.org/article/560/An_introduction_to_the_visual_features_of_GNU_Screen
-hardstatus alwayslastline
-# status line with window number + names, the current is highlighted, hostname on the right with date and hour
-#hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %d/%m %C%a "
-
-# status line with window number + names, the current is highlighted, hostname on the right
-hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y}"
+source /home/nvincent/configrc/sequans.screenrc
 
 sessionname jtag
 

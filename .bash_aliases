@@ -21,14 +21,33 @@ alias boxdone='kdialog --msgbox'
 alias wakeup='kdialog --msgbox "wake up"'
 alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
 
+# rm
+alias rmti='rm -fv *~ #'
+alias rmtir='find ./ -name *~ -exec rm -v {} \;'
+alias rmswp='rm -fv .*.swp #'
+
+# avoid mistakes
+alias ivm="vim"
+alias sl='ls'
+alias lls='ls'
+alias ccd='cd'
+alias cdd='cd'
+alias unrare='unrar e'
+
+# Sound 
+alias micrec="artsrec -b 16 -r 44100 -c 2"
+
+# Webcam Quickcam
+alias qcshow="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0:outfmt=yuy2"
+alias qcmirror="mplayer tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0:outfmt=yuy2 -vf mirror"
+alias qcrec="mencoder tv:// -tv driver=v4l2:width=640:height=480:device=/dev/video0:outfmt=yuy2 -ovc lavc -lavcopts vcodec=mpeg4 -o "
+alias qcskype="cd /home/nicolas/Documents/fichiers/gstfakevideo/ && ./gstfakevideo v4lsrc device=/dev/video0 ! ffmpegcolorspace"
+
 #alias cdlast='cd `ls -1t -d */ | head -n1`'
 alias tclsh='rlwrap tclsh'
 alias lh='ls -lh'
 alias vless='~/.vim/macros/less.sh'
 alias gless='~/.vim/macros/gless.sh'
-alias rmti='rm -fv *~ #'
-alias rmtir='find ./ -name *~ -exec rm -v {} \;'
-alias rmswp='rm -fv .*.swp #'
 alias g='gvim'
 alias v='vim'
 alias sl="ls"
@@ -46,7 +65,7 @@ alias lspath='echo $PATH | sed "s/:/\n/g"'
 alias pst='ps axfo pid,user,%cpu,%mem,etime,tty,args'
 alias diff='diff -U 2'
 
-alias ivm='vim'
+# vim
 alias vimaliases='vim ~/.bash_aliases'
 alias vimweekly='vim $HOME/work/weekly.txt +999999'
 alias vimhowto='vim $HOME/work/howto'
@@ -54,6 +73,23 @@ alias cathowto='cat $HOME/work/howto'
 alias lesshowto='vless $HOME/work/howto'
 alias vimaar='vim $HOME/work/aar'
 alias sap='rdesktop -d sequans -u "nvincent" -p - -r disk:home=/home/$USER/ -g 1660x960  192.168.200.16'
+
+# System 
+alias haltkde="dcop --all-sessions --all-users ksmserver ksmserver logout 0 2 0"
+alias rebootkde="dcop ksmserver default logout 0 1 0"
+alias format_clef_usb_mp3="mkfs.vfat -F 16 -n usbdisk -S 512 -v -I /dev/sda"
+alias apn="sudo gphotofs /camera/ -o allow_other"
+alias uapn="sudo umount /camera"
+alias temperature="cat /proc/acpi/thermal_zone/THRM/temperature" 
+alias offscreen="xset dpms force suspend"
+alias onscreen="xset -dpms"
+alias fboxhd="lftp freebox@hd1.freebox.fr"
+alias genpasswd="apg -m 8 -x 8 -M NC -t"
+alias tabremap='xmodmap -e "keycode 49 = Tab"'
+alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
+alias path='echo -e ${PATH//:/\\n}'
+alias top10_2="awk '{print $2}' | sort | uniq -c | sort -rg | head"
+alias top10="sed -e 's/sudo //' $HOME/.bash_history | cut -d' ' -f1 | sort | uniq -c | sort -rg | head"
 
 # cd to file's directory
 fcd()
@@ -88,6 +124,39 @@ alias setup_pi='gonzalez.py -f ~/configrc/gonzalez_config/pi.json'
 alias setup_placebo='gonzalez.py -f ~/configrc/gonzalez_config/placebo.json'
 alias setup_pcm='gonzalez.py -f ~/configrc/gonzalez_config/pcm.json'
 alias setup_palladium='gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'
+
+# Movies and series aliases
+alias 24='gmplayer -alang en -slang eng -fps 25'
+alias friends='mplayer -alang en -slang en -vf pp=lb'
+alias heroes='cd /media/data/Videos/Heroes_S4; serie'
+alias bb='cd /media/data/Videos/Breaking_Bad/Season_04/; serie'
+#alias lost_mp="gmplayer -subfont-text-scale 50"
+#alias lost2_mp="gmplayer -subfont-text-scale 4"
+alias engvid="gmplayer -alang en -slang en"
+alias emule="cd ~/.aMule/Incoming"
+alias Videos="cd /media/data/Videos"
+alias VideosBuf="cd /media/buffalo/videos"
+alias VideosWin="cd '/media/data/VideosWin'"
+alias Musique="cd /media/data/Musique"
+rda()
+{
+  gmplayer -alang en -slang en *$1*
+}
+nsserie()
+{
+  gmplayer *$1*
+}
+
+# buffalo
+alias wakeupbuffalo="wakeonlan 00:1D:73:A4:4D:4C"
+alias buffalorsync="rsync -avz --size-only --progress"
+
+# cosmopolitan
+alias wakeupcosmo="wakeonlan 00:12:3f:74:6b:79"
+alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan 00:12:3f:74:6b:79"
+
+#games
+alias minecraft="java -jar ~/.minecraft/Minecraft.jar"
 
 
 #RADIOS

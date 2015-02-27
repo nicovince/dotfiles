@@ -19,6 +19,7 @@
 	email = $email
 [core]
 	excludesfile = ~/.git/gitignore_global
+	editor = vim
 [merge]
 	defaulttoupstream = true
 [push]

@@ -15,8 +15,8 @@
 [color]
 	ui = true
 [user]
-	name = Nicolas Vincent
-	email = nvincent@sequans.com
+	name = $full_name
+	email = $email
 [core]
 	excludesfile = ~/.git/gitignore_global
 [merge]

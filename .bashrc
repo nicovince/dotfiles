@@ -25,6 +25,12 @@ if [ "$TERM" != "dumb" ]; then
     #alias vdir='ls --color=auto --format=long'
 fi
 
+# Source color variables
+has_color_vars=0
+if [ -f $HOME/.bash_colors ]; then
+  has_color_vars=1
+  source $HOME/.bash_colors
+fi
 
 
 # make less more friendly for non-text input files, see lesspipe(1)
@@ -64,15 +70,16 @@ else
 fi
 unset color_prompt force_color_prompt
 
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-	xterm*|rxvt*)
-	PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
-	PROMPT_COMMAND='RV=$?;echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
-	;;
-	*)
-	;;
-esac
+export PROMPT_COMMAND=__get_prompt
+function __get_prompt() {
+  rc=$?
+  PS1="$Cyan[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+  if [ $rc -ne 0 ]; then
+    PS1+="${Red}[$rc]${Color_Off}"
+  fi
+  PS1+=" \$ "
+}
+
 
 # Define your own aliases here ...
 if [ -f ~/.bash_aliases ]; then

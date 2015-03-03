@@ -71,7 +71,8 @@ fi
 unset color_prompt force_color_prompt
 
 export PROMPT_COMMAND=__get_prompt
-function __get_prompt() {
+function __get_prompt()
+{
   rc=$?
   PS1="$Cyan[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   if [ $rc -ne 0 ]; then

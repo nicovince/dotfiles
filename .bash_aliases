@@ -1,4 +1,4 @@
-# vim: set syntax=sh sw=2:
+# vim: syntax=sh shiftwidth=2 filetype=sh:
 #
 # This file can be sourced for zsh shells and bash
 # complete command is not supported by zsh so they are commented out
@@ -35,6 +35,7 @@ alias cdd='cd'
 alias unrare='unrar e'
 
 # Sound 
+# Record from microphone
 alias micrec="artsrec -b 16 -r 44100 -c 2"
 
 # Webcam Quickcam
@@ -67,24 +68,21 @@ alias diff='diff -U 2'
 
 # vim
 alias vimaliases='vim ~/.bash_aliases'
-alias vimweekly='vim $HOME/work/weekly.txt +999999'
-alias vimhowto='vim $HOME/work/howto'
-alias cathowto='cat $HOME/work/howto'
-alias lesshowto='vless $HOME/work/howto'
-alias vimaar='vim $HOME/work/aar'
-alias sap='rdesktop -d sequans -u "nvincent" -p - -r disk:home=/home/$USER/ -g 1660x960  192.168.200.16'
 
 # System 
 alias haltkde="dcop --all-sessions --all-users ksmserver ksmserver logout 0 2 0"
 alias rebootkde="dcop ksmserver default logout 0 1 0"
-alias format_clef_usb_mp3="mkfs.vfat -F 16 -n usbdisk -S 512 -v -I /dev/sda"
+alias format_clef_usb_mp3="echo mkfs.vfat -F 16 -n usbdisk -S 512 -v -I /dev/sda"
 alias apn="sudo gphotofs /camera/ -o allow_other"
 alias uapn="sudo umount /camera"
 alias temperature="cat /proc/acpi/thermal_zone/THRM/temperature" 
+# Force screen to suspend (usefull on laptop after an app has disabled it or after onscreen)
 alias offscreen="xset dpms force suspend"
+# Force screen to stay on (usefull when watching youtube videos)
 alias onscreen="xset -dpms"
 alias fboxhd="lftp freebox@hd1.freebox.fr"
 alias genpasswd="apg -m 8 -x 8 -M NC -t"
+# map key above <TAB> to <TAB> (broken <TAB> on my laptop)
 alias tabremap='xmodmap -e "keycode 49 = Tab"'
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
 alias path='echo -e ${PATH//:/\\n}'
@@ -96,7 +94,7 @@ fcd()
 {
   cd `dirname $1`
 }
-# ls environement variable in a readable form
+# ls environement variable given in arg in a readable form
 lsv()
 {
   echo $1 | sed "s/:/\n/g"
@@ -118,7 +116,16 @@ svnblame()
 }
 
 
-# setup konsole with gonzalez
+## Sequans Work
+# Vim on (common) files
+alias vimweekly='vim $HOME/work/weekly.txt +999999'
+alias vimhowto='vim $HOME/work/howto'
+alias cathowto='cat $HOME/work/howto'
+alias lesshowto='vless $HOME/work/howto'
+alias vimaar='vim $HOME/work/aar'
+alias sap='rdesktop -d sequans -u "nvincent" -p - -r disk:home=/home/$USER/ -g 1660x960  192.168.200.16'
+
+# setup konsole (kde) with gonzalez
 alias setup_env='gonzalez.py -f ~/configrc/gonzalez_config/env.json'
 alias setup_pi='gonzalez.py -f ~/configrc/gonzalez_config/pi.json'
 alias setup_placebo='gonzalez.py -f ~/configrc/gonzalez_config/placebo.json'
@@ -126,8 +133,11 @@ alias setup_pcm='gonzalez.py -f ~/configrc/gonzalez_config/pcm.json'
 alias setup_palladium='gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'
 
 # Movies and series aliases
+# run at 25 frame per seconds to avoid subtitles being out of sync
 alias 24='gmplayer -alang en -slang eng -fps 25'
+# adds de-interlacing post processing when watching friends dvd
 alias friends='mplayer -alang en -slang en -vf pp=lb'
+# cd to dir and launch serie script
 alias heroes='cd /media/data/Videos/Heroes_S4; serie'
 alias bb='cd /media/data/Videos/Breaking_Bad/Season_04/; serie'
 #alias lost_mp="gmplayer -subfont-text-scale 50"
@@ -174,6 +184,7 @@ colorstderr()
   "$@" 3>&1 1>&2 2>&3 | sed 's/^\(.*\)$/[31m\1[0m/'
 }
 
+# decimal, binary, hexadecimal transformation
 bin2dec()
 {
   echo "ibase=2; $1" | bc -l
@@ -213,6 +224,7 @@ er()
   command gvim --remote-tab +p $@ 2> /dev/null & 
 } 
 
+# Display heand and tail of file given in argument
 headtail()
 {
   head $@;
@@ -220,6 +232,8 @@ headtail()
   tail $@;
 }
 
+# Open file given in argument which is located somewhere in the path
+# useful for scripts
 binvim()
 {
   vim `which "$1"`
@@ -243,23 +257,28 @@ function cporig ()
   cp -rp "${1%%/}" "${1%%/}.orig"
 }
 
-function trac() {
- for i in $*
- do
-  cmd=`svn info $i | sed -n "s%URL: https://svn.zfr.zoran.com/\(SRV-SOFT\|HARDWARE\)/%firefox https://trac.zfr.zoran.com/\1/browser/% p"`
-  if [[ -z $cmd ]]
-  then
-   cmd="firefox https://trac.zfr.zoran.com/HARDWARE/browser/"
-  fi
-  $cmd
- done
+# Open web browser for given commit
+function trac()
+{
+  for i in $*
+  do
+    cmd=`svn info $i | sed -n "s%URL: https://svn.zfr.zoran.com/\(SRV-SOFT\|HARDWARE\)/%firefox https://trac.zfr.zoran.com/\1/browser/% p"`
+    if [[ -z $cmd ]]
+    then
+      cmd="firefox https://trac.zfr.zoran.com/HARDWARE/browser/"
+    fi
+    $cmd
+  done
 }
 
 
+# backup each file given in argument with the current date as suffix
 function cpdate() {
  cur_date=`date +%Y%m%d.%H%M%S`
  for i in $*
+
  do
+
   cp -rp "${i%%/}" "${i%%/}.${cur_date}"
  done
 }

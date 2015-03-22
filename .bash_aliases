@@ -88,6 +88,9 @@ alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
 alias path='echo -e ${PATH//:/\\n}'
 alias top10_2="awk '{print $2}' | sort | uniq -c | sort -rg | head"
 alias top10="sed -e 's/sudo //' $HOME/.bash_history | cut -d' ' -f1 | sort | uniq -c | sort -rg | head"
+# Force touchpad state
+alias offtouchpad='synclient TouchpadOff=1'
+alias ontouchpad='synclient TouchpadOff=0'
 
 # cd to file's directory
 fcd()

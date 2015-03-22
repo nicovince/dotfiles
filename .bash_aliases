@@ -169,7 +169,7 @@ alias wakeupcosmo="wakeonlan 00:12:3f:74:6b:79"
 alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan 00:12:3f:74:6b:79"
 
 #games
-alias minecraft="java -jar ~/.minecraft/Minecraft.jar"
+alias minecraft="offtouchpad && java -jar ~/.minecraft/Minecraft.jar"
 
 
 #RADIOS

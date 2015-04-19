@@ -92,6 +92,10 @@ alias top10="sed -e 's/sudo //' $HOME/.bash_history | cut -d' ' -f1 | sort | uni
 alias offtouchpad='synclient TouchpadOff=1'
 alias ontouchpad='synclient TouchpadOff=0'
 
+# Lftp to various destinations
+alias lftp_get27="lftp -u pi,dummy_password sftp://get27"
+alias lftp_cubalibre="lftp -u admin,dummy_password sftp://cubalibre"
+
 # cd to file's directory
 fcd()
 {

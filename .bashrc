@@ -81,6 +81,8 @@ function __get_prompt()
   PS1+=" \$ "
 }
 
+# some system do not use vim as default editor
+EDITOR=vim
 
 # Define your own aliases here ...
 if [ -f ~/.bash_aliases ]; then

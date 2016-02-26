@@ -92,6 +92,11 @@ function __get_prompt()
 # some system do not use vim as default editor
 EDITOR=vim
 
+# enable color support of ls
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+
 # Define your own aliases here ...
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases

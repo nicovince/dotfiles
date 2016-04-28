@@ -1,0 +1,29 @@
+source /home/admin/configrc/cubalibre.screenrc
+
+sessionname DL
+
+# hellanzb
+screen -t hellanzb
+select 0
+stuff "hellanzb.py^M"
+
+# usenet
+screen -t usenet
+select 1
+stuff "cd /home/admin/share/hellanzb/usenet^M"
+
+# video folder
+screen -t videos
+select 2
+stuff "cd /home/admin/share/videos^M"
+
+# torrent client (do not launch)
+screen -t rtorrent
+select 3
+
+# torrent folder
+screen -t torrents
+select 4
+stuff "cd /home/admin/share/torrents^M"
+
+select 0

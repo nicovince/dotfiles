@@ -74,7 +74,7 @@ export PROMPT_COMMAND=__get_prompt
 function __get_prompt()
 {
   rc=$?
-  if [ "$USER" = root ]; then
+  if [ `whoami` = "root" ]; then
     PS1="$Cyan[\t]$Color_Off ${Red}\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   else
     PS1="$Cyan[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
@@ -82,7 +82,7 @@ function __get_prompt()
   if [ $rc -ne 0 ]; then
     PS1+="${Red}[$rc]${Color_Off}"
   fi
-  if [ "$USER" = root ]; then
+  if [ `whoami` = "root" ]; then
     PS1+=" # "
   else
     PS1+=" \$ "

@@ -5,7 +5,7 @@ sessionname DL
 # hellanzb
 screen -t hellanzb
 select 0
-stuff "hellanzb.py^M"
+stuff "echo hellanzb.py^M"
 
 # usenet
 screen -t usenet

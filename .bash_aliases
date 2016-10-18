@@ -96,6 +96,8 @@ alias ontouchpad='synclient TouchpadOff=0'
 alias lftp_get27="lftp -u pi,dummy_password sftp://get27"
 alias lftp_cubalibre="lftp -u admin,dummy_password sftp://cubalibre"
 alias lftp_cosmo="lftp -u nicolas,dummy sftp://cosmopolitan"
+alias fbox='lftp freebox@hd1.freebox.fr'
+alias freeftp='lftp "nico.vince@gmail.com"@dl.free.fr'
 
 # cd to file's directory
 fcd()
@@ -172,6 +174,7 @@ alias buffalorsync="rsync -avz --size-only --progress"
 # cosmopolitan
 alias wakeupcosmo="wakeonlan 00:12:3f:74:6b:79"
 alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan 00:12:3f:74:6b:79"
+alias wakeupcosmolocal='ssh get27 wakeonlan 00:12:3f:74:6b:79'
 
 #games
 alias minecraft="offtouchpad && java -jar ~/.minecraft/Minecraft.jar"

@@ -11,6 +11,7 @@ alias lt='ls -lrt'
 alias xt='xterm -vb -sb&'
 alias tree="tree -CAFa --dirsfirst -I 'CVS|*.*.package|.svn|.git'"
 alias cp='cp -p'
+alias grep='grep --color=auto'
 
 #admin
 alias clocksync='sudo ntpdate fr.pool.ntp.org'
@@ -142,6 +143,10 @@ alias setup_placebo='gonzalez.py -f ~/configrc/gonzalez_config/placebo.json'
 alias setup_pcm='gonzalez.py -f ~/configrc/gonzalez_config/pcm.json'
 alias setup_palladium='gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'
 
+## NotiloPlus Work
+alias cdnot='cd $HOME/work/NotiloPlus/'
+alias cdbb='cd $HOME/work/NotiloPlus/repos/ArduBubble'
+
 # Movies and series aliases
 # run at 25 frame per seconds to avoid subtitles being out of sync
 alias 24='gmplayer -alang en -slang eng -fps 25'
@@ -177,7 +182,8 @@ alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan 00:12:3f:74:6b:79"
 alias wakeupcosmolocal='ssh get27 wakeonlan 00:12:3f:74:6b:79'
 
 #games
-alias minecraft="offtouchpad && java -jar ~/.minecraft/Minecraft.jar"
+alias minecraft="offtouchpad && java -jar ~/Games/Minecraft.jar"
+alias ksp="~/Games/KSP_linux/KSP.x86_64"
 
 
 #RADIOS

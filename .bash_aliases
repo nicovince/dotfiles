@@ -146,6 +146,7 @@ alias setup_palladium='gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'
 ## NotiloPlus Work
 alias cdnot='cd $HOME/work/NotiloPlus/'
 alias cdbb='cd $HOME/work/NotiloPlus/repos/ArduBubble'
+alias notilenv='source $HOME/work/NotiloPlus/notilo.env'
 
 # Movies and series aliases
 # run at 25 frame per seconds to avoid subtitles being out of sync

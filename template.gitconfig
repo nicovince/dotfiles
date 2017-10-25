@@ -12,6 +12,7 @@
 	ss = status -sb
 	ls = ls-tree --name-only HEAD
 	ssu = status -sb -uno
+	logd = log --decorate
 [color]
 	ui = true
 [user]
@@ -24,3 +25,4 @@
 	defaulttoupstream = true
 [push]
 	default = upstream
+	recurseSubmodules = check

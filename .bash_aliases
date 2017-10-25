@@ -12,6 +12,7 @@ alias xt='xterm -vb -sb&'
 alias tree="tree -CAFa --dirsfirst -I 'CVS|*.*.package|.svn|.git'"
 alias cp='cp -p'
 alias grep='grep --color=auto'
+alias cdlast='cd $(ls -p | grep "/" | tail -1)'
 
 #admin
 alias clocksync='sudo ntpdate fr.pool.ntp.org'

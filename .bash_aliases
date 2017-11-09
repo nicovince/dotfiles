@@ -61,7 +61,7 @@ alias grepinvhdL='find . -type f -iregex ".*vhd\(l\)?" | xargs grep --color=auto
 alias grepinvhdl='find . -type f -iname "*vhdl" | xargs grep --color=auto'
 alias grepintex='find . -iname "*tex" | xargs grep --color=auto'
 alias grepinpy='find . -iname "*py" | xargs grep --color=auto'
-alias grepinc='find . -not -name "*.svn*" -regex ".*\.[ch]\(c\)?" | xargs grep --color=auto'
+alias grepinc='find . -not -name "*.svn*" -regex ".*\.[ch]\(c\|pp\)?" | xargs grep --color=auto'
 alias grepinveri='find . -regex ".*\.v" | xargs grep --color=auto'
 alias grepinmk='find . -regex ".*mk\|.*GNUmakefile\|.*Makefile" | xargs grep --color=auto'
 alias lspath='echo $PATH | sed "s/:/\n/g"'

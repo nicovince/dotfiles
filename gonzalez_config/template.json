@@ -6,11 +6,11 @@
                 {
                     "Cmds": [
                         {
-                            "Cmd": "foo",
+                            "Cmd": "echo foo",
                             "delay": 0
                         },
                         {
-                            "Cmd": "foobar"
+                            "Cmd": "echo foobar"
                         }
                     ],
                     "Name": "foo"
@@ -18,7 +18,7 @@
                 {
                     "Cmds": [
                         {
-                            "Cmd": "bar"
+                            "Cmd": "echo bar"
                         }
                     ],
                     "Name": "bar"

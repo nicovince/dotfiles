@@ -13,6 +13,11 @@
 	ls = ls-tree --name-only HEAD
 	ssu = status -sb -uno
 	logd = log --decorate
+        # When a moron commits its tags file, it craps all the searches for functions, types in the code
+        # Take care of that by ignoring faulty file which should never have been commited
+        # Possible syntax is: -- . ":(exclude).tags_swap"
+        # but git config does not like it due to parenthesis
+        lognocrap = "!f() { git log $@ -- . ':!.tags_swap';}; f"
 [color]
 	ui = true
 [user]

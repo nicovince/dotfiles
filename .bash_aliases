@@ -71,6 +71,9 @@ alias diff='diff -U 2'
 # vim
 alias vimaliases='vim ~/.bash_aliases'
 
+# task
+alias task_niju='task rc:$HOME/.task_niju/.taskrc'
+
 # System 
 alias haltkde="dcop --all-sessions --all-users ksmserver ksmserver logout 0 2 0"
 alias rebootkde="dcop ksmserver default logout 0 1 0"

@@ -228,7 +228,9 @@ hex2dec()
 
 hex2bin()
 {
-  echo "ibase=16; obase=2; $1" | bc -l
+  for e in $*; do
+    echo "ibase=16; obase=2; $(echo $e | tr 'a-z' 'A-Z')" | bc -l
+  done
 }
 
 bin2hex()

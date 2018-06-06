@@ -223,7 +223,9 @@ dec2hex()
 }
 hex2dec()
 {
-  echo "ibase=16; $1" | bc -l
+  for e in $*; do
+    echo "ibase=16; $(echo $e | tr 'a-z' 'A-Z')" | bc -l
+  done
 }
 
 hex2bin()

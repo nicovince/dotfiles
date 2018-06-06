@@ -25,7 +25,7 @@ alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
 
 # rm
 alias rmti='rm -fv *~ #'
-alias rmtir='find ./ -name *~ -exec rm -v {} \;'
+alias rmtir='find ./ -name "*~" -exec rm -v {} \;'
 alias rmswp='rm -fv .*.swp #'
 
 # avoid mistakes

@@ -25,7 +25,7 @@ alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
 
 # rm
 alias rmti='rm -fv *~ #'
-alias rmtir='find ./ -name *~ -exec rm -v {} \;'
+alias rmtir='find ./ -name "*~" -exec rm -v {} \;'
 alias rmswp='rm -fv .*.swp #'
 
 # avoid mistakes
@@ -72,7 +72,7 @@ alias diff='diff -U 2'
 alias vimaliases='vim ~/.bash_aliases'
 
 # task
-alias task_niju='task rc:$HOME/.task_niju/.taskrc'
+alias taskn='task rc:$HOME/.task_niju/.taskrc'
 
 # System 
 alias haltkde="dcop --all-sessions --all-users ksmserver ksmserver logout 0 2 0"

@@ -80,6 +80,7 @@ function __get_prompt()
   else
     PS1="$Cyan[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   fi
+  function_exists __git_ps1 && PS1+="${Cyan}$(__git_ps1)${Color_Off}"
   if [ $rc -ne 0 ]; then
     PS1+="${Red}[$rc]${Color_Off}"
   fi

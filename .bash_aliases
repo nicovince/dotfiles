@@ -182,9 +182,15 @@ alias wakeupbuffalo="wakeonlan 00:1D:73:A4:4D:4C"
 alias buffalorsync="rsync -avz --size-only --progress"
 
 # cosmopolitan
-alias wakeupcosmo="wakeonlan 00:12:3f:74:6b:79"
-alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan 00:12:3f:74:6b:79"
-alias wakeupcosmolocal='ssh get27 wakeonlan 00:12:3f:74:6b:79'
+COSMO="00:12:3f:74:6b:79"
+alias wakeupcosmo="wakeonlan ${COSMO}"
+alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan ${COSMO}"
+alias wakeupcosmolocal='ssh get27 wakeonlan ${COSMO}'
+
+# ginfizz
+GINFIZZ="30:9c:23:e1:25:c9"
+alias wakeupginfizz='wakeonlan ${GINFIZZ}'
+alias wakeupginfizzlocal='ssh moscatel wakeonlan ${GINFIZZ}'
 
 #games
 alias minecraft="offtouchpad && java -jar ~/Games/Minecraft.jar"

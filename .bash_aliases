@@ -314,3 +314,8 @@ function cpdate() {
   cp -rp "${i%%/}" "${i%%/}.${cur_date}"
  done
 }
+
+function function_exists() {
+  declare -f -F $1 > /dev/null
+  return $?
+}

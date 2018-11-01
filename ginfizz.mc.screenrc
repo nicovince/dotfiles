@@ -1,0 +1,5 @@
+source /home/nicoals/.screenrc
+
+# server tab
+screen -t server
+select 0

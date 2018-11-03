@@ -1,4 +1,8 @@
 # vim: syntax=sh shiftwidth=2 filetype=sh:
+function function_exists() {
+  declare -f -F $1 > /dev/null
+  return $?
+}
 #
 # This file can be sourced for zsh shells and bash
 # complete command is not supported by zsh so they are commented out
@@ -73,6 +77,25 @@ alias vimaliases='vim ~/.bash_aliases'
 
 # task
 alias taskn='task rc:$HOME/.task_niju/.taskrc'
+_task_complete_wrp()
+{
+  # Set taskcommand according to which task profile is used
+  if [ "$1" = "task" ]; then
+    taskcommand='task rc.verbose:nothing rc.confirmation:no rc.hooks:off'
+  fi
+  if [ "$1" = "taskn" ]; then
+    taskcommand='task rc:~/.task_niju/.taskrc rc.verbose:nothing rc.confirmation:no rc.hooks:off'
+  fi
+  _task $@
+}
+if [ -f /usr/share/bash-completion/completions/task ]; then
+  # It looks like the following is sourced on demand by bash completion system,
+  # In our case we want it to be available for user otherwise _task function is
+  # unknown
+  source /usr/share/bash-completion/completions/task
+  complete -o nospace -F _task_complete_wrp task
+  complete -o nospace -F _task_complete_wrp taskn
+fi
 
 # System 
 alias haltkde="dcop --all-sessions --all-users ksmserver ksmserver logout 0 2 0"
@@ -315,7 +338,3 @@ function cpdate() {
  done
 }
 
-function function_exists() {
-  declare -f -F $1 > /dev/null
-  return $?
-}

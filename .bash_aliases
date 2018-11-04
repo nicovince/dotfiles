@@ -216,7 +216,6 @@ alias wakeupginfizz='wakeonlan ${GINFIZZ}'
 alias wakeupginfizzlocal='ssh moscatel wakeonlan ${GINFIZZ}'
 
 #games
-alias minecraft="offtouchpad && java -jar ~/Games/Minecraft.jar"
 alias ksp="~/Games/KSP_linux/KSP.x86_64"
 
 

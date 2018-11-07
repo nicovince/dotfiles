@@ -67,7 +67,7 @@ alias grepintex='find . -iname "*tex" | xargs grep --color=auto'
 alias grepinpy='find . -iname "*py" | xargs grep --color=auto'
 alias grepinc='find . -not -name "*.svn*" -regex ".*\.[ch]\(c\|pp\)?" | xargs grep --color=auto'
 alias grepinveri='find . -regex ".*\.v" | xargs grep --color=auto'
-alias grepinmk='find . -regex ".*mk\|.*GNUmakefile\|.*Makefile" | xargs grep --color=auto'
+alias grepinmk='find . -iregex ".*mk\|.*GNUmakefile\|.*Makefile" | xargs grep --color=auto'
 alias lspath='echo $PATH | sed "s/:/\n/g"'
 alias pst='ps axfo pid,user,%cpu,%mem,etime,tty,args'
 alias diff='diff -U 2'
@@ -174,6 +174,9 @@ alias setup_palladium='gonzalez.py -f ~/configrc/gonzalez_config/palladium.json'
 alias cdnot='cd $HOME/work/NotiloPlus/'
 alias cdbb='cd $HOME/work/NotiloPlus/repos/ArduBubble'
 alias notilenv='source $HOME/work/NotiloPlus/notilo.env'
+
+## Siema Work
+alias siemaenv='source $HOME/work/siema.env'
 
 # Movies and series aliases
 # run at 25 frame per seconds to avoid subtitles being out of sync

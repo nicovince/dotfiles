@@ -71,7 +71,7 @@ else
 fi
 unset color_prompt force_color_prompt
 
-export PROMPT_COMMAND=__get_prompt
+PROMPT_COMMAND=__get_prompt
 function __get_prompt()
 {
   rc=$?

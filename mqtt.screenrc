@@ -1,0 +1,38 @@
+source $HOME/.dotfiles/.screenrc
+
+sessionname mqtt
+
+# vim
+screen -t vim
+select 0
+stuff "cd /home/nicolasvincent/work/siema/poc_mqtt^M"
+
+# pub
+screen -t pub
+select 1
+stuff "cd /home/nicolasvincent/work/siema/poc_mqtt^M"
+
+# sub
+screen -t sub
+select 2
+stuff "cd /home/nicolasvincent/work/siema/poc_mqtt^M"
+
+# broker
+screen -t broker
+select 3
+stuff "cd /home/nicolasvincent/work/mosquitto-1.5.8 && ./src/mosquitto -c /etc/mosquitto/mosquitto.conf^M"
+
+# buildroot
+screen -t git.br
+select 4
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# vim buildroot
+screen -t vim.br
+select 5
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# build
+screen -t br
+select 6
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"

@@ -250,7 +250,9 @@ dec2bin()
 
 dec2hex()
 {
-  echo "obase=16; $1" | bc -l
+  for e in $*; do
+    echo "obase=16; $e" | bc -l
+  done
 }
 hex2dec()
 {

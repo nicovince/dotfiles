@@ -1,0 +1,18 @@
+source $HOME/.dotfiles/.screenrc
+
+sessionname mqtt
+
+# buildroot
+screen -t git.br
+select 0
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# vim buildroot
+screen -t vim.br
+select 1
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# build
+screen -t br
+select 2
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"

@@ -16,3 +16,13 @@ stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
 screen -t br
 select 2
 stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# git pkg
+screen -t git.pkg
+select 3
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/^M"
+
+# vim pkg
+screen -t vim.pkg
+select 4
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/^M"

@@ -178,6 +178,7 @@ alias notilenv='source $HOME/work/NotiloPlus/notilo.env'
 ## Siema Work
 alias siemaenv='source $HOME/work/siema.env'
 alias vimwork='vim $HOME/work/work.txt'
+alias cdvigi='cd $HOME/work/siema/be/vigizone'
 
 # Movies and series aliases
 # run at 25 frame per seconds to avoid subtitles being out of sync

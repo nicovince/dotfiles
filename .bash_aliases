@@ -344,3 +344,6 @@ function cpdate() {
  done
 }
 
+function zeninfo() {
+  zenity --info --text "$1" 2> /dev/null
+}

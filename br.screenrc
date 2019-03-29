@@ -1,6 +1,6 @@
 source $HOME/.dotfiles/.screenrc
 
-sessionname mqtt
+sessionname buildroot
 
 # buildroot
 screen -t git.br

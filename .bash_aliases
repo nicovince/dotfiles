@@ -345,5 +345,10 @@ function cpdate() {
 }
 
 function zeninfo() {
+  # Save return code of previous command to return it at the end of this
+  # function because I use this to notify me when a job is done, I
+  # want the return code of the previous command, not zenity's
+  ret=$?
   zenity --info --text "$1" 2> /dev/null
+  return ${ret}
 }

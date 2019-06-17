@@ -354,6 +354,20 @@ function zendone() {
   if [ $ret -ne 0 ]; then
     box_type="error"
   fi
+  date
   zenity --${box_type} --text "$1" 2> /dev/null
   return ${ret}
+}
+
+function siema_help() {
+  echo '"cp" output/images/apps.tar.xz{,.md5} output/images/uImage output/images/tboxcp11-ucc32-p3.dtb output/images/rootfs.jffs2 /media/nvi/siema/tftp/vigizone/'
+  echo -e '\tCopy buildroot output file to TFTP folder\n'
+  echo '"cp" output/images/tboxcp11-ucc32-p3.dtb /media/nvi/siema/tftp/vigizone/tbox.dtb'
+  echo -e '\tRename device tree properly to TFTP folder\n'
+  echo  'ifconfig br0 192.168.1.2'
+  echo  'umount /lib/modules'
+  echo  'cd /lib/modules/4.19.25-R4IP/kernel/drivers/net/sdfe4/'
+  echo  'mount -o remount,rw / && tftp -g -r sdfe4.ko 192.168.1.1 && sync'
+  echo  'mount -o remount,ro / && reboot'
+  echo -e '\tUpdate module without flashing all rootfs\n'
 }

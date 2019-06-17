@@ -1,0 +1,43 @@
+source $HOME/.dotfiles/.screenrc
+
+sessionname buildroot
+
+# buildroot
+screen -t git.br
+select 0
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# vim buildroot
+screen -t vim.br
+select 1
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# build
+screen -t br
+select 2
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/r4ip-buildroot^M"
+
+# git linux
+screen -t git.linux
+select 3
+stuff "cd /home/nicolasvincent/work/siema/be/linux/linux-stable^M"
+
+# vim linux
+screen -t vim.linux
+select 4
+stuff "cd /home/nicolasvincent/work/siema/be/linux/linux-stable^M"
+
+# r4ip.env
+screen -t r4ip.env
+select 5
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/env_r4ip^M"
+
+# vim.oldlinux
+screen -t vim.oldlinux
+select 6
+stuff "cd /home/nicolasvincent/work/siema/be/linux/linux-2.6.26-Siema-R4IP^M"
+
+# old.br
+screen -t old.br
+select 7
+stuff "cd /home/nicolasvincent/work/siema/be/vigizone/Etudes/r4ip-buildroot^M"

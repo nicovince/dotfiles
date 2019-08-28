@@ -380,6 +380,8 @@ function siema_help() {
   echo -e '\tUpdate module without flashing all rootfs\n'
   echo  'cpio -idv < file.cpio'
   echo -e '\tExtract cpio archive'
+  echo  'scp nicolas@172.19.86.215:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/images/{uImage,rootfs.jffs2,apps.tar.xz,apps.tar.xz.md5,tboxcp11-ucc32-p3.dtb} .'
+  echo -e '\tCopy buildroot output files from debian vm hyperV'
 }
 
 function oneliners() {

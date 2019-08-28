@@ -180,6 +180,14 @@ alias siemaenv='source $HOME/work/siema.env'
 alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 
+br2vigitftp()
+{
+  local build_dir=$(find . -maxdepth 2 -name images)
+  local tftp_dir=/media/nvi/siema/tftp/vigizone
+  "cp" -v ${build_dir}/apps.tar.xz{,.md5} ${build_dir}/uImage ${build_dir}/tboxcp11-ucc32-p3.dtb ${tftp_dir}
+  "cp" -v ${build_dir}/tboxcp11-ucc32-p3.dtb ${tftp_dir}/tbox.dtb
+}
+
 # Movies and series aliases
 # run at 25 frame per seconds to avoid subtitles being out of sync
 alias 24='gmplayer -alang en -slang eng -fps 25'
@@ -370,4 +378,11 @@ function siema_help() {
   echo  'mount -o remount,rw / && tftp -g -r sdfe4.ko 192.168.1.1 && sync'
   echo  'mount -o remount,ro / && reboot'
   echo -e '\tUpdate module without flashing all rootfs\n'
+  echo  'cpio -idv < file.cpio'
+  echo -e '\tExtract cpio archive'
+}
+
+function oneliners() {
+  echo 'Sum each lines: '
+  echo "awk '{s+=$1} END {print s}'"
 }

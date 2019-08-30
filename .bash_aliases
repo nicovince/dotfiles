@@ -386,5 +386,5 @@ function siema_help() {
 
 function oneliners() {
   echo 'Sum each lines: '
-  echo "awk '{s+=$1} END {print s}'"
+  echo "awk '{s+=\$1} END {print s}'"
 }

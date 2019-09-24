@@ -185,10 +185,14 @@ br2vigitftp()
   local build_dir=$(find . -maxdepth 2 -name images)
   local tftp_dir=/media/nvi/siema/tftp/vigizone
   "cp" -v ${build_dir}/uImage ${build_dir}/tboxcp11-ucc32-p3.dtb ${tftp_dir}
+  if [ -f ${build_dir}/rootfs.squashfs ]; then
+    "cp" -v ${build_dir}/rootfs.squashfs ${tftp_dir}
+  fi
   if [ -f ${build_dir}/apps.tar.xz ]; then
     "cp" -v ${build_dir}/apps.tar.xz{,.md5} ${tftp_dir}
   fi
   "cp" -v ${build_dir}/tboxcp11-ucc32-p3.dtb ${tftp_dir}/tbox.dtb
+  "cp" -v ${build_dir}/*.ipk ${tftp_dir}
 }
 
 # Movies and series aliases

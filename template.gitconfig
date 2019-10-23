@@ -19,6 +19,8 @@
         # Possible syntax is: -- . ":(exclude).tags_swap"
         # but git config does not like it due to parenthesis
         lognocrap = "!f() { git log $@ -- . ':!.tags_swap';}; f"
+        notesfetch = fetch origin refs/notes/*:refs/notes/*
+        notespush = push origin refs/notes/*
 [color]
 	ui = true
 [user]

@@ -1,0 +1,17 @@
+source $HOME/.dotfiles/.screenrc
+sessionname bt_gsmr
+
+# git
+screen -t git.esp
+select 0
+stuff "cd $HOME/work/siema/innovation/bt_gsmr/ESP32"
+
+# vim
+screen -t vim.esp
+select 1
+stuff "cd $HOME/work/siema/innovation/bt_gsmr/ESP32"
+
+# build
+screen -t build.esp
+select 2
+stuff "get_esp32 && cd $HOME/work/siema/innovation/bt_gsmr/ESP32"

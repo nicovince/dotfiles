@@ -181,6 +181,7 @@ alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias get_esp32='export PATH=$PATH:/home/nicolas/work/siema/innovation/bt_gsmr/xtensa-esp32-elf/bin'
+alias get_r4ip='export PATH=$PATH:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/host/bin/'
 
 br2vigitftp()
 {

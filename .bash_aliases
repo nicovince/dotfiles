@@ -198,6 +198,14 @@ br2vigitftp()
   "cp" -v ${build_dir}/*.ipk ${tftp_dir}
 }
 
+btgsmrbins2windows()
+{
+  local win_dir=/media/nvi/siema/work/innovation/btgsmr/bin/
+  local build_dir=$(find . -maxdepth 2 -name build)
+  find ${build_dir} -name "*.bin" -exec "cp" -v {} ${win_dir} \;
+  find ${build_dir} -name "*.elf" -exec "cp" -v {} ${win_dir} \;
+}
+
 # Movies and series aliases
 # run at 25 frame per seconds to avoid subtitles being out of sync
 alias 24='gmplayer -alang en -slang eng -fps 25'

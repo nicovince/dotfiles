@@ -23,9 +23,6 @@
         notespush = push origin refs/notes/*
 [color]
 	ui = true
-[user]
-	name = $full_name
-	email = $email
 [core]
 	excludesfile = ~/.gitignore_global
 	editor = vim
@@ -34,3 +31,6 @@
 [push]
 	default = upstream
 	recurseSubmodules = check
+[include]
+        path = ~/.gitconfig_user
+# vim: set syntax=gitconfig:

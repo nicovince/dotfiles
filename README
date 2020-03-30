@@ -1,9 +1,0 @@
-Dotfile repository used to store all configuration files.
-
-The configuration files read by tools are symbolic link pointing to those
-files. If the links do not exist yet, they can be automatically created with
-dotfiles_bootstrap.py located in my bin.git repository
-git clone https://github.com/nicovince/bin.git
-
-The files linked are actually hardcoded in the python script.
-TODO: create configuration file which read the files that needs to be linked

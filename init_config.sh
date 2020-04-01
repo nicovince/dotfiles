@@ -24,10 +24,10 @@ do
         then
             #backup existing conf file
             mkdir -p ${backup_folder}
-            echo "mv $HOME/${file} ${backup_folder}/${file}.old"
+            mv $HOME/${file} ${backup_folder}/${file}.old
         fi
         if [ ! -h ${HOME}/${file} ]; then
-            echo ln -s $config_dir/$file $HOME/$file
+            ln -s $config_dir/$file $HOME/$file
         fi
 
     fi

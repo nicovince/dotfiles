@@ -1,0 +1,6 @@
+QTabBar::tab:selected {
+    color: red
+}
+QTabBar::tab:selected {
+    background: #999999 
+}

@@ -127,6 +127,7 @@ alias lftp_cosmo="lftp -u nicolas,dummy sftp://cosmopolitan"
 alias fbox='lftp freebox@hd1.freebox.fr'
 alias freeftp='lftp "nico.vince@gmail.com"@dl.free.fr'
 
+alias rcd='cd $(pwd)'
 # cd to file's directory
 fcd()
 {
@@ -180,8 +181,13 @@ alias siemaenv='source $HOME/work/siema.env'
 alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
+alias cdsiema='cd $HOME/work/siema/'
+alias cdst='cd $HOME/work/siema/vendors/ST'
+alias cddatasheets='cd $HOME/work/siema/datasheets'
 alias get_esp32='export PATH=$PATH:/home/nicolas/work/siema/innovation/bt_gsmr/xtensa-esp32-elf/bin'
 alias get_r4ip='export PATH=$PATH:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/host/bin/'
+alias get_stm32='source $HOME/work/siema/vendors/ST/env.sh'
+alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 br2vigitftp()
 {

@@ -58,7 +58,6 @@ alias gless='~/.vim/macros/gless.sh'
 alias g='gvim'
 alias v='vim'
 alias sl="ls"
-alias ssh="ssh -X"
 alias ralias='source ~/.bash_aliases'
 alias findvhdl='find . -name *vhd'
 alias grepinvhdL='find . -type f -iregex ".*vhd\(l\)?" | xargs grep --color=auto'
@@ -181,6 +180,7 @@ alias siemaenv='source $HOME/work/siema.env'
 alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
+alias cdbe='cd $HOME/work/siema/be'
 alias cdsiema='cd $HOME/work/siema/'
 alias cdst='cd $HOME/work/siema/vendors/ST'
 alias cddatasheets='cd $HOME/work/siema/datasheets'
@@ -188,6 +188,7 @@ alias get_esp32='export PATH=$PATH:/home/nicolas/work/siema/innovation/bt_gsmr/x
 alias get_r4ip='export PATH=$PATH:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/host/bin/'
 alias get_stm32='source $HOME/work/siema/vendors/ST/env.sh'
 alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 br2vigitftp()
 {

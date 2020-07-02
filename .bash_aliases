@@ -12,6 +12,7 @@ alias ll='ls -l --time-style="+%F %H:%M:%S"'
 alias la='ls -A --color=tty'
 alias l='ls'
 alias lt='ls -lrt'
+alias lth='ls -lrth'
 alias xt='xterm -vb -sb&'
 alias tree="tree -CAFa --dirsfirst -I 'CVS|*.*.package|.svn|.git'"
 alias cp='cp -p'
@@ -38,6 +39,7 @@ alias sl='ls'
 alias lls='ls'
 alias ccd='cd'
 alias cdd='cd'
+alias gti='git'
 alias unrare='unrar e'
 
 # Sound 

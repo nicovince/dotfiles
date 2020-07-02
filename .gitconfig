@@ -33,4 +33,4 @@
 	recurseSubmodules = check
 [include]
         path = ~/.gitconfig_user
-# vim: set syntax=gitconfig:
+# vim: set syntax=gitconfig noet:

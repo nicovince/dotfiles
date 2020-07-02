@@ -4,23 +4,23 @@
 	co = checkout
 	br = branch
 	wsfix = !git diff HEAD >P.diff && git reset --hard HEAD && git apply --index --whitespace=fix P.diff && rm -f P.diff
-        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	civ = commit --verbose
-        hist2 = log --graph --pretty=\"format:%C(yellow bold)%h%Creset by %C(red)%an%Creset (%ar)%C(cyan bold)%d%Creset%n%s%n%b\" --all
-        filesofcommit = diff-tree --no-commit-id --name-only -r
-        logf = log --name-status
+	hist2 = log --graph --pretty=\"format:%C(yellow bold)%h%Creset by %C(red)%an%Creset (%ar)%C(cyan bold)%d%Creset%n%s%n%b\" --all
+	filesofcommit = diff-tree --no-commit-id --name-only -r
+	logf = log --name-status
 	ss = status -sb
 	ls = ls-tree --name-only HEAD
 	ssu = status -sb -uno
 	logd = log --decorate
 	logg = log --decorate --graph
-        # When a moron commits its tags file, it craps all the searches for functions, types in the code
-        # Take care of that by ignoring faulty file which should never have been commited
-        # Possible syntax is: -- . ":(exclude).tags_swap"
-        # but git config does not like it due to parenthesis
-        lognocrap = "!f() { git log $@ -- . ':!.tags_swap';}; f"
-        notesfetch = fetch origin refs/notes/*:refs/notes/*
-        notespush = push origin refs/notes/*
+	# When a moron commits its tags file, it craps all the searches for functions, types in the code
+	# Take care of that by ignoring faulty file which should never have been commited
+	# Possible syntax is: -- . ":(exclude).tags_swap"
+	# but git config does not like it due to parenthesis
+	lognocrap = "!f() { git log $@ -- . ':!.tags_swap';}; f"
+	notesfetch = fetch origin refs/notes/*:refs/notes/*
+	notespush = push origin refs/notes/*
 [color]
 	ui = true
 [core]
@@ -32,5 +32,5 @@
 	default = upstream
 	recurseSubmodules = check
 [include]
-        path = ~/.gitconfig_user
+	path = ~/.gitconfig_user
 # vim: set syntax=gitconfig noet:

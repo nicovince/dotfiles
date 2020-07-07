@@ -4,6 +4,7 @@
 	co = checkout
 	br = branch
 	grepr = grep --recurse-submodules
+	grepu = grep --untracked
 	wsfix = !git diff HEAD >P.diff && git reset --hard HEAD && git apply --index --whitespace=fix P.diff && rm -f P.diff
 	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	civ = commit --verbose

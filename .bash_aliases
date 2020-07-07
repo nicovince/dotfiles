@@ -12,6 +12,7 @@ alias ll='ls -l --time-style="+%F %H:%M:%S"'
 alias la='ls -A --color=tty'
 alias l='ls'
 alias lt='ls -lrt'
+alias lth='ls -lrth'
 alias xt='xterm -vb -sb&'
 alias tree="tree -CAFa --dirsfirst -I 'CVS|*.*.package|.svn|.git'"
 alias cp='cp -p'
@@ -38,6 +39,7 @@ alias sl='ls'
 alias lls='ls'
 alias ccd='cd'
 alias cdd='cd'
+alias gti='git'
 alias unrare='unrar e'
 
 # Sound 
@@ -60,7 +62,6 @@ alias gless='~/.vim/macros/gless.sh'
 alias g='gvim'
 alias v='vim'
 alias sl="ls"
-alias ssh="ssh -X"
 alias ralias='source ~/.bash_aliases'
 alias findvhdl='find . -name *vhd'
 alias grepinvhdL='find . -type f -iregex ".*vhd\(l\)?" | xargs grep --color=auto'
@@ -129,6 +130,7 @@ alias lftp_cosmo="lftp -u nicolas,dummy sftp://cosmopolitan"
 alias fbox='lftp freebox@hd1.freebox.fr'
 alias freeftp='lftp "nico.vince@gmail.com"@dl.free.fr'
 
+alias rcd='cd $(pwd)'
 # cd to file's directory
 fcd()
 {
@@ -182,8 +184,15 @@ alias siemaenv='source $HOME/work/siema.env'
 alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
+alias cdbe='cd $HOME/work/siema/be'
+alias cdsiema='cd $HOME/work/siema/'
+alias cdst='cd $HOME/work/siema/vendors/ST'
+alias cddatasheets='cd $HOME/work/siema/datasheets'
 alias get_esp32='export PATH=$PATH:/home/nicolas/work/siema/innovation/bt_gsmr/xtensa-esp32-elf/bin'
 alias get_r4ip='export PATH=$PATH:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/host/bin/'
+alias get_stm32='source $HOME/work/siema/vendors/ST/env.sh'
+alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 br2vigitftp()
 {

@@ -41,6 +41,8 @@ alias cdd='cd'
 alias unrare='unrar e'
 
 # Sound 
+alias snd2hdmi='pactl set-card-profile 0 output:hdmi-stereo-extra1'
+alias snd2spkr='pactl set-card-profile 0 output:analog-stereo'
 # Record from microphone
 alias micrec="artsrec -b 16 -r 44100 -c 2"
 

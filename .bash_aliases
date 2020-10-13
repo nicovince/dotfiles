@@ -111,6 +111,11 @@ alias offscreen="xset dpms force suspend"
 alias onscreen="xset -dpms"
 alias fboxhd="lftp freebox@hd1.freebox.fr"
 alias genpasswd="apg -m 8 -x 8 -M NC -t"
+function genpasswd2()
+{
+  # Generate password, with symbol excluding symbol which are not part of a word
+  apg -m 8 -x 8 -M NCS -E "*^+=,;:\$|<>#[](){}\"\'\`\\!"
+}
 # map key above <TAB> to <TAB> (broken <TAB> on my laptop)
 alias tabremap='xmodmap -e "keycode 49 = Tab"'
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
@@ -183,12 +188,14 @@ alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias cdbe='cd $HOME/work/siema/be'
+alias cdafa='cd $HOME/work/siema/be/AFA'
 alias cdsiema='cd $HOME/work/siema/'
 alias cdst='cd $HOME/work/siema/vendors/ST'
 alias cddatasheets='cd $HOME/work/siema/datasheets'
-alias get_esp32='export PATH=$PATH:/home/nicolas/work/siema/innovation/bt_gsmr/xtensa-esp32-elf/bin'
+alias get_esp32='export PATH=$PATH:$HOME/.espressif/tools/xtensa-esp32-elf/1.22.0-80-g6c4433a-5.2.0/xtensa-esp32-elf/bin/'
 alias get_r4ip='export PATH=$PATH:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/host/bin/'
 alias get_stm32='source $HOME/work/siema/vendors/ST/env.sh'
+alias get_zephyr='export PATH=$PATH:$HOME/.local/opt/zephyr-sdk-0.11.3/arm-zephyr-eabi/bin/'
 alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 

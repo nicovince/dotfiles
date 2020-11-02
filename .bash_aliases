@@ -111,11 +111,15 @@ alias offscreen="xset dpms force suspend"
 alias onscreen="xset -dpms"
 alias fboxhd="lftp freebox@hd1.freebox.fr"
 alias genpasswd="apg -m 8 -x 8 -M NC -t"
-function genpasswd2()
-{
-  # Generate password, with symbol excluding symbol which are not part of a word
-  apg -m 8 -x 8 -M NCS -E "*^+=,;:\$|<>#[](){}\"\'\`\\!"
-}
+# Generate password, with symbol excluding symbol which are not part of a word
+alias genpasswd2="apg -a 1 -m 20 -x 20 -M NCSL -E \"*^+=,;:\$|<>#[](){}\\\"\'\\\`\\!\""
+alias genpasswd3="apg -a 1 -m 20 -x 20 -M NCSL"
+alias genpasswds="echo '--- Pronunciable passwords:' \
+                  && genpasswd \
+                  && echo '--- Selectionnable passwords:' \
+                  && genpasswd2 \
+                  && echo '--- Hard passwords:' \
+                  && genpasswd3"
 # map key above <TAB> to <TAB> (broken <TAB> on my laptop)
 alias tabremap='xmodmap -e "keycode 49 = Tab"'
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
@@ -188,7 +192,8 @@ alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias cdbe='cd $HOME/work/siema/be'
-alias cdafa='cd $HOME/work/siema/be/AFA'
+alias cdvog='cd $HOME/work/siema/be/VOG'
+alias cducc32='cd $HOME/work/siema/be/UCC32/'
 alias cdsiema='cd $HOME/work/siema/'
 alias cdst='cd $HOME/work/siema/vendors/ST'
 alias cddatasheets='cd $HOME/work/siema/datasheets'

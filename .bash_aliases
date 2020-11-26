@@ -203,6 +203,7 @@ alias get_stm32='source $HOME/work/siema/vendors/ST/env.sh'
 alias get_zephyr='export PATH=$PATH:$HOME/.local/opt/zephyr-sdk-0.11.3/arm-zephyr-eabi/bin/'
 alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias zeph='cd /home/nicolas/work/siema/be/VOG/src/zephyrproject/ && workon zephyr && source zephyr/zephyr-env.sh'
 
 br2vigitftp()
 {

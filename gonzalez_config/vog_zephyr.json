@@ -1,0 +1,32 @@
+{"Konsoles":
+ [
+  {"Name" : "Vog Zephyr",
+   "Tabs":
+   [
+    {"Name": "west.build",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
+      {"Cmd" : "workon zephyr"}
+     ]
+    },
+    {"Name": "vim.vog",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"}
+     ]
+    },
+    {"Name": "git.vog",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes"},
+      {"Cmd" : "source ../zephyr/zephyr-env.sh"}
+     ]
+    },
+    {"Name": "git.zeph",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr"},
+      {"Cmd" : "source zephyr-env.sh"}
+     ]
+    }
+   ]
+  }
+ ]
+}

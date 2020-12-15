@@ -25,6 +25,14 @@
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr"},
       {"Cmd" : "source zephyr-env.sh"}
      ]
+    },
+    {"Name": "serial",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr"},
+      {"Cmd" : "screen /dev/ttyACM0 115200 8N1",
+       "Exec" : false
+      }
+     ]
     }
    ]
   }

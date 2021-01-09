@@ -23,6 +23,7 @@
 	lognocrap = "!f() { git log $@ -- . ':!.tags_swap';}; f"
 	notesfetch = fetch origin refs/notes/*:refs/notes/*
 	notespush = push origin refs/notes/*
+	root = rev-parse --show-toplevel
 [color]
 	ui = true
 [core]

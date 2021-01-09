@@ -74,6 +74,7 @@ alias grepinmk='find . -iregex ".*mk\|.*GNUmakefile\|.*Makefile" | xargs grep --
 alias lspath='echo $PATH | sed "s/:/\n/g"'
 alias pst='ps axfo pid,user,%cpu,%mem,etime,tty,args'
 alias diff='diff -U 2'
+alias _konsole_dbus_session_name="echo org.kde.konsole-$(pstree -p -s $(ps | grep $(basename $(echo $0)) | head -1 | awk '{print $1}') | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')"
 
 # vim
 alias vimaliases='vim ~/.bash_aliases'
@@ -113,6 +114,15 @@ alias offscreen="xset dpms force suspend"
 alias onscreen="xset -dpms"
 alias fboxhd="lftp freebox@hd1.freebox.fr"
 alias genpasswd="apg -m 8 -x 8 -M NC -t"
+# Generate password, with symbol excluding symbol which are not part of a word
+alias genpasswd2="apg -a 1 -m 20 -x 20 -M NCSL -E \"*^+=,;:\$|<>#[](){}\\\"\'\\\`\\!\""
+alias genpasswd3="apg -a 1 -m 20 -x 20 -M NCSL"
+alias genpasswds="echo '--- Pronunciable passwords:' \
+                  && genpasswd \
+                  && echo '--- Selectionnable passwords:' \
+                  && genpasswd2 \
+                  && echo '--- Hard passwords:' \
+                  && genpasswd3"
 # map key above <TAB> to <TAB> (broken <TAB> on my laptop)
 alias tabremap='xmodmap -e "keycode 49 = Tab"'
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
@@ -185,14 +195,19 @@ alias vimwork='vim $HOME/work/work.txt'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias cdbe='cd $HOME/work/siema/be'
+alias cdvog='cd $HOME/work/siema/be/VOG'
+alias cducc32='cd $HOME/work/siema/be/UCC32/'
 alias cdsiema='cd $HOME/work/siema/'
+alias cdqa='cdsiema && cd quick_apps'
 alias cdst='cd $HOME/work/siema/vendors/ST'
 alias cddatasheets='cd $HOME/work/siema/datasheets'
-alias get_esp32='export PATH=$PATH:/home/nicolas/work/siema/innovation/bt_gsmr/xtensa-esp32-elf/bin'
+alias get_esp32='export PATH=$PATH:$HOME/.espressif/tools/xtensa-esp32-elf/1.22.0-80-g6c4433a-5.2.0/xtensa-esp32-elf/bin/'
 alias get_r4ip='export PATH=$PATH:/home/nicolas/work/siema/be/vigizone/r4ip-buildroot/output/host/bin/'
 alias get_stm32='source $HOME/work/siema/vendors/ST/env.sh'
+alias get_zephyr='export PATH=$PATH:$HOME/.local/opt/zephyr-sdk-0.11.3/arm-zephyr-eabi/bin/'
 alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+alias zeph='cd /home/nicolas/work/siema/be/VOG/src/zephyrproject/ && workon zephyr && source zephyr/zephyr-env.sh'
 
 br2vigitftp()
 {

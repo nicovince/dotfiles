@@ -211,6 +211,7 @@ alias get_zephyr='export PATH=$PATH:$HOME/.local/opt/zephyr-sdk-0.11.3/arm-zephy
 alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zeph='cd /home/nicolas/work/siema/be/VOG/src/zephyrproject/ && workon zephyr && source zephyr/zephyr-env.sh'
+alias get_tmux_sessions='source $HOME/.dotfiles/tmux_sessions.sh'
 
 br2vigitftp()
 {

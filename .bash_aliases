@@ -74,7 +74,10 @@ alias grepinmk='find . -iregex ".*mk\|.*GNUmakefile\|.*Makefile" | xargs grep --
 alias lspath='echo $PATH | sed "s/:/\n/g"'
 alias pst='ps axfo pid,user,%cpu,%mem,etime,tty,args'
 alias diff='diff -U 2'
-alias _konsole_dbus_session_name="echo org.kde.konsole-$(pstree -p -s $(ps | grep $(basename $(echo $0)) | head -1 | awk '{print $1}') | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')"
+_konsole_dbus_session_name()
+{
+  echo org.kde.konsole-$(pstree -p -s $(ps | grep $(basename $(echo $0)) | head -1 | awk '{print $1}') | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')
+}
 
 # vim
 alias vimaliases='vim ~/.bash_aliases'

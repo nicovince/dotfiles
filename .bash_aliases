@@ -435,4 +435,6 @@ function siema_help() {
 function oneliners() {
   echo 'Sum each lines: '
   echo "awk '{s+=\$1} END {print s}'"
+  echo 'Archive HEAD of current git repository:'
+  echo 'git archive -o file.zip --prefix=prefix-name/ $(git log -1 --pretty=%H)'
 }

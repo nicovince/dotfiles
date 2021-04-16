@@ -1,0 +1,22 @@
+{"Konsoles":
+ [
+  {"Name" : "Vog Tmux Zephyr",
+   "Tabs":
+   [
+    {"Name": "openvpn",
+     "Cmds": [
+      {"Cmd" : "sudo openvpn --config ~/work/siema/innovation/vpn/inno-user-vincent.ovpn",
+       "Exec" : false
+      }
+     ]
+    },
+    {"Name": "tmux",
+     "Cmds": [
+      {"Cmd" : "ssh firefly",
+       "Exec" : false}
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -17,6 +17,7 @@
     {"Name": "git.vog",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes"},
+      {"Cmd" : "workon zephyr"},
       {"Cmd" : "source ../zephyr/zephyr-env.sh"}
      ]
     },

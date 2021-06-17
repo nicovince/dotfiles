@@ -1,0 +1,41 @@
+{"Konsoles":
+ [
+  {"Name" : "Enki dev",
+   "Tabs":
+   [
+    {"Name": "git.enki",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"}
+     ]
+    },
+    {"Name": "vim.enki",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"}
+     ]
+    },
+    {"Name": "run.enki",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"},
+      {"Cmd" : "workon enki"},
+      {"Cmd" : "./enki.py", "Exec" : false}
+     ]
+    },
+    {"Name": "tahu.example",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki/tahu/sparkplug_b/stand_alone_examples/python"},
+      {"Cmd" : "workon sparkplug"},
+      {"Cmd" : "python example.py", "Exec" : false}
+     ]
+    },
+    {"Name": "mosq.sub",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"},
+      {"Cmd" : "mosquitto_sub -v -t '#'",
+       "Exec" : false
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

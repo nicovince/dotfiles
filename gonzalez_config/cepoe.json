@@ -1,0 +1,40 @@
+{"Konsoles":
+ [
+  {"Name" : "CEPOE",
+   "Tabs":
+   [
+    {"Name": "git.ysi",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno"}
+     ]
+    },
+    {"Name": "vim.ysi",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno"}
+     ]
+    },
+    {"Name": "build.ysi",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno"},
+      {"Cmd" : "source layers/openembedded-core/oe-init-build-env"}
+     ]
+    },
+    {"Name": "git.m4",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/vendors/ST/stm32mp1_m4_trial"}
+     ]
+    },
+    {"Name": "vim.m4",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/vendors/ST/stm32mp1_m4_trial"}
+     ]
+    },
+    {"Name": "build.m4",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/vendors/ST/stm32mp1_m4_trial"}
+     ]
+    }
+   ]
+  }
+ ]
+}

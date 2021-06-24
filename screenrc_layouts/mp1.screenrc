@@ -30,5 +30,5 @@ stuff "cat /sys/kernel/debug/remoteproc/remoteproc0/trace0^M"
 
 screen -t datas
 select 3
-stuff "HISTCONTROL=ignoredups; cd /usr/local/libopencm3-examples^M./cepoe-sensors_data_gather.py /dev/ttyRPMSG0"
+stuff "HISTCONTROL=ignoredups; cd /usr/local/libopencm3-examples^M./cepoe-sensors_data_gather.py /dev/ttyRPMSG0 --print-repr --streams ads1220_sensor"
 select 0

@@ -8,6 +8,11 @@
       {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno"}
      ]
     },
+    {"Name": "git.siema",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno/layers/meta-siema-stm32mp"}
+     ]
+    },
     {"Name": "vim.ysi",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno"}
@@ -16,7 +21,8 @@
     {"Name": "build.ysi",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/yocto-siema-inno"},
-      {"Cmd" : "source layers/openembedded-core/oe-init-build-env"}
+      {"Cmd" : "source layers/openembedded-core/oe-init-build-env"},
+      {"Cmd" : "echo bitbake image-ktn -k"}
      ]
     },
     {"Name": "git.m4",
@@ -32,6 +38,11 @@
     {"Name": "build.m4",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/vendors/ST/stm32mp1_m4_trial"}
+     ]
+    },
+    {"Name": "datasheets",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/innovation/moteur_connecte/datasheets"}
      ]
     }
    ]

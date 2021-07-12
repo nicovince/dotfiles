@@ -34,6 +34,21 @@
        "Exec" : false
       }
      ]
+    },
+    {"Name": "enki",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"},
+      {"Cmd" : "workon enki"},
+      {"Cmd" : "python enki.py"}
+     ]
+    },
+    {"Name": "docker",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr"},
+      {"Cmd" : "docker run -it --rm --init --net host -v /home/nicolas/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes/scripts/dhcpd:/data networkboot/dhcpd eno1",
+       "Exec" : false
+      }
+     ]
     }
    ]
   }

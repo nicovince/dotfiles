@@ -438,3 +438,15 @@ function oneliners() {
   echo 'Archive HEAD of current git repository:'
   echo 'git archive -o file.zip --prefix=prefix-name/ $(git log -1 --pretty=%H)'
 }
+
+function _crc32() {
+  FILE="$1"
+  if [ -f "${FILE}" ]; then
+
+    echo -n "0x"
+    cat "${FILE}" | gzip -c | tail -c8 | hexdump -n4 -e '"%x"'
+    echo
+  else
+    echo "No such file or directory: ${FILE}"
+  fi
+}

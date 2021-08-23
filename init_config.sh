@@ -5,7 +5,7 @@
 # https://github.com/marinacr/configuration_files/blob/master/config_files_script
 
 config_dir=$(git rev-parse --show-toplevel)
-ignore_patterns=('README.md' "$(basename $0)" '.git$' '~' 'backup' 'screenrc_layouts' '.*\.swp' 'gonzalez_config' 'revit.sh' 'git_prompt.zsh' 'misc' '.task$')
+ignore_patterns=('README.md' "$(basename $0)" '.git$' '~' 'backup' 'screenrc_layouts' '.*\.swp' 'gonzalez_config' 'revit.sh' 'git_prompt.zsh' 'misc' '.task$' 'tmux_sessions.sh')
 backup_folder=${config_dir}_$(date "+%F_%H.%M.%S")
 
 #symbolic link creation

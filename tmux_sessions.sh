@@ -1,9 +1,9 @@
 #!/bin/bash
 
+VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
 tmux_zeph()
 {
     SESSION_NAME="zephyr"
-    VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
     tmux attach-session -d -t ${SESSION_NAME}
     if [[ $? == 0 ]]; then
         return
@@ -30,4 +30,23 @@ tmux_zeph()
     tmux send-keys "screen /dev/ttyACM0 115200 8N1"
 
     tmux attach-session -t ${SESSION_NAME}
+}
+
+GH_RUNNERS=/home/nicolas/work/siema/be/VOG/gh_runners/runner-nvincent-vossloh-vog-zephyr-nodes
+tmux_gh_runners()
+{
+    SESSION_NAME="zephyr"
+    tmux attach-session -d -t ${SESSION_NAME}
+    if [[ $? == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+
+    tmux rename-window "cfg"
+    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+
+    tmux new-window -n "nvi.runner"
+    tmux send-keys "cd ${GH_RUNNER}/runner-nvincent-vossloh-vog-zephyr-nodes" C-m
+    tmux send-keys "workon zephyr_test"
+    tmux send-keys "./run.sh" C-m
 }

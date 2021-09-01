@@ -43,6 +43,7 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"},
       {"Cmd" : "workon enki"},
+      {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tahu/client_libraries/python"},
       {"Cmd" : "python enki.py"}
      ]
     },

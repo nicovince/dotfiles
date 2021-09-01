@@ -35,7 +35,7 @@ tmux_zeph()
 GH_RUNNERS=/home/nicolas/work/siema/be/VOG/gh_runners/runner-nvincent-vossloh-vog-zephyr-nodes
 tmux_gh_runners()
 {
-    SESSION_NAME="zephyr"
+    SESSION_NAME="gh_runners"
     tmux attach-session -d -t ${SESSION_NAME}
     if [[ $? == 0 ]]; then
         return

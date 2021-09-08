@@ -18,10 +18,15 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
       {"Cmd" : "workon zephyr_test"},
-      {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/"},
+      {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/:$(pwd)/vog-zephyr-nodes/scripts"},
       {"Cmd" : "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/",
        "Exec" : false
       }
+     ]
+    },
+    {"Name": "git.enki",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki"}
      ]
     },
     {"Name": "git.vog",
@@ -41,7 +46,7 @@
     },
     {"Name": "enki",
      "Cmds": [
-      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/enki"},
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki"},
       {"Cmd" : "workon enki"},
       {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tahu/client_libraries/python"},
       {"Cmd" : "python enki.py"}

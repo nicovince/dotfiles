@@ -6,6 +6,7 @@
     {"Name": "west.build",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
+      {"Cmd" : "get_stm32"},
       {"Cmd" : "workon zephyr"}
      ]
     },
@@ -19,6 +20,7 @@
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
       {"Cmd" : "workon zephyr_test"},
       {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/:$(pwd)/vog-zephyr-nodes/scripts"},
+      {"Cmd" : "get_stm32"},
       {"Cmd" : "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/",
        "Exec" : false
       }

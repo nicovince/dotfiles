@@ -32,7 +32,7 @@ tmux_zeph()
     tmux attach-session -t ${SESSION_NAME}
 }
 
-GH_RUNNERS=/home/nicolas/work/siema/be/VOG/gh_runners/runner-nvincent-vossloh-vog-zephyr-nodes
+GH_RUNNERS=/home/nicolas/work/siema/be/VOG/gh_runners
 tmux_gh_runners()
 {
     SESSION_NAME="gh_runners"
@@ -46,7 +46,8 @@ tmux_gh_runners()
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
 
     tmux new-window -n "nvi.runner"
-    tmux send-keys "cd ${GH_RUNNER}/runner-nvincent-vossloh-vog-zephyr-nodes" C-m
-    tmux send-keys "workon zephyr_test"
+    tmux send-keys "cd ${GH_RUNNERS}/runner-nvincent-vossloh-vog-zephyr-nodes" C-m
+    tmux send-keys "workon zephyr_test" C-m
+    tmux send-keys "get_stm32" C-m
     tmux send-keys "./run.sh" C-m
 }

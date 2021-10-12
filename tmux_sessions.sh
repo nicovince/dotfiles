@@ -50,4 +50,10 @@ tmux_gh_runners()
     tmux send-keys "workon zephyr_test" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "./run.sh" C-m
+
+    tmux new-window -n "siema.runner"
+    tmux send-keys "cd ${GH_RUNNERS}/runner-SiemaApplications-vog-zephyr-nodes" C-m
+    tmux send-keys "workon zephyr_test" C-m
+    tmux send-keys "get_stm32" C-m
+    tmux send-keys "./run.sh" C-m
 }

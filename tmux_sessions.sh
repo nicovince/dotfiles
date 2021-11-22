@@ -19,6 +19,7 @@ tmux_zeph()
 
     tmux new-window -n "git.vog"
     tmux send-keys "cd ${VOG_WORKSPACE}/vog-zephyr-nodes" C-m
+    tmux send-keys "workon zephyr" C-m
     tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
 
     tmux new-window -n "git.zeph"

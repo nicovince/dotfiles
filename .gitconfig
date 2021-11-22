@@ -37,3 +37,5 @@
 [include]
 	path = ~/.gitconfig_user
 # vim: set syntax=gitconfig noet:
+[credential]
+	helper = store

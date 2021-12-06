@@ -20,14 +20,23 @@ tmux_zeph()
     tmux new-window -n "git.vog"
     tmux send-keys "cd ${VOG_WORKSPACE}/vog-zephyr-nodes" C-m
     tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
+    tmux send-keys "workon zephyr" C-m
 
     tmux new-window -n "git.zeph"
     tmux send-keys "cd ${VOG_WORKSPACE}/zephyr" C-m
     tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
+    tmux send-keys "workon zephyr" C-m
 
     tmux new-window -n "serial"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "screen /dev/ttyACM0 115200 8N1"
+
+    tmux new-window -n "pytest"
+    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "workon zephyr_test" C-m
+    tmux send-keys "get_stm32" C-m
+    tmux send-keys "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/:$(pwd)/vog-zephyr-nodes/scripts" C-m
+    tmux send-keys "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/" C-m
 
     tmux attach-session -t ${SESSION_NAME}
 }

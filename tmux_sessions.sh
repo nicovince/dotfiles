@@ -50,5 +50,6 @@ tmux_gh_runners()
     tmux send-keys "cd ${GH_RUNNERS}/runner-SiemaApplications-vog-zephyr-nodes" C-m
     tmux send-keys "workon zephyr_test" C-m
     tmux send-keys "get_stm32" C-m
+    tmux send-keys "export RUNNER_BOARD_ENV=vog-zephyr-nodes/scripts/gh_runners_boards/firefly_nucleo_h743-env.sh" C-m
     tmux send-keys "./run.sh" C-m
 }

@@ -15,6 +15,13 @@
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"}
      ]
     },
+    {"Name": "git.vog",
+     "Cmds": [
+      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes"},
+      {"Cmd" : "workon zephyr"},
+      {"Cmd" : "source ../zephyr/zephyr-env.sh"}
+     ]
+    },
     {"Name": "pytest",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
@@ -29,13 +36,6 @@
     {"Name": "git.enki",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki"}
-     ]
-    },
-    {"Name": "git.vog",
-     "Cmds": [
-      {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes"},
-      {"Cmd" : "workon zephyr"},
-      {"Cmd" : "source ../zephyr/zephyr-env.sh"}
      ]
     },
     {"Name": "serial",

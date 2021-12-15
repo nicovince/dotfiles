@@ -170,6 +170,9 @@ svnblame()
   svn blame $@ | vless
 }
 
+# gh cli
+alias get_gh_completion='eval "$(gh completion -s bash)"'
+
 
 ## Sequans Work
 # Vim on (common) files

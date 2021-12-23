@@ -58,7 +58,7 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes/scripts/update"},
       {"Cmd" : "workon enki"},
-      {"Cmd" : "export PYTHONPATH=/home/nicolas/work/siema/be/VOG/src/enki/:/home/nicolas/work/siema/be/VOG/src/enki/tahu/client_libraries/python/:${PYTHONPATH}"}
+      {"Cmd" : "export PYTHONPATH=/home/nicolas/work/siema/be/VOG/src/vog-zephyr/tools/enki/:/home/nicolas/work/siema/be/VOG/src/vog-zephyr/tools/enki/tahu/client_libraries/python/:${PYTHONPATH}"}
      ]
     },
     {"Name": "git.zeph",

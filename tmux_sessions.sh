@@ -36,8 +36,8 @@ tmux_zeph()
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "workon zephyr_test" C-m
     tmux send-keys "get_stm32" C-m
-    tmux send-keys "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/:$(pwd)/vog-zephyr-nodes/scripts" C-m
-    tmux send-keys "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/" C-m
+    tmux send-keys "export PYTHONPATH=${PYTHONPATH}:${VOG_WORKSPACE}/tools/enki:${VOG_WORKSPACE}/tools/enki/tahu/client_libraries/python/:${VOG_WORKSPACE}/vog-zephyr-nodes/scripts" C-m
+    tmux send-keys "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/"
 
     tmux attach-session -t ${SESSION_NAME}
 }

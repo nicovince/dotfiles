@@ -24,6 +24,7 @@
 	notesfetch = fetch origin refs/notes/*:refs/notes/*
 	notespush = push origin refs/notes/*
 	root = rev-parse --show-toplevel
+	l1 = log -1
 [color]
 	ui = true
 [core]

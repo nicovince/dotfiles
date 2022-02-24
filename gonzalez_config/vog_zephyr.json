@@ -28,7 +28,7 @@
       {"Cmd" : "workon zephyr_test"},
       {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/:$(pwd)/vog-zephyr-nodes/scripts"},
       {"Cmd" : "get_stm32"},
-      {"Cmd" : "pytest --verbosity 1 -k test_time_config vog-zephyr-nodes/test/ --log-file test.log --log-file-level=DEBUG --log-file-format=\"%(levelname)-8s %(asctime)s:%(msecs)d %(name)16s:%(lineno)-4d %(message)s\"",
+      {"Cmd" : "pytest --verbosity 1 vog-zephyr-nodes/test/",
        "Exec" : false
       }
      ]

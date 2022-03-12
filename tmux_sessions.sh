@@ -1,5 +1,4 @@
-#!/bin/bash
-
+# Tmux sessions
 VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
 tmux_zeph()
 {

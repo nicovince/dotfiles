@@ -1,4 +1,3 @@
-#!/usr/bin/csh -f
 ##
 ## VARIABLE D'ENVIRONNEMENT
 ##
@@ -30,7 +29,7 @@ endif
 if (-e $HOME/.pystartup) then
   setenv PYTHONSTARTUP $HOME/.pystartup
 endif
-## Setup manpath for git 
+## Setup manpath for git
 #if ($?MANPATH) then
 #  setenv MANPATH "`git --it_home`:${MANPATH}"
 #else

@@ -1,6 +1,6 @@
 # vim: syntax=sh shiftwidth=2 filetype=sh:
 function function_exists() {
-  declare -f -F $1 > /dev/null
+  declare -f -F "$1" > /dev/null
   return $?
 }
 #
@@ -23,7 +23,7 @@ alias cdlast='cd $(ls -p | grep "/" | tail -1)'
 alias clocksync='sudo ntpdate fr.pool.ntp.org'
 
 #alias vman="col -b | view -c 'set ft=man nomod nolist' -"
-vman() { `which man` $* | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }
+vman() { $(command -v man) "$@" | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }
 alias boxdone='kdialog --msgbox'
 alias wakeup='kdialog --msgbox "wake up"'
 alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
@@ -76,7 +76,7 @@ alias pst='ps axfo pid,user,%cpu,%mem,etime,tty,args'
 alias diff='diff -U 2'
 _konsole_dbus_session_name()
 {
-  echo org.kde.konsole-$(pstree -p -s $(ps | grep $(basename $(echo $0)) | head -1 | awk '{print $1}') | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')
+  echo org.kde.konsole-"$(pstree -p -s "$(pgrep "$(basename "$0")" | head -1 | awk '{print $1}')" | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')"
 }
 
 # vim
@@ -88,12 +88,12 @@ _task_complete_wrp()
 {
   # Set taskcommand according to which task profile is used
   if [ "$1" = "task" ]; then
-    taskcommand='task rc.verbose:nothing rc.confirmation:no rc.hooks:off'
+    export taskcommand='task rc.verbose:nothing rc.confirmation:no rc.hooks:off'
   fi
   if [ "$1" = "taskn" ]; then
-    taskcommand='task rc:~/.task_niju/.taskrc rc.verbose:nothing rc.confirmation:no rc.hooks:off'
+    export taskcommand='task rc:~/.task_niju/.taskrc rc.verbose:nothing rc.confirmation:no rc.hooks:off'
   fi
-  _task $@
+  _task "$@"
 }
 if [ -f /usr/share/bash-completion/completions/task ]; then
   # It looks like the following is sourced on demand by bash completion system,
@@ -130,7 +130,9 @@ alias genpasswds="echo '--- Pronunciable passwords:' \
 alias tabremap='xmodmap -e "keycode 49 = Tab"'
 alias myps='/bin/ps -u "$USER" -o user,pid,ppid,pcpu,pmem,args'
 alias path='echo -e ${PATH//:/\\n}'
+# shellcheck disable=SC2139 # False positive
 alias top10_2="awk '{print $2}' | sort | uniq -c | sort -rg | head"
+# shellcheck disable=SC2139 # Don't care to expand HOME here
 alias top10="sed -e 's/sudo //' $HOME/.bash_history | cut -d' ' -f1 | sort | uniq -c | sort -rg | head"
 # Force touchpad state
 alias offtouchpad='synclient TouchpadOff=1'
@@ -147,12 +149,14 @@ alias rcd='cd $(pwd)'
 # cd to file's directory
 fcd()
 {
-  cd `dirname $1`
+  # shellcheck disable=SC2164 # no need to exit on cd error
+  cd "$(dirname "$1")"
 }
 # ls environement variable given in arg in a readable form
 lsv()
 {
-  echo $1 | sed "s/:/\n/g"
+  # shellcheck disable=SC2001 # cannot use ${var/search/replace} here
+  echo "$1" | sed "s/:/\n/g"
 }
 
 #svn aliases
@@ -163,11 +167,11 @@ alias sup='svn up --ignore-externals'
 alias undocommit='echo  svn merge -r HEAD:PREV toto.c or svn merge -r HEAD:555 toto.c'
 svndiff()
 {
-  svn diff $@ | vless
+  svn diff "$@" | vless
 }
 svnblame()
 {
-  svn blame $@ | vless
+  svn blame "$@" | vless
 }
 
 # gh cli
@@ -218,25 +222,31 @@ alias get_tmux_sessions='source $HOME/.dotfiles/tmux_sessions.sh'
 
 br2vigitftp()
 {
-  local build_dir=$(find . -maxdepth 2 -name images)
-  local tftp_dir=/media/nvi/siema/tftp/vigizone
-  "cp" -v ${build_dir}/uImage ${build_dir}/tboxcp11-ucc32-p3.dtb ${tftp_dir}
-  if [ -f ${build_dir}/rootfs.squashfs ]; then
-    "cp" -v ${build_dir}/rootfs.squashfs ${tftp_dir}
+  local build_dir
+  local tftp_dir
+
+  build_dir=$(find . -maxdepth 2 -name images)
+  tftp_dir=/media/nvi/siema/tftp/vigizone
+  "cp" -v "${build_dir}/uImage" "${build_dir}/tboxcp11-ucc32-p3.dtb" "${tftp_dir}"
+  if [ -f "${build_dir}/rootfs.squashfs" ]; then
+    "cp" -v "${build_dir}/rootfs.squashfs" "${tftp_dir}"
   fi
-  if [ -f ${build_dir}/apps.tar.xz ]; then
-    "cp" -v ${build_dir}/apps.tar.xz{,.md5} ${tftp_dir}
+  if [ -f "${build_dir}/apps.tar.xz" ]; then
+    "cp" -v "${build_dir}"/apps.tar.xz{,.md5} "${tftp_dir}"
   fi
-  "cp" -v ${build_dir}/tboxcp11-ucc32-p3.dtb ${tftp_dir}/tbox.dtb
-  "cp" -v ${build_dir}/*.ipk ${tftp_dir}
+  "cp" -v "${build_dir}"/tboxcp11-ucc32-p3.dtb "${tftp_dir}"/tbox.dtb
+  "cp" -v "${build_dir}"/*.ipk "${tftp_dir}"
 }
 
 btgsmrbins2windows()
 {
-  local win_dir=/media/nvi/siema/work/innovation/btgsmr/bin/
-  local build_dir=$(find . -maxdepth 2 -name build)
-  find ${build_dir} -name "*.bin" -exec "cp" -v {} ${win_dir} \;
-  find ${build_dir} -name "*.elf" -exec "cp" -v {} ${win_dir} \;
+  local win_dir
+  local build_dir
+
+  win_dir=/media/nvi/siema/work/innovation/btgsmr/bin/
+  build_dir=$(find . -maxdepth 2 -name build)
+  find "${build_dir}" -name "*.bin" -exec "cp" -v {} "${win_dir}" \;
+  find "${build_dir}" -name "*.elf" -exec "cp" -v {} "${win_dir}" \;
 }
 
 # Movies and series aliases
@@ -244,37 +254,20 @@ btgsmrbins2windows()
 alias 24='gmplayer -alang en -slang eng -fps 25'
 # adds de-interlacing post processing when watching friends dvd
 alias friends='mplayer -alang en -slang en -vf pp=lb'
-# cd to dir and launch serie script
-alias heroes='cd /media/data/Videos/Heroes_S4; serie'
-alias bb='cd /media/data/Videos/Breaking_Bad/Season_04/; serie'
-#alias lost_mp="gmplayer -subfont-text-scale 50"
-#alias lost2_mp="gmplayer -subfont-text-scale 4"
-alias engvid="gmplayer -alang en -slang en"
-alias emule="cd ~/.aMule/Incoming"
-alias Videos="cd /media/data/Videos"
-alias VideosBuf="cd /media/buffalo/videos"
-alias VideosWin="cd '/media/data/VideosWin'"
-alias Musique="cd /media/data/Musique"
-rda()
-{
-  gmplayer -alang en -slang en *$1*
-}
-nsserie()
-{
-  gmplayer *$1*
-}
 
 # buffalo
 alias wakeupbuffalo="wakeonlan 00:1D:73:A4:4D:4C"
 alias buffalorsync="rsync -avz --size-only --progress"
 
 # cosmopolitan
+# shellcheck disable=SC2034
 COSMO="00:12:3f:74:6b:79"
-alias wakeupcosmo="wakeonlan ${COSMO}"
-alias wakeupcosmolong="ssh buffalolong ssh get27 wakeonlan ${COSMO}"
+alias wakeupcosmo='wakeonlan ${COSMO}'
+alias wakeupcosmolong='ssh buffalolong ssh get27 wakeonlan ${COSMO}'
 alias wakeupcosmolocal='ssh get27 wakeonlan ${COSMO}'
 
 # ginfizz
+# shellcheck disable=SC2034
 GINFIZZ="30:9c:23:e1:25:c9"
 alias wakeupginfizz='wakeonlan ${GINFIZZ}'
 alias wakeupginfizzlocal='ssh moscatel wakeonlan ${GINFIZZ}'
@@ -311,21 +304,21 @@ dec2bin()
 
 dec2hex()
 {
-  for e in $*; do
+  for e in "$@"; do
     echo "obase=16; $e" | bc -l
   done
 }
 hex2dec()
 {
-  for e in $*; do
-    echo "ibase=16; $(echo $e | tr 'a-z' 'A-Z')" | bc -l
+  for e in "$@"; do
+    echo "ibase=16; $(echo "$e" | tr '[:lower:]' '[:upper:]')" | bc -l
   done
 }
 
 hex2bin()
 {
-  for e in $*; do
-    echo "ibase=16; obase=2; $(echo $e | tr 'a-z' 'A-Z')" | bc -l
+  for e in "$@"; do
+    echo "ibase=16; obase=2; $(echo "$e" | tr '[:lower:]' '[:upper:]')" | bc -l
   done
 }
 
@@ -334,42 +327,17 @@ bin2hex()
   echo "obase=16; ibase=2; $1" | bc -l
 }
 
-lcd()
-{
-  command cd $@;dir --color;
-}
-
-er()
-{
-  command gvim --remote-tab +p $@ 2> /dev/null & 
-} 
-
-# Display heand and tail of file given in argument
+# Display head and tail of file given in argument
 headtail()
 {
-  head $@;
+  head "$@"
   echo "...."
-  tail $@;
+  tail "$@"
 }
-
-# Open file given in argument which is located somewhere in the path
-# useful for scripts
-binvim()
-{
-  vim `which "$1"`
-}
-# following line is not supported by zsh
-#complete -c binvim
-
-bincat()
-{
-  cat `which "$1"`
-}
-#complete -c bincat
 
 findolder()
 {
-  find . \( ! -name . -prune \) -type d  -mtime +$1 
+  find . \( ! -name . -prune \) -type d  -mtime +"$1"
 }
 
 function cporig ()
@@ -380,9 +348,9 @@ function cporig ()
 # Open web browser for given commit
 function trac()
 {
-  for i in $*
+  for i in "$@"
   do
-    cmd=`svn info $i | sed -n "s%URL: https://svn.zfr.zoran.com/\(SRV-SOFT\|HARDWARE\)/%firefox https://trac.zfr.zoran.com/\1/browser/% p"`
+    cmd=$(svn info "$i" | sed -n "s%URL: https://svn.zfr.zoran.com/\(SRV-SOFT\|HARDWARE\)/%firefox https://trac.zfr.zoran.com/\1/browser/% p")
     if [[ -z $cmd ]]
     then
       cmd="firefox https://trac.zfr.zoran.com/HARDWARE/browser/"
@@ -394,8 +362,8 @@ function trac()
 
 # backup each file given in argument with the current date as suffix
 function cpdate() {
- cur_date=`date +%Y%m%d.%H%M%S`
- for i in $*
+ cur_date=$(date +%Y%m%d.%H%M%S)
+ for i in "$@"
 
  do
 
@@ -439,6 +407,7 @@ function oneliners() {
   echo 'Sum each lines: '
   echo "awk '{s+=\$1} END {print s}'"
   echo 'Archive HEAD of current git repository:'
+  # shellcheck disable=SC2016 # Don't want expressions to be evaluated
   echo 'git archive -o file.zip --prefix=prefix-name/ $(git log -1 --pretty=%H)'
 }
 
@@ -447,7 +416,7 @@ function _crc32() {
   if [ -f "${FILE}" ]; then
 
     echo -n "0x"
-    cat "${FILE}" | gzip -c | tail -c8 | hexdump -n4 -e '"%x"'
+    gzip -c < "${FILE}" | tail -c8 | hexdump -n4 -e '"%x"'
     echo
   else
     echo "No such file or directory: ${FILE}"

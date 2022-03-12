@@ -1,10 +1,12 @@
+#!/bin/bash
 # Tmux sessions
 VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
 tmux_zeph()
 {
     SESSION_NAME="zephyr"
     tmux attach-session -d -t ${SESSION_NAME}
-    if [[ $? == 0 ]]; then
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
         return
     fi
     tmux new-session -d -s ${SESSION_NAME}
@@ -46,7 +48,8 @@ tmux_gh_runners()
 {
     SESSION_NAME="gh_runners"
     tmux attach-session -d -t ${SESSION_NAME}
-    if [[ $? == 0 ]]; then
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
         return
     fi
     tmux new-session -d -s ${SESSION_NAME}

@@ -9,7 +9,6 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
       - id: check-executables-have-shebangs
-      - id: check-shebang-scripts-are-executable
       - id: check-merge-conflict
       - id: check-json
 
@@ -22,3 +21,9 @@ repos:
     rev: 0.14.0
     hooks:
       - id: check-github-workflows
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.6
+    hooks:
+      - id: shellcheck
+        args: ["--exclude=SC2148,SC1091"]

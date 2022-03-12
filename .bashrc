@@ -2,6 +2,8 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# shellcheck disable=SC1090 # source files whose paths is known at runtime
+
 export EDITOR=vim
 
 # If not running interactively, don't do anything
@@ -27,10 +29,8 @@ if [ "$TERM" != "dumb" ]; then
 fi
 
 # Source color variables
-has_color_vars=0
-if [ -f $HOME/.bash_colors ]; then
-  has_color_vars=1
-  source $HOME/.bash_colors
+if [ -f "$HOME/.bash_colors" ]; then
+  source "$HOME/.bash_colors"
 fi
 
 
@@ -38,7 +38,7 @@ fi
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" -a -r /etc/debian_chroot ]; then
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
@@ -52,6 +52,7 @@ esac
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
+# shellcheck disable=SC2154
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -67,6 +68,7 @@ if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    # shellcheck disable=SC2154
     PS1='\[[36m\][\t]\[[0m\] \[[35m\]\u\[[0m\]\[[34m\]@\[[0m\]\[[33m\]\h\[[0m\]:\[[32m\]\W\[[0m\] (old)$(__a=$?;if (($__a));then echo -n "\[\e[31;1m\]"[$__a];fi)\[\e[00m\]\\$ '
 fi
 unset color_prompt force_color_prompt
@@ -75,16 +77,18 @@ PROMPT_COMMAND=__get_prompt
 function __get_prompt()
 {
   rc=$?
-  if [ `whoami` = "root" ]; then
-    PS1="$Cyan[\t]$Color_Off ${Red}\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+  if [ "$(whoami)" = "root" ]; then
+    # shellcheck disable=SC2154
+    PS1="${Cyan}[\t]$Color_Off ${Red}\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   else
-    PS1="$Cyan[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    # shellcheck disable=SC2154
+    PS1="${Cyan}[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   fi
   function_exists __git_ps1 && PS1+="${Cyan}$(__git_ps1)${Color_Off}"
   if [ $rc -ne 0 ]; then
     PS1+="${Red}[$rc]${Color_Off}"
   fi
-  if [ `whoami` = "root" ]; then
+  if [ "$(whoami)" = "root" ]; then
     PS1+=" # "
   else
     PS1+=" \$ "
@@ -96,7 +100,11 @@ EDITOR=vim
 
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  if [ -r ~/.dircolors ]; then
+      eval "$(dircolors -b ~/.dircolors)"
+  else
+      eval "$(dircolors -b)"
+  fi
 fi
 
 # Define your own aliases here ...
@@ -111,8 +119,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-if [ -f $HOME/.git-completion.bash ]; then
-  . $HOME/.git-completion.bash
+if [ -f "$HOME/.git-completion.bash" ]; then
+  . "$HOME/.git-completion.bash"
 fi
 
 export TERM=xterm-256color

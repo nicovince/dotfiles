@@ -13,6 +13,7 @@ tmux_zeph()
 
     tmux rename-window "west"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "get_stm32" C-m
     tmux send-keys "workon zephyr" C-m
 
     tmux new-window -n "vim.vog"

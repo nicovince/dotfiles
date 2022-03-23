@@ -14,21 +14,21 @@ tmux_zeph()
     tmux rename-window "west"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "get_stm32" C-m
-    tmux send-keys "workon zephyr" C-m
+    tmux send-keys "workon vog_zephyr" C-m
 
     tmux new-window -n "vim.vog"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
 
     tmux new-window -n "git.vog"
     tmux send-keys "cd ${VOG_WORKSPACE}/vog-zephyr-nodes" C-m
-    tmux send-keys "workon zephyr" C-m
+    tmux send-keys "workon vog_zephyr" C-m
     tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
-    tmux send-keys "workon zephyr" C-m
+    tmux send-keys "workon vog_zephyr" C-m
 
     tmux new-window -n "git.zeph"
     tmux send-keys "cd ${VOG_WORKSPACE}/zephyr" C-m
     tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
-    tmux send-keys "workon zephyr" C-m
+    tmux send-keys "workon vog_zephyr" C-m
 
     tmux new-window -n "serial"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
@@ -36,7 +36,7 @@ tmux_zeph()
 
     tmux new-window -n "pytest"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
-    tmux send-keys "workon zephyr_test" C-m
+    tmux send-keys "workon vog_zephyr" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "export PYTHONPATH=${PYTHONPATH}:${VOG_WORKSPACE}/tools/enki:${VOG_WORKSPACE}/tools/enki/tahu/client_libraries/python/:${VOG_WORKSPACE}/vog-zephyr-nodes/scripts" C-m
     tmux send-keys "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/"
@@ -60,7 +60,7 @@ tmux_gh_runners()
 
     tmux new-window -n "siema.runner"
     tmux send-keys "cd ${GH_RUNNERS}/runner-SiemaApplications-vog-zephyr-nodes" C-m
-    tmux send-keys "workon zephyr_test" C-m
+    tmux send-keys "workon vog_zephyr" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "export RUNNER_BOARD_ENV=vog-zephyr-nodes/scripts/gh_runners_boards/firefly_nucleo_h743-env.sh" C-m
     tmux send-keys "./run.sh" C-m

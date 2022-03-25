@@ -7,7 +7,8 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
       {"Cmd" : "get_stm32"},
-      {"Cmd" : "workon vog_zephyr"}
+      {"Cmd" : "workon vog_zephyr"},
+      {"Cmd" : "source vog-zephyr-nodes/env.sh"}
      ]
     },
     {"Name": "vim.vog",
@@ -19,14 +20,14 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes"},
       {"Cmd" : "workon vog_zephyr"},
-      {"Cmd" : "source ../zephyr/zephyr-env.sh"}
+      {"Cmd" : "source env.sh"}
      ]
     },
     {"Name": "pytest",
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr"},
       {"Cmd" : "workon vog_zephyr"},
-      {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tools/enki:$(pwd)/tools/enki/tahu/client_libraries/python/:$(pwd)/vog-zephyr-nodes/scripts"},
+      {"Cmd" : "source vog-zephyr-nodes/env.sh"},
       {"Cmd" : "get_stm32"},
       {"Cmd" : "pytest --verbosity 1 vog-zephyr-nodes/test/",
        "Exec" : false
@@ -50,7 +51,7 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki"},
       {"Cmd" : "workon enki"},
-      {"Cmd" : "export PYTHONPATH=${PYTHONPATH}:$(pwd)/tahu/client_libraries/python"},
+      {"Cmd" : "source ../../vog-zephyr-nodes/env.sh"},
       {"Cmd" : "python enki.py"}
      ]
     },
@@ -58,7 +59,7 @@
      "Cmds": [
       {"Cmd" : "cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes/scripts/update"},
       {"Cmd" : "workon enki"},
-      {"Cmd" : "export PYTHONPATH=/home/nicolas/work/siema/be/VOG/src/vog-zephyr/tools/enki/:/home/nicolas/work/siema/be/VOG/src/vog-zephyr/tools/enki/tahu/client_libraries/python/:${PYTHONPATH}"}
+      {"Cmd" : "source ../../env.sh"}
      ]
     },
     {"Name": "git.zeph",

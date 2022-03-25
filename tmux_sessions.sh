@@ -22,12 +22,11 @@ tmux_zeph()
     tmux new-window -n "git.vog"
     tmux send-keys "cd ${VOG_WORKSPACE}/vog-zephyr-nodes" C-m
     tmux send-keys "workon vog_zephyr" C-m
-    tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
-    tmux send-keys "workon vog_zephyr" C-m
+    tmux send-keys "source env.sh" C-m
 
     tmux new-window -n "git.zeph"
     tmux send-keys "cd ${VOG_WORKSPACE}/zephyr" C-m
-    tmux send-keys "source ../zephyr/zephyr-env.sh" C-m
+    tmux send-keys "source zephyr-env.sh" C-m
     tmux send-keys "workon vog_zephyr" C-m
 
     tmux new-window -n "serial"
@@ -38,7 +37,7 @@ tmux_zeph()
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "workon vog_zephyr" C-m
     tmux send-keys "get_stm32" C-m
-    tmux send-keys "export PYTHONPATH=${PYTHONPATH}:${VOG_WORKSPACE}/tools/enki:${VOG_WORKSPACE}/tools/enki/tahu/client_libraries/python/:${VOG_WORKSPACE}/vog-zephyr-nodes/scripts" C-m
+    tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
     tmux send-keys "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/"
 
     tmux attach-session -t ${SESSION_NAME}

@@ -13,6 +13,6 @@ cd $HOME/.dotfiles
 Install `pre-commit`:
 ```
 pip install pre-commit
-cd $HOME/bin
+cd $HOME/.dotfiles
 pre-commit install --hook-type pre-commit --hook-type commit-msg
 ```

@@ -74,7 +74,7 @@ alias pst='ps axfo pid,user,%cpu,%mem,etime,tty,args'
 alias diff='diff -U 2'
 _konsole_dbus_session_name()
 {
-  echo org.kde.konsole-"$(pstree -p -s "$(pgrep "$(basename "$0")" | head -1 | awk '{print $1}')" | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')"
+  echo org.kde.konsole-"$(pstree -p -s "$$" | grep -o 'konsole([0-9]\+)' | grep -o '[0-9]\+')"
 }
 
 # vim

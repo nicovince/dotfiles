@@ -1,0 +1,54 @@
+Konsoles:
+  - Name: Vog Zephyr
+    Tabs:
+      - Name: west.build
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
+          - Cmd: get_stm32
+          - Cmd: workon vog_zephyr
+          - Cmd: source vog-zephyr-nodes/env.sh
+      - Name: vim.vog
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
+      - Name: git.vog
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes
+          - Cmd: workon vog_zephyr
+          - Cmd: source env.sh
+      - Name: pytest
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
+          - Cmd: workon vog_zephyr
+          - Cmd: source vog-zephyr-nodes/env.sh
+          - Cmd: get_stm32
+          - Cmd: pytest --verbosity 1 vog-zephyr-nodes/test/
+            Exec: false
+      - Name: git.enki
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki
+      - Name: serial
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
+          - Cmd: screen /dev/ttyACM0 115200 8N1
+            Exec: false
+      - Name: enki
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki
+          - Cmd: workon enki
+          - Cmd: source ../../vog-zephyr-nodes/env.sh
+          - Cmd: python enki.py
+      - Name: fw_update
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes/scripts/update
+          - Cmd: workon enki
+          - Cmd: source ../../env.sh
+      - Name: git.zeph
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
+          - Cmd: source zephyr-env.sh
+      - Name: docker
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
+          - Cmd: docker run -it --rm --init --net host -v /home/nicolas/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes/scripts/dhcpd:/data
+              networkboot/dhcpd eno1
+            Exec: false

@@ -40,3 +40,5 @@
 # vim: set syntax=gitconfig noet:
 [credential]
 	helper = store
+[init]
+	defaultBranch = main

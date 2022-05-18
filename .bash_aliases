@@ -25,8 +25,11 @@ alias clocksync='sudo ntpdate fr.pool.ntp.org'
 #alias vman="col -b | view -c 'set ft=man nomod nolist' -"
 vman() { $(command -v man) "$@" | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }
 alias boxdone='kdialog --msgbox'
-alias wakeup='kdialog --msgbox "wake up"'
 alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
+wakeup() {
+    "$@"
+    notify-send "$1" "Finished with exit status $?"
+}
 
 # rm
 alias rmti='rm -fv *~ #'

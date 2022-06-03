@@ -48,7 +48,6 @@ Konsoles:
           - Cmd: source zephyr-env.sh
       - Name: docker
         Cmds:
-          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
-          - Cmd: docker run -it --rm --init --net host -v /home/nicolas/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes/scripts/dhcpd:/data
-              networkboot/dhcpd eno1
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
+          - Cmd: docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d
             Exec: false

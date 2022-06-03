@@ -28,7 +28,13 @@ alias boxdone='kdialog --msgbox'
 alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
 wakeup() {
     "$@"
-    notify-send "$1" "Finished with exit status $?"
+    status=$?
+    if [ ${status} -eq 0 ]; then
+        notify-send "$1" "Finished properly"
+    else
+        notify-send "$1" "Failed : ${status}"
+    fi
+    return ${status}
 }
 
 # rm

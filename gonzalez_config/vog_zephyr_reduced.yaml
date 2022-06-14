@@ -1,0 +1,27 @@
+Konsoles:
+  - Name: Vog Zephyr reduced
+    Tabs:
+      - Name: west.build
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
+          - Cmd: get_stm32
+          - Cmd: workon vog_zephyr
+          - Cmd: source vog-zephyr-nodes/env.sh
+      - Name: git.vog
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes
+          - Cmd: workon vog_zephyr
+          - Cmd: source env.sh
+      - Name: pytest
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
+          - Cmd: workon vog_zephyr
+          - Cmd: source vog-zephyr-nodes/env.sh
+          - Cmd: get_stm32
+          - Cmd: pytest --verbosity 1 vog-zephyr-nodes/test/
+            Exec: false
+      - Name: serial
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
+          - Cmd: screen /dev/ttyACM0 115200 8N1
+            Exec: false

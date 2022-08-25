@@ -208,7 +208,9 @@ alias notilenv='source $HOME/work/NotiloPlus/notilo.env'
 
 ## Siema Work
 alias siemaenv='source $HOME/work/siema.env'
-alias vimwork='vim $HOME/work/work.txt'
+# This require an alias to be set up for gh with the proper gist id:
+# gh alias set vimwork 'gist edit <gist id>'
+alias vimwork='gh vimwork'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias cdbe='cd $HOME/work/siema/be'

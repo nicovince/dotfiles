@@ -23,10 +23,12 @@ tmux_zeph()
     tmux send-keys "cd ${VOG_WORKSPACE}/vog-zephyr-nodes" C-m
     tmux send-keys "workon vog_zephyr" C-m
     tmux send-keys "source env.sh" C-m
+    tmux send-keys "get_gh_completion" C-m
 
     tmux new-window -n "git.zeph"
     tmux send-keys "cd ${VOG_WORKSPACE}/zephyr" C-m
     tmux send-keys "source zephyr-env.sh" C-m
+    tmux send-keys "get_gh_completion" C-m
     tmux send-keys "workon vog_zephyr" C-m
 
     tmux new-window -n "serial"

@@ -11,6 +11,7 @@ Konsoles:
         Cmds:
           - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes
           - Cmd: workon vog_zephyr
+          - Cmd: get_gh_completion
           - Cmd: source env.sh
       - Name: pytest
         Cmds:

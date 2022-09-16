@@ -15,6 +15,7 @@ Konsoles:
           - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/vog-zephyr-nodes
           - Cmd: workon vog_zephyr
           - Cmd: source env.sh
+          - Cmd: get_gh_completion
       - Name: pytest
         Cmds:
           - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr
@@ -26,6 +27,7 @@ Konsoles:
       - Name: git.enki
         Cmds:
           - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/tools/enki
+          - Cmd: get_gh_completion
       - Name: serial
         Cmds:
           - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
@@ -45,6 +47,7 @@ Konsoles:
       - Name: git.zeph
         Cmds:
           - Cmd: cd $HOME/work/siema/be/VOG/src/vog-zephyr/zephyr
+          - Cmd: get_gh_completion
           - Cmd: source zephyr-env.sh
       - Name: docker
         Cmds:

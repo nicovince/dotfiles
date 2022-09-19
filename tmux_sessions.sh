@@ -1,9 +1,9 @@
 #!/bin/bash
 # Tmux sessions
 VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
-tmux_zeph()
+tmux_vogzeph()
 {
-    SESSION_NAME="zephyr"
+    SESSION_NAME="vog"
     tmux attach-session -d -t ${SESSION_NAME}
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
@@ -45,6 +45,37 @@ tmux_zeph()
     tmux attach-session -t ${SESSION_NAME}
 }
 
+ZEPHYR_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/zephyrproject"
+tmux_zeph()
+{
+    SESSION_NAME="zephyr"
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+
+    tmux rename-window "west"
+    tmux send-keys "cd ${ZEPHYR_WORKSPACE}" C-m
+    tmux send-keys "get_stm32" C-m
+    tmux send-keys "workon vog_zephyr" C-m
+
+    tmux new-window -n "vim.zephyr"
+    tmux send-keys "cd ${ZEPHYR_WORKSPACE}" C-m
+
+    tmux new-window -n "git.zeph"
+    tmux send-keys "cd ${ZEPHYR_WORKSPACE}/zephyr" C-m
+    tmux send-keys "source zephyr-env.sh" C-m
+    tmux send-keys "get_gh_completion" C-m
+    tmux send-keys "workon vog_zephyr" C-m
+
+    tmux new-window -n "serial"
+    tmux send-keys "cd ${ZEPHYR_WORKSPACE}" C-m
+    tmux send-keys "screen /dev/ttyACM0 115200 8N1"
+
+    tmux attach-session -t ${SESSION_NAME}
+}
 GH_RUNNERS=/home/nicolas/work/siema/be/VOG/gh_runners
 tmux_gh_runners()
 {

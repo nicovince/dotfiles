@@ -33,6 +33,11 @@ if [ -f "$HOME/.bash_colors" ]; then
   source "$HOME/.bash_colors"
 fi
 
+ZOXYDE=$(command -v zoxyde)
+if [ -n "${ZOXYDE}" ]; then
+    eval "$(zoxide init bash)"
+fi
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"

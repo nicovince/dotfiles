@@ -33,8 +33,8 @@ if [ -f "$HOME/.bash_colors" ]; then
   source "$HOME/.bash_colors"
 fi
 
-ZOXYDE=$(command -v zoxyde)
-if [ -n "${ZOXYDE}" ]; then
+ZOXIDE=$(command -v zoxide)
+if [ -n "${ZOXIDE}" ]; then
     eval "$(zoxide init bash)"
 fi
 

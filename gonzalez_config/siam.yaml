@@ -1,0 +1,26 @@
+Konsoles:
+  - Name: Siam
+    Tabs:
+      - Name: git.sd
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/siema_devices
+      - Name: vim.sd
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/siema_devices
+      - Name: build.r4ip
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/output
+          - Cmd: echo "make siema_devices-{dirclean,build}"
+      - Name: vim.r4ip
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/
+      - Name: serial.r4ip
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/
+          - Cmd: picocom -b 115200 /dev/ttyUSB0
+            Exec: false
+      - Name: ssh.r4ip
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/
+          - Cmd: ssh root@192.168.0.1
+            Exec: false

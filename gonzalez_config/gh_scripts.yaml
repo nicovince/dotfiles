@@ -1,0 +1,14 @@
+Konsoles:
+  - Name: GH_scripts
+    Tabs:
+      - Name: git.gh
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/gh-scripts
+      - Name: vim.gh
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/gh-scripts
+      - Name: run.gh
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/gh-scripts
+          - Cmd: workon gh_scripts
+          - Cmd: source secret.sh

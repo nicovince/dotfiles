@@ -97,3 +97,37 @@ tmux_gh_runners()
     tmux send-keys "export RUNNER_BOARD_ENV=vog-zephyr-nodes/scripts/gh_runners_boards/firefly_nucleo_h743-env.sh" C-m
     tmux send-keys "./run.sh" C-m
 }
+
+SIAM_WORKSPACE="${HOME}/work/siema/be/Siam-ST3"
+tmux_siam_i2c()
+{
+    SESSION_NAME="siam-i2c"
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+
+    tmux rename-window "git.sd"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/siema_devices" C-m
+
+    tmux new-window -n "vim.sd"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/siema_devices" C-m
+
+    tmux new-window -n "build.r4ip"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/r4ip-buildroot/output" C-m
+    tmux send-keys "echo 'make siema_devices{-dirclean,}'" C-m
+
+    tmux new-window -n "serial.r4ip"
+    tmux send-keys "picocom -b 115200 /dev/ttyUSB0"
+
+    tmux new-window -n "ssh.r4ip"
+    tmux send-keys "ssh root@192.168.0.1"
+
+    tmux new-window -n "git.linux"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
+
+    tmux new-window -n "vim.linux"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
+}

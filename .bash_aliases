@@ -211,6 +211,7 @@ alias siemaenv='source $HOME/work/siema.env'
 # This require an alias to be set up for gh with the proper gist id:
 # gh alias set vimwork 'gist edit <gist id>'
 alias vimwork='gh vimwork'
+alias lesswork='gh lesswork'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias cdbe='cd $HOME/work/siema/be'

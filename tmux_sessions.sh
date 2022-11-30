@@ -119,6 +119,9 @@ tmux_siam_i2c()
     tmux send-keys "cd ${SIAM_WORKSPACE}/src/r4ip-buildroot/output" C-m
     tmux send-keys "echo 'make siema_devices{-dirclean,}'" C-m
 
+    tmux new-window -n "git.r4ip"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/r4ip-buildroot" C-m
+
     tmux new-window -n "serial.r4ip"
     tmux send-keys "picocom -b 115200 /dev/ttyUSB0"
 

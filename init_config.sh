@@ -14,7 +14,7 @@ backup_folder=${config_dir}_$(date "+%F_%H.%M.%S")
 for file in $(ls -A "$config_dir")
 do
     ignore_flag=0
-    for p in ${ignore_patterns[*]}; do
+    for p in "${ignore_patterns[@]}"; do
         match=$(echo "$file" | grep -c "${p}")
         if [ "$match" -ne 0 ]; then
             ignore_flag=1

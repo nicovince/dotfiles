@@ -96,6 +96,8 @@ tmux_gh_runners()
     tmux send-keys "get_stm32" C-m
     tmux send-keys "export RUNNER_BOARD_ENV=vog-zephyr-nodes/scripts/gh_runners_boards/firefly_nucleo_h743-env.sh" C-m
     tmux send-keys "./run.sh" C-m
+
+    tmux attach-session -t ${SESSION_NAME}
 }
 
 SIAM_WORKSPACE="${HOME}/work/siema/be/Siam-ST3"
@@ -133,4 +135,52 @@ tmux_siam_i2c()
 
     tmux new-window -n "vim.linux"
     tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
+
+    tmux attach-session -t ${SESSION_NAME}
+}
+
+tmux_r4ip()
+{
+    local suffix="$1"
+    if [ -z "${suffix}" ]; then
+        suffix="-1"
+    fi
+    SESSION_NAME="build-r4ip${suffix}"
+    R4IP_DIR="$(pwd)"
+
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+
+    tmux rename-window "mgmt.r4ip"
+    tmux send-keys "cd ${R4IP_DIR}/output" C-m
+    tmux split-window -v
+    tmux send-keys "cd ${R4IP_DIR}" C-m
+
+    tmux new-window -n "vim.r4ip"
+    tmux send-keys "cd ${R4IP_DIR}" C-m
+
+    tmux new-window -n "git.sd"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/siema_devices" C-m
+
+    tmux new-window -n "vim.sd"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/siema_devices" C-m
+
+    tmux new-window -n "tcraft"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/tboxcraft" C-m
+    tmux send-keys "CC=${SIAM_WORKSPACE}/src/r4ip-buildroot/output/host/bin/powerpc-buildroot-linux-gnu-gcc make"
+
+    tmux new-window -n "vim.tcraft"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/tboxcraft" C-m
+
+    tmux new-window -n "git.linux"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
+
+    tmux new-window -n "vim.linux"
+    tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
+
+    tmux attach-session -d -t ${SESSION_NAME}
 }

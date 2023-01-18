@@ -14,6 +14,9 @@ Konsoles:
       - Name: vim.r4ip
         Cmds:
           - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/
+      - Name: git.r4ip
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/
       - Name: serial.r4ip
         Cmds:
           - Cmd: cd $HOME/work/siema/be/Siam-ST3/src/r4ip-buildroot/

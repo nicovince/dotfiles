@@ -36,6 +36,7 @@ wakeup() {
     fi
     return ${status}
 }
+alias tea='sleep 4m; notify-send -t 2000 "Tea is ready" -u critical -i kteatime'
 
 # rm
 alias rmti='rm -fv *~ #'

@@ -84,10 +84,10 @@ function __get_prompt()
   rc=$?
   if [ "$(whoami)" = "root" ]; then
     # shellcheck disable=SC2154
-    PS1="${Cyan}[\t]$Color_Off ${Red}\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    PS1="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off ${Red}\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   else
     # shellcheck disable=SC2154
-    PS1="${Cyan}[\t]$Color_Off $Purple\u${Color_Off}${Blue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    PS1="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off $Purple\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   fi
   function_exists __git_ps1 && PS1+="${Cyan}$(__git_ps1)${Color_Off}"
   if [ $rc -ne 0 ]; then

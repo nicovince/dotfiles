@@ -15,6 +15,7 @@ tmux_vogzeph()
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "workon vog_zephyr" C-m
+    tmux send-keys "docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d" C-m
 
     tmux new-window -n "vim.vog"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
@@ -24,12 +25,6 @@ tmux_vogzeph()
     tmux send-keys "workon vog_zephyr" C-m
     tmux send-keys "source env.sh" C-m
     tmux send-keys "get_gh_completion" C-m
-
-    tmux new-window -n "git.zeph"
-    tmux send-keys "cd ${VOG_WORKSPACE}/zephyr" C-m
-    tmux send-keys "source zephyr-env.sh" C-m
-    tmux send-keys "get_gh_completion" C-m
-    tmux send-keys "workon vog_zephyr" C-m
 
     tmux new-window -n "serial"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m

@@ -33,7 +33,7 @@ tmux_vogzeph()
 
     tmux new-window -n "serial"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
-    tmux send-keys "screen /dev/ttyACM0 115200 8N1"
+    tmux send-keys "picocom -b 115200 /dev/ttyACM0"
 
     tmux new-window -n "pytest"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
@@ -72,7 +72,7 @@ tmux_zeph()
 
     tmux new-window -n "serial"
     tmux send-keys "cd ${ZEPHYR_WORKSPACE}" C-m
-    tmux send-keys "screen /dev/ttyACM0 115200 8N1"
+    tmux send-keys "picocom -b 115200 /dev/ttyACM0"
 
     tmux attach-session -t ${SESSION_NAME}
 }

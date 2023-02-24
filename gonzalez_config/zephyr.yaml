@@ -1,0 +1,19 @@
+Konsoles:
+  - Name: Zephyr
+    Tabs:
+      - Name: west.build
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/zephyrproject
+          - Cmd: workon zephyr
+      - Name: vim.zeph
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/zephyrproject
+      - Name: git.zeph
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/zephyrproject/zephyr
+          - Cmd: source zephyr-env.sh
+      - Name: serial
+        Cmds:
+          - Cmd: cd $HOME/work/siema/be/VOG/src/zephyrproject/zephyr
+          - Cmd: picocom -b 115200 /dev/ttyACM0
+            Exec: false

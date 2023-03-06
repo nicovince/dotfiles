@@ -423,6 +423,8 @@ function oneliners() {
   echo 'Archive HEAD of current git repository:'
   # shellcheck disable=SC2016 # Don't want expressions to be evaluated
   echo 'git archive -o file.zip --prefix=prefix-name/ $(git log -1 --pretty=%H)'
+  echo 'Print every lines after pattern (included, if pattern must be excluded change to p==1)'
+  echo "awk '/pattern/{p++;if(p==0){next}}p' your_file"
 }
 
 function _crc32() {

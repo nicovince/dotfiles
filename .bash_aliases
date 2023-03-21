@@ -113,6 +113,7 @@ if [ -f /usr/share/bash-completion/completions/task ]; then
 fi
 
 # System 
+alias dedup_history='nl ~/.bash_history | sort -k 2  -k 1,1nr| uniq -f 1 | sort -n | cut -f 2 > unduped_history; history -c; cp unduped_history ~/.bash_history'
 alias haltkde="dcop --all-sessions --all-users ksmserver ksmserver logout 0 2 0"
 alias rebootkde="dcop ksmserver default logout 0 1 0"
 alias format_clef_usb_mp3="echo mkfs.vfat -F 16 -n usbdisk -S 512 -v -I /dev/sda"

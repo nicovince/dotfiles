@@ -78,16 +78,65 @@ else
 fi
 unset color_prompt force_color_prompt
 
+function bash_getstarttime()
+{
+    # places the epoch time in seconds into shared memory
+    date +%s >"/dev/shm/${USER}.bashtime.${1}"
+}
+
+function bash_getstoptime()
+{
+    starttime_file="/dev/shm/${USER}.bashtime.${1}"
+    if [ ! -f "${starttime_file}" ]; then
+        echo 0
+        return
+    fi
+
+    # reads stored epoch time and subtracts from current
+    endtime=$(date +%s)
+    starttime=$(cat "${starttime_file}")
+    rm -f "${starttime_file}"
+    echo "$endtime - $starttime" | bc
+}
+
+function seconds_to_human()
+{
+    seconds="$1"
+    if [ "${seconds}" -gt 120 ]; then
+        min=$((seconds / 60))
+        sec=$((seconds % 60))
+        printf "%dm%02d" "${min}" "${sec}"
+    else
+        printf "%d seconds" "${seconds}"
+    fi
+}
+
+function runonexit (){
+  rm -f "/dev/shm/${USER}.bashtime.${ROOTPID}"
+}
+
+trap runonexit EXIT
+
+ROOTPID=$BASHPID
+# shellcheck disable=SC2034,SC2016
+PS0='$(bash_getstarttime "${ROOTPID}")'
+
 PROMPT_COMMAND=__get_prompt
 function __get_prompt()
 {
   rc=$?
+  exec_time=$(bash_getstoptime ${ROOTPID})
+  PS1=""
+  if [ "${exec_time}" -gt 30 ]; then
+      # shellcheck disable=SC2154
+      PS1+="${Yellow}Execution time: ${Color_Off}$(seconds_to_human "${exec_time}")${Color_Off}\n"
+  fi
   if [ "$(whoami)" = "root" ]; then
     # shellcheck disable=SC2154
-    PS1="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off ${Red}\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    PS1+="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off ${Red}\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   else
     # shellcheck disable=SC2154
-    PS1="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off $Purple\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    PS1+="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off $Purple\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   fi
   function_exists __git_ps1 && PS1+="${Cyan}$(__git_ps1)${Color_Off}"
   if [ $rc -ne 0 ]; then

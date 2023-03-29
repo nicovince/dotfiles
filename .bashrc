@@ -107,13 +107,13 @@ function seconds_to_human()
     mins="$((secs % 3600 / 60))"
     secs="$((secs % 60))"
     if [ "${days}" -gt 0 ]; then
-        printf "%dd:" "${days}"
+        printf "%dd " "${days}"
     fi
     if [ "${days}" -gt 0 ] || [ ${hours} -gt 0 ]; then
-        printf "%dh:" "${hours}"
+        printf "%dh" "${hours}"
     fi
     if [ "${days}" -gt 0 ] || [ ${hours} -gt 0 ] || [ ${mins} -gt 0 ]; then
-        printf "%dm:" "${mins}"
+        printf "%dm" "${mins}"
     fi
     printf "%ds" "${secs}"
 }

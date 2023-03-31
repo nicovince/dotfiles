@@ -208,7 +208,7 @@ alias cdnot='cd $HOME/work/NotiloPlus/'
 alias cdbb='cd $HOME/work/NotiloPlus/repos/ArduBubble'
 alias notilenv='source $HOME/work/NotiloPlus/notilo.env'
 
-## Siema Work
+## Siema/Vossloh Work
 alias siemaenv='source $HOME/work/siema.env'
 # This require an alias to be set up for gh with the proper gist id:
 # gh alias set vimwork 'gist edit <gist id>'
@@ -234,6 +234,7 @@ alias scpnhc='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zeph='cd /home/nicolas/work/siema/be/VOG/src/zephyrproject/ && workon zephyr && source zephyr/zephyr-env.sh'
 alias get_tmux_sessions='source $HOME/.dotfiles/tmux_sessions.sh'
+alias stlink_serial_id="ls /dev/serial/by-id/ | sed 's/.*_//' | sed 's/-if02//'"
 
 br2vigitftp()
 {

@@ -101,14 +101,21 @@ function bash_getstoptime()
 
 function seconds_to_human()
 {
-    seconds="$1"
-    if [ "${seconds}" -gt 120 ]; then
-        min=$((seconds / 60))
-        sec=$((seconds % 60))
-        printf "%dm%02d" "${min}" "${sec}"
-    else
-        printf "%d seconds" "${seconds}"
+    secs="$1"
+    days="$((secs / 86400))"
+    hours="$((secs % 86400 / 3600))"
+    mins="$((secs % 3600 / 60))"
+    secs="$((secs % 60))"
+    if [ "${days}" -gt 0 ]; then
+        printf "%dd " "${days}"
     fi
+    if [ "${days}" -gt 0 ] || [ ${hours} -gt 0 ]; then
+        printf "%dh" "${hours}"
+    fi
+    if [ "${days}" -gt 0 ] || [ ${hours} -gt 0 ] || [ ${mins} -gt 0 ]; then
+        printf "%dm" "${mins}"
+    fi
+    printf "%ds" "${secs}"
 }
 
 function runonexit (){

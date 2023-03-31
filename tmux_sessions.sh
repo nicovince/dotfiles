@@ -40,6 +40,35 @@ tmux_vogzeph()
     tmux attach-session -t ${SESSION_NAME}
 }
 
+tmux_vog_dev()
+{
+    SESSION_NAME="vog-devices"
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+
+    WINDOW_NAME="vog_eth@rs485"
+    tmux rename-window -t ${SESSION_NAME} "${WINDOW_NAME}"
+    PANE_NAME="serial"
+    TARGET_WINDOW="${SESSION_NAME}:${WINDOW_NAME}"
+    tmux set-option -t "${TARGET_WINDOW}" pane-border-status bottom
+    tmux select-pane -T "${PANE_NAME}" -t "${TARGET_WINDOW}"
+    tmux send-keys -t "${TARGET_WINDOW}" "ls /dev/serial/by-id/ -1" C-m
+    tmux send-keys -t "${TARGET_WINDOW}" "picocom -b 115200 /dev/serial/by-id/"
+
+    tmux split-window -h -t "${TARGET_WINDOW}"
+    PANE_NAME="enki"
+    tmux select-pane -T "${PANE_NAME}" -t ${TARGET_WINDOW}
+    tmux send-keys -t "${TARGET_WINDOW}" "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys -t "${TARGET_WINDOW}" "docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d" C-m
+    tmux send-keys -t "${TARGET_WINDOW}" "enki"
+
+    tmux attach-session -t ${SESSION_NAME}
+}
+
 ZEPHYR_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/zephyrproject"
 tmux_zeph()
 {

@@ -234,6 +234,7 @@ alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zeph='cd /home/nicolas/work/siema/be/VOG/src/zephyrproject/ && workon zephyr && source zephyr/zephyr-env.sh'
 alias get_tmux_sessions='source $HOME/.dotfiles/tmux_sessions.sh'
 alias stlink_serial_id="ls /dev/serial/by-id/ | sed 's/.*_//' | sed 's/-if02//'"
+alias bw='NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/ca-vossloh.crt bw'
 
 br2vigitftp()
 {

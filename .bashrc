@@ -184,4 +184,12 @@ if [ -f "$HOME/.git-completion.bash" ]; then
   . "$HOME/.git-completion.bash"
 fi
 
+if [ -f "/usr/share/bash-completion/completions/fzf" ]; then
+  . /usr/share/bash-completion/completions/fzf
+fi
+
+if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
+  . /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
 export TERM=xterm-256color

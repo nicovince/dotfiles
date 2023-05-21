@@ -190,6 +190,10 @@ fi
 
 if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
   . /usr/share/doc/fzf/examples/key-bindings.bash
+  # Keep original reverse search history available on alt-o, this allows to use ctrl-o
+  # to accept and execute, which is not possible with fzf yet
+  # https://github.com/junegunn/fzf/issues/2399
+  bind '"\eo": reverse-search-history'
 fi
 
 export TERM=xterm-256color

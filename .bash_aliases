@@ -235,6 +235,7 @@ alias sshnhc='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias zeph='cd /home/nicolas/work/siema/be/VOG/src/zephyrproject/ && workon zephyr && source zephyr/zephyr-env.sh'
 alias get_tmux_sessions='source $HOME/.dotfiles/tmux_sessions.sh'
 alias stlink_serial_id="ls /dev/serial/by-id/ | sed 's/.*_//' | sed 's/-if02//'"
+alias cdsb='cdbe && cd src/sandbox'
 
 br2vigitftp()
 {

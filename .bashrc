@@ -134,12 +134,17 @@ function __get_prompt()
   rc=$?
   exec_time=$(bash_getstoptime ${ROOTPID})
   PS1=""
+  # Execution time of previous command (if greater than threshold
   if [ "${exec_time}" -gt 30 ]; then
       # shellcheck disable=SC2154
       PS1+="${Yellow}Execution time: ${Color_Off}$(seconds_to_human "${exec_time}")${Color_Off}\n"
   fi
+
+  # Time and date
   # shellcheck disable=SC2154
   PS1+="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off "
+
+  # Username
   if [ "$(whoami)" = "root" ]; then
     # shellcheck disable=SC2154
     PS1+="${Red}\u${Color_Off}"
@@ -150,8 +155,23 @@ function __get_prompt()
     # shellcheck disable=SC2154
     PS1+="$Purple\u${Color_Off}"
   fi
+
+  # @ sign between username and hostname
   # shellcheck disable=SC2154
-  PS1+="${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+  PS1+="${IBlue}@${Color_Off}"
+
+  # Hostname
+  if [ "$(whoami)" = "toytoy" ]; then
+    # shellcheck disable=SC2154
+    PS1+="${Yellow}\h${Color_Off}"
+  else
+    # shellcheck disable=SC2154
+    PS1+="${Yellow}\h${Color_Off}"
+  fi
+
+  # dirname color
+  # shellcheck disable=SC2154
+  PS1+=":${Green}\W${Color_Off}"
   function_exists __git_ps1 && PS1+="${Cyan}$(__git_ps1)${Color_Off}"
   if [ $rc -ne 0 ]; then
     PS1+="${Red}[$rc]${Color_Off}"

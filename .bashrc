@@ -148,7 +148,7 @@ function __get_prompt()
   if [ "$(whoami)" = "root" ]; then
     # shellcheck disable=SC2154
     PS1+="${Red}\u${Color_Off}"
-  elif [ "$(whoami)" = "toytoy" ]; then
+  elif [ "$(whoami)" = "sandworm" ]; then
     # shellcheck disable=SC2154
     PS1+="${Green}\u${Color_Off}"
   else
@@ -161,9 +161,9 @@ function __get_prompt()
   PS1+="${IBlue}@${Color_Off}"
 
   # Hostname
-  if [ "$(whoami)" = "toytoy" ]; then
+  if [ "$(whoami)" = "sandworm" ]; then
     # shellcheck disable=SC2154
-    PS1+="${Yellow}\h${Color_Off}"
+    PS1+="${BGreen}\h${Color_Off}"
   else
     # shellcheck disable=SC2154
     PS1+="${Yellow}\h${Color_Off}"

@@ -138,13 +138,17 @@ function __get_prompt()
       # shellcheck disable=SC2154
       PS1+="${Yellow}Execution time: ${Color_Off}$(seconds_to_human "${exec_time}")${Color_Off}\n"
   fi
+  # shellcheck disable=SC2154
+  PS1+="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off "
   if [ "$(whoami)" = "root" ]; then
     # shellcheck disable=SC2154
-    PS1+="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off ${Red}\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    PS1+="${Red}\u${Color_Off}"
   else
     # shellcheck disable=SC2154
-    PS1+="${ICyan}[\t${Color_Off}-${Cyan}\D{%d.%m.%Y}]$Color_Off $Purple\u${Color_Off}${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
+    PS1+="$Purple\u${Color_Off}"
   fi
+  # shellcheck disable=SC2154
+  PS1+="${IBlue}@${Color_Off}${Yellow}\h${Color_Off}:${Green}\W${Color_Off}"
   function_exists __git_ps1 && PS1+="${Cyan}$(__git_ps1)${Color_Off}"
   if [ $rc -ne 0 ]; then
     PS1+="${Red}[$rc]${Color_Off}"

@@ -1,20 +1,20 @@
-#!/bin/bash
+#!/bin/bash -e
 # Usage :
-# revit.sh /path/to/file/to/config.rc suffix
+# revit.sh /path/to/file/to/config.rc
 
-FILE=$1
-PREFIX=$2
+FILE="$(realpath "$1")"
 
-REV_FILE="${PREFIX}$(basename "$FILE")"
+REV_FILE="$(realpath --relative-to "$HOME" "${FILE}")"
 if [ ! -f "$FILE" ]; then
-  echo "$FILE" does not exists
+  echo "$FILE does not exists"
   exit 1
 fi
-if [ -f "$REV_FILE" ]; then
+if [ -f "${REV_FILE}" ]; then
   echo "$REV_FILE already exists"
   exit 1
 fi
 
+mkdir -p "$(dirname "${REV_FILE}")"
 mv "$FILE" "$REV_FILE"
 ln -s "$PWD/$REV_FILE" "$FILE"
 git add "$REV_FILE"

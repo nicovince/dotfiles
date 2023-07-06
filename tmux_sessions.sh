@@ -214,7 +214,7 @@ tmux_r4ip()
 ANYR_WORKSPACE="/home/nicolas/work/siema/be/BT-GSMR"
 tmux_anyr_zeph()
 {
-    SESSION_NAME="anyr"
+    SESSION_NAME="anyr-zephyr"
     tmux attach-session -d -t ${SESSION_NAME}
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
@@ -240,6 +240,33 @@ tmux_anyr_zeph()
     tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
     tmux send-keys "workon anyr" C-m
     tmux send-keys "source env.sh /home/nicolas/work/siema/vendors/espressif/xtensa-esp32-elf" C-m
+
+    tmux new-window -n "vim.mitm"
+    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-i2s-mitm" C-m
+
+    tmux new-window -n "git.mitm"
+    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-i2s-mitm" C-m
+    tmux send-keys "get_gh_completion" C-m
+}
+
+tmux_anyr_esp32()
+{
+    SESSION_NAME="anyr"
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+    tmux rename-window "git.esp32"
+    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
+
+    tmux new-window -n "vim.esp32"
+    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
+
+    tmux new-window -n "build.esp32"
+    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
+    tmux send-keys ". ../esp-idf/export.sh" C-m
 
     tmux new-window -n "vim.mitm"
     tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-i2s-mitm" C-m

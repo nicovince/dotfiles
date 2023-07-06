@@ -262,7 +262,7 @@ tmux_anyr_esp32()
     tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
 
     tmux new-window -n "vim.esp32"
-    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
+    tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/" C-m
 
     tmux new-window -n "build.esp32"
     tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m

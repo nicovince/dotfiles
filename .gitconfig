@@ -25,6 +25,13 @@
 	notespush = push origin refs/notes/*
 	root = rev-parse --show-toplevel
 	l1 = log -1
+        unstage = restore --staged
+        # Interactive aliases
+        # Select the files to add
+        fadd = "!add_fzf() { git status -s | fzf -m | sed 's/^ *//' | cut -f2- -d ' ' | xargs git add; }; add_fzf"
+        funstage = "!unstage_fzf() { git status -suno | grep '^A' | cut -f2- -d ' ' | fzf | xargs git restore --staged; }; unstage_fzf"
+        frestore = "!restore_fzf() { git status -suno | grep '^ *M'| fzf -m | sed 's/^ *//' | cut -f2- -d ' ' | xargs git restore; }; restore_fzf"
+
 [color]
 	ui = true
 [core]

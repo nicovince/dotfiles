@@ -1,9 +1,10 @@
 #!/bin/bash
 # Tmux sessions
 VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
+VOG_WORKSPACE_BIS="${VOG_WORKSPACE}-bis"
 tmux_vogzeph()
 {
-    SESSION_NAME="vog"
+    SESSION_NAME="vog-devel"
     tmux attach-session -d -t ${SESSION_NAME}
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
@@ -28,16 +29,35 @@ tmux_vogzeph()
     tmux send-keys "source env.sh" C-m
     tmux send-keys "get_gh_completion" C-m
 
-    tmux new-window -n "serial"
-    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
-    tmux send-keys "picocom -b 115200 /dev/ttyACM0"
-
     tmux new-window -n "pytest"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "workon vog_zephyr_3.4" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
-    tmux send-keys "pytest --verbosity 1 -k test_eth_node vog-zephyr-nodes/test/"
+
+    # workspace bis
+    tmux rename-window "west.bis"
+    tmux send-keys "cd ${VOG_WORKSPACE_BIS}" C-m
+    tmux send-keys "get_stm32" C-m
+    tmux send-keys "workon vog_zephyr_3.4" C-m
+    tmux send-keys "docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d" C-m
+
+    tmux new-window -n "vim.vog.bis"
+    tmux send-keys "cd ${VOG_WORKSPACE_BIS}" C-m
+    tmux send-keys "get_stm32" C-m
+    tmux send-keys "workon vog_zephyr_3.4" C-m
+
+    tmux new-window -n "git.vog.bis"
+    tmux send-keys "cd ${VOG_WORKSPACE_BIS}/vog-zephyr-nodes" C-m
+    tmux send-keys "workon vog_zephyr_3.4" C-m
+    tmux send-keys "source env.sh" C-m
+    tmux send-keys "get_gh_completion" C-m
+
+    tmux new-window -n "pytest.bis"
+    tmux send-keys "cd ${VOG_WORKSPACE_BIS}" C-m
+    tmux send-keys "workon vog_zephyr_3.4" C-m
+    tmux send-keys "get_stm32" C-m
+    tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
 
     tmux attach-session -t ${SESSION_NAME}
 }

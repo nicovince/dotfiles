@@ -36,7 +36,7 @@ tmux_vogzeph()
     tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
 
     # workspace bis
-    tmux rename-window "west.bis"
+    tmux new-window -n "west.bis"
     tmux send-keys "cd ${VOG_WORKSPACE_BIS}" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "workon vog_zephyr_3.4" C-m

@@ -14,6 +14,7 @@ export EDITOR=vim
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=100000
 HISTFILESIZE=100000
+HISTTIMEFORMAT="%F %T "
 # append to the history file, don't overwrite it
 shopt -s histappend
 

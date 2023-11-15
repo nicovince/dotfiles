@@ -295,3 +295,30 @@ tmux_anyr_esp32()
     tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-i2s-mitm" C-m
     tmux send-keys "get_gh_completion" C-m
 }
+
+LABGRID_WORKSPACE="/home/nicolas/work/siema/be/labgrid/srcs/labgrid"
+tmux_labgrid()
+{
+    SESSION_NAME="labgrid"
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+    tmux rename-window "lg.coord"
+    tmux send-keys "cd ${LABGRID_WORKSPACE}" C-m
+    tmux send-keys "workon lg_crossbar" C-m
+    tmux send-keys "crossbar start --config my-config.yaml" C-m
+
+    tmux new-window -n "lg.exporter"
+    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "workon labgrid" C-m
+    tmux send-keys "./vog-zephyr-nodes/scripts/labgrid_fill_probe_index.py vog-zephyr-nodes/test/labgrid/exporter-firefly.yaml > vog-zephyr-nodes/test/labgrid/patched_exporter-firefly.yaml" C-m
+    tmux send-keys "labgrid-exporter vog-zephyr-nodes/test/labgrid/patched_exporter-firefly.yaml --hostname firefly.local" C-m
+
+    tmux new-window -n "lg.client"
+    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "workon labgrid" C-m
+    tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
+}

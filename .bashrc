@@ -215,6 +215,10 @@ if [ -f "/usr/share/bash-completion/completions/fzf" ]; then
   . /usr/share/bash-completion/completions/fzf
 fi
 
+if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
+    . "${HOME}/.local/bin/virtualenvwrapper.sh"
+fi
+
 if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
   . /usr/share/doc/fzf/examples/key-bindings.bash
   # Keep original reverse search history available on alt-o, this allows to use ctrl-o

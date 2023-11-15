@@ -169,11 +169,11 @@ function __get_prompt()
     # shellcheck disable=SC2154
     CURRENT_HOSTNAME="$(hostname)"
     if [ "${CURRENT_HOSTNAME}" = "firefly" ]; then
-      HOST_COLOR="\e[1;30;44m"
+      HOST_COLOR="\[\e[1;30;44m\]"
     elif [ "${CURRENT_HOSTNAME}" = "mordor" ]; then
-      HOST_COLOR="\e[30;43m"
+      HOST_COLOR="\[\e[30;43m\]"
     elif [ "${CURRENT_HOSTNAME}" = "nostromo" ]; then
-      HOST_COLOR="\e[30;42m"
+      HOST_COLOR="\[\e[30;42m\]"
     else
       HOST_COLOR="${Yellow}"
     fi

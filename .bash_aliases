@@ -17,7 +17,7 @@ alias xt='xterm -vb -sb&'
 alias tree="tree -CAFa --dirsfirst -I 'CVS|*.*.package|.svn|.git'"
 alias cp='cp -p'
 alias grep='grep --color=auto'
-alias cdlast='cd $(ls -p | grep "/" | tail -1)'
+alias cdlast='cd $(ls -rtp | grep "/" | tail -1)'
 
 #admin
 alias clocksync='sudo ntpdate fr.pool.ntp.org'
@@ -218,7 +218,7 @@ alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
 alias cdbe='cd $HOME/work/siema/be'
 alias cdvog='cd $HOME/work/siema/be/VOG'
-alias cdvogzen='cdvog && cd src/vog-zephyr/ && get_stm32 && source vog-zephyr-nodes/env.sh && workon vog_zephyr'
+alias cdvogzen='cdvog && cd src/vog-zephyr/ && get_stm32 && source vog-zephyr-nodes/env.sh && workon vog_zephyr_3.4'
 alias cdvogcpu='cdvog && cd src/vog-cpu-yocto'
 alias vogcpuenv='cdvogcpu && workon vog_cpu && . /home/nicolas/work/siema/be/VOG/buildtools/environment-setup-x86_64-pokysdk-linux && source layers/poky/oe-init-build-env $(pwd)/build'
 alias cducc32='cd $HOME/work/siema/be/UCC32/'

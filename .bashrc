@@ -14,6 +14,7 @@ export EDITOR=vim
 HISTCONTROL=ignoredups:ignorespace
 HISTSIZE=100000
 HISTFILESIZE=100000
+HISTTIMEFORMAT="%F %T "
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -166,7 +167,17 @@ function __get_prompt()
     PS1+="${BGreen}\h${Color_Off}"
   else
     # shellcheck disable=SC2154
-    PS1+="${Yellow}\h${Color_Off}"
+    CURRENT_HOSTNAME="$(hostname)"
+    if [ "${CURRENT_HOSTNAME}" = "firefly" ]; then
+      HOST_COLOR="\e[1;30;44m"
+    elif [ "${CURRENT_HOSTNAME}" = "mordor" ]; then
+      HOST_COLOR="\e[30;43m"
+    elif [ "${CURRENT_HOSTNAME}" = "nostromo" ]; then
+      HOST_COLOR="\e[30;42m"
+    else
+      HOST_COLOR="${Yellow}"
+    fi
+    PS1+="${HOST_COLOR}\h${Color_Off}"
   fi
 
   # dirname color

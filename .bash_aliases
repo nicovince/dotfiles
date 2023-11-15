@@ -442,3 +442,14 @@ function _crc32() {
     echo "No such file or directory: ${FILE}"
   fi
 }
+
+function path_add() {
+    local path_dir
+
+    path_dir="$1"
+    if [ -d "${path_dir}" ]; then
+        if [ -n "${PATH##*${path_dir}}" ] && [ -n "${PATH##*${path_dir}:*}" ]; then
+            export PATH="$PATH:${path_dir}"
+        fi
+    fi
+}

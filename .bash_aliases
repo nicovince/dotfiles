@@ -448,7 +448,7 @@ function path_add() {
 
     path_dir="$1"
     if [ -d "${path_dir}" ]; then
-        if [ -n "${PATH##*${path_dir}}" ] && [ -n "${PATH##*${path_dir}:*}" ]; then
+        if [ -n "${PATH##*"${path_dir}"}" ] && [ -n "${PATH##*"${path_dir}":*}" ]; then
             export PATH="$PATH:${path_dir}"
         fi
     fi

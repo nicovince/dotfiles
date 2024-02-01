@@ -7,7 +7,7 @@
 # shellcheck disable=SC2045 # I want to iterate over ls output
 
 config_dir=$(git rev-parse --show-toplevel)
-ignore_patterns=('README.md' "$(basename "$0")" '.git$' '~' 'backup' 'screenrc_layouts' '.*\.swp' 'gonzalez_config' 'revit.sh' 'git_prompt.zsh' 'misc' '.task$' 'tmux_sessions.sh')
+ignore_patterns=('README.md' "$(basename "$0")" '.git$' '~' 'backup' 'screenrc_layouts' '.*\.swp' 'gonzalez_config' 'revit.sh' 'git_prompt.zsh' 'misc' 'tmux_sessions.sh')
 ignore_patterns+=('.github' '.pre-commit-config.yaml')
 backup_folder=${config_dir}_$(date "+%F_%H.%M.%S")
 
@@ -34,22 +34,6 @@ do
         fi
 
     fi
-done
-
-# Process task files
-hooks_dir=".task/hooks"
-mkdir -p "${HOME}/${hooks_dir}"
-for file in $(ls "${config_dir}/${hooks_dir}"); do
-        if [ -e "$HOME/${hooks_dir}/$file" ] && [ ! -h "$HOME/${hooks_dir}/$file" ]
-        then
-            #backup existing conf file
-            mkdir -p "${backup_folder}"
-            mv "$HOME/${hooks_dir}/${file}" "${backup_folder}/${file}.old"
-        fi
-        if [ ! -h "${HOME}/${hooks_dir}/${file}" ]; then
-            ln -s "$config_dir/${hooks_dir}/$file" "$HOME/${hooks_dir}/$file"
-        fi
-
 done
 
 #git configuration

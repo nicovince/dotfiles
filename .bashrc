@@ -129,10 +129,17 @@ function __get_prompt()
   rc=$?
   exec_time=$(bash_getstoptime ${ROOTPID})
   PS1=""
-  # Execution time of previous command (if greater than threshold
+  # Execution time of previous command (if greater than threshold)
   if [ "${exec_time}" -gt 30 ]; then
       # shellcheck disable=SC2154
       PS1+="${Yellow}Execution time: ${Color_Off}$(seconds_to_human "${exec_time}")${Color_Off}\n"
+  fi
+
+  # Virtual env
+  if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT-}" ] ; then
+      if [ -n "${VIRTUAL_ENV}" ]; then
+          PS1+="($(basename "${VIRTUAL_ENV}"))"
+      fi
   fi
 
   # Time and date
@@ -208,8 +215,12 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+  fi
 fi
 
 if [ -f "$HOME/.git-completion.bash" ]; then

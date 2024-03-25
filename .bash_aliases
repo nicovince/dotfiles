@@ -292,6 +292,7 @@ alias wakeupginfizzlocal='ssh moscatel wakeonlan ${GINFIZZ}'
 
 #games
 alias ksp="~/Games/KSP_linux/KSP.x86_64"
+alias dfortress="cd ~/Games/DwarfFortress/ && ./run_df"
 
 
 #RADIOS

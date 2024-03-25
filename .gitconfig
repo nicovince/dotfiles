@@ -1,3 +1,4 @@
+# vim: set syntax=gitconfig noet:
 [alias]
 	ci = commit
 	st = status
@@ -44,7 +45,6 @@
 	recurseSubmodules = check
 [include]
 	path = ~/.gitconfig_user
-# vim: set syntax=gitconfig noet:
 [credential]
 	helper = store
 [init]

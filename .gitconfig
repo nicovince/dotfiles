@@ -32,6 +32,9 @@
         fadd = "!add_fzf() { git status -s | fzf -m | sed 's/^ *//' | cut -f2- -d ' ' | xargs git add; }; add_fzf"
         funstage = "!unstage_fzf() { git status -suno | grep '^A' | cut -f2- -d ' ' | fzf | xargs git restore --staged; }; unstage_fzf"
         frestore = "!restore_fzf() { git status -suno | grep '^ *M'| fzf -m | sed 's/^ *//' | cut -f2- -d ' ' | xargs git restore; }; restore_fzf"
+        # Clean branches which have been merged to default branch
+        bclean = "!f() { default_branch=$(git remote show origin | grep 'HEAD branch' | awk '{print $NF}'); branches=$(git branch --merged ${1-${default_branch}} | grep -v " ${1-${default_branch}}$"); [ -z \"$branches\" ] || git branch -d $branches; }; f"
+
 
 [color]
 	ui = true

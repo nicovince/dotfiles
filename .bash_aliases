@@ -430,6 +430,8 @@ function oneliners() {
   echo 'git archive -o file.zip --prefix=prefix-name/ $(git log -1 --pretty=%H)'
   echo 'Print every lines after pattern (included, if pattern must be excluded change to p==1)'
   echo "awk '/pattern/{p++;if(p==0){next}}p' your_file"
+  echo 'Print every lines before pattern (included)'
+  echo "awk '1;/pattern/{exit}' file"
 }
 
 function _crc32() {

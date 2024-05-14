@@ -245,4 +245,8 @@ if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then
   bind '"\eo": reverse-search-history'
 fi
 
+if [ -f "$HOME/.virtualenvs/default/bin/activate" ]; then
+    . "$HOME/.virtualenvs/default/bin/activate"
+fi
+
 export TERM=xterm-256color

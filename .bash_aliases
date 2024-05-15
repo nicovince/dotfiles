@@ -23,7 +23,7 @@ alias cdlast='cd $(ls -rtp | grep "/" | tail -1)'
 alias clocksync='sudo ntpdate fr.pool.ntp.org'
 
 #alias vman="col -b | view -c 'set ft=man nomod nolist' -"
-vman() { $(command -v man) "$@" | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }
+function vman() { $(command -v man) "$@" | col -b | ~/.vim/macros/less.sh -c 'set ft=man nomod nolist' -; }
 alias boxdone='kdialog --msgbox'
 alias wakeupmail='echo "job finished" | mail -s "WAKE UP" nvincent@sequans.com'
 wakeup() {
@@ -37,6 +37,17 @@ wakeup() {
     return ${status}
 }
 alias tea='echo "notify-send -t 2000 \"Tea is ready\" -u critical -i kteatime" | at now +6 minutes'
+
+# vim/nvim, check if nvim is installed
+if command -v nvim &> /dev/null; then
+  alias vim='nvim'
+  alias v='nvim'
+  alias vi='nvim'
+  alias vimdiff='nvim -d'
+  alias vless='nvim -R'
+else
+  alias nvim='vim'
+fi
 
 # rm
 alias rmti='rm -fv *~ #'

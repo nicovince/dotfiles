@@ -475,3 +475,19 @@ function _setup_gh_copilot() {
     gh extension install github/gh-copilot
     nvim -c 'Copilot setup'
 }
+
+# Install nvim for local user
+function _install_nvim() {
+    wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
+    mkdir -p ~/.local/share && \
+    tar xzf nvim-linux64.tar.gz -C ~/.local/share && \
+    rm -f nvim-linux64.tar.gz && \
+    mkdir -p ~/.local/bin && \
+    pushd ~/.local/bin/ && \
+    ln -sf ~/.local/share/nvim-linux64/bin/nvim nvim && \
+    mkdir -p ~/.config/nvim && \
+    echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' > ~/.config/nvim/init.vim && \
+    echo 'let &packpath = &runtimepath' >> ~/.config/nvim/init.vim && \
+    echo 'source ~/.vimrc' >> ~/.config/nvim/init.vim
+    popd || return
+}

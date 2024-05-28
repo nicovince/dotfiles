@@ -499,10 +499,11 @@ function _setup_gh_copilot_chat() {
   git clone -b canary https://github.com/CopilotC-Nvim/CopilotChat.nvim
 
 cat <<EOF >> ~/.config/nvim/init.lua
-# Enable CopilotChat
+
+-- Enable CopilotChat
 require("CopilotChat").setup {
-debug = true, -- Enable debugging
--- See Configuration section for rest
+        debug = true, -- Enable debugging
+        -- See Configuration section for rest
 }
 EOF
 }
@@ -522,8 +523,10 @@ function _install_nvim() {
     echo 'let &packpath = &runtimepath' >> "${legacy_vimrc}"
     echo 'source ~/.vimrc' >> "${legacy_vimrc}"
     nvim_lua="$HOME/.config/nvim/init.lua"
-    echo '# Source legacy vimrc configuration' > "${nvim_lua}"
-    echo 'local vimrc = vim.fn.stdpath("config") .. "/legacy_vimrc.vim"' >> "${nvim_lua}"
-    echo 'vim.cmd.source(vimrc)' >> "${nvim_lua}"
+    cat <<EOF > "${nvim_lua}"
+-- Source legacy vimrc configuration
+local vimrc = vim.fn.stdpath("config") .. "/legacy_vimrc.vim"
+vim.cmd.source(vimrc)'
+EOF
     popd || return
 }

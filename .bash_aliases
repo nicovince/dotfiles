@@ -1,3 +1,4 @@
+#! /bin/bash
 # vim: syntax=sh shiftwidth=2 filetype=sh:
 function function_exists() {
   declare -f -F "$1" > /dev/null
@@ -487,18 +488,42 @@ function _setup_gh_copilot() {
     nvim -c 'Copilot setup'
 }
 
+function _setup_gh_copilot_chat() {
+  mkdir -p ~/.config/nvim/pack/copilotchat/start
+  # shellcheck disable=SC2164 # folder has been created
+  cd ~/.config/nvim/pack/copilotchat/start
+
+  git clone https://github.com/zbirenbaum/copilot.lua
+  git clone https://github.com/nvim-lua/plenary.nvim
+
+  git clone -b canary https://github.com/CopilotC-Nvim/CopilotChat.nvim
+
+cat <<EOF >> ~/.config/nvim/init.lua
+# Enable CopilotChat
+require("CopilotChat").setup {
+debug = true, -- Enable debugging
+-- See Configuration section for rest
+}
+EOF
+}
+
 # Install nvim for local user
 function _install_nvim() {
-    wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz && \
-    mkdir -p ~/.local/share && \
-    tar xzf nvim-linux64.tar.gz -C ~/.local/share && \
-    rm -f nvim-linux64.tar.gz && \
-    mkdir -p ~/.local/bin && \
-    pushd ~/.local/bin/ && \
-    ln -sf ~/.local/share/nvim-linux64/bin/nvim nvim && \
-    mkdir -p ~/.config/nvim && \
-    echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' > ~/.config/nvim/init.vim && \
-    echo 'let &packpath = &runtimepath' >> ~/.config/nvim/init.vim && \
-    echo 'source ~/.vimrc' >> ~/.config/nvim/init.vim
+    wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+    mkdir -p ~/.local/share
+    tar xzf nvim-linux64.tar.gz -C ~/.local/share
+    rm -f nvim-linux64.tar.gz
+    mkdir -p ~/.local/bin
+    pushd ~/.local/bin/ || return
+    ln -sf ~/.local/share/nvim-linux64/bin/nvim nvim
+    mkdir -p ~/.config/nvim
+    legacy_vimrc="$HOME/.config/nvim/legacy_vimrc.vim"
+    echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' > "${legacy_vimrc}"
+    echo 'let &packpath = &runtimepath' >> "${legacy_vimrc}"
+    echo 'source ~/.vimrc' >> "${legacy_vimrc}"
+    nvim_lua="$HOME/.config/nvim/init.lua"
+    echo '# Source legacy vimrc configuration' > "${nvim_lua}"
+    echo 'local vimrc = vim.fn.stdpath("config") .. "/legacy_vimrc.vim"' >> "${nvim_lua}"
+    echo 'vim.cmd.source(vimrc)' >> "${nvim_lua}"
     popd || return
 }

@@ -198,6 +198,8 @@ svnblame()
 # gh cli
 alias get_gh_completion='eval "$(gh completion -s bash)"'
 
+## Homework
+alias cdtactilab='cd $HOME/Documents/asso/miete-tactilab/'
 
 ## Sequans Work
 # Vim on (common) files

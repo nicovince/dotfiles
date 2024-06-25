@@ -481,31 +481,10 @@ function _install_nodejs() {
 
 # Setup GitHub copilot for gh cli tool and nvim
 function _setup_gh_copilot() {
-    git clone https://github.com/github/copilot.vim.git ~/.config/nvim/pack/github/start/copilot.vim
     _install_nodejs
     gh auth login --git-protocol https --hostname github.com --web
     gh extension install github/gh-copilot
     nvim -c 'Copilot setup'
-}
-
-function _setup_gh_copilot_chat() {
-  mkdir -p ~/.config/nvim/pack/copilotchat/start
-  # shellcheck disable=SC2164 # folder has been created
-  cd ~/.config/nvim/pack/copilotchat/start
-
-  git clone https://github.com/zbirenbaum/copilot.lua
-  git clone https://github.com/nvim-lua/plenary.nvim
-
-  git clone -b canary https://github.com/CopilotC-Nvim/CopilotChat.nvim
-
-cat <<EOF >> ~/.config/nvim/init.lua
-
--- Enable CopilotChat
-require("CopilotChat").setup {
-        debug = true, -- Enable debugging
-        -- See Configuration section for rest
-}
-EOF
 }
 
 # Install nvim for local user
@@ -517,16 +496,6 @@ function _install_nvim() {
     mkdir -p ~/.local/bin
     pushd ~/.local/bin/ || return
     ln -sf ~/.local/share/nvim-linux64/bin/nvim nvim
-    mkdir -p ~/.config/nvim
-    legacy_vimrc="$HOME/.config/nvim/legacy_vimrc.vim"
-    echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after' > "${legacy_vimrc}"
-    echo 'let &packpath = &runtimepath' >> "${legacy_vimrc}"
-    echo 'source ~/.vimrc' >> "${legacy_vimrc}"
-    nvim_lua="$HOME/.config/nvim/init.lua"
-    cat <<EOF > "${nvim_lua}"
--- Source legacy vimrc configuration
-local vimrc = vim.fn.stdpath("config") .. "/legacy_vimrc.vim"
-vim.cmd.source(vimrc)'
-EOF
+    git clone --recurse-submodules https://github.com/nicovince/nvim.git "$HOME/.config/nvim"
     popd || return
 }

@@ -243,7 +243,6 @@ tmux_anyr_esp32()
     tmux send-keys "idf.py -p /dev/ttyUSB0 flash && picocom -b 115200 /dev/ttyUSB0"
 }
 
-LABGRID_WORKSPACE="/home/nicolas/work/siema/be/labgrid/srcs/labgrid"
 tmux_labgrid()
 {
     SESSION_NAME="labgrid"
@@ -252,11 +251,6 @@ tmux_labgrid()
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
-    tmux rename-window "lg.coord"
-    tmux send-keys "cd ${LABGRID_WORKSPACE}" C-m
-    tmux send-keys "workon lg_crossbar" C-m
-    tmux send-keys "crossbar start --config my-config.yaml" C-m
 
     tmux new-window -n "lg.exporter"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
@@ -268,4 +262,24 @@ tmux_labgrid()
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
     tmux send-keys "workon labgrid" C-m
     tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
+}
+
+LG_COORD_WORKSPACE="/home/nicolas/work/siema/be/src/labgrid"
+tmux_tools()
+{
+    SESSION_NAME="tools"
+
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+    tmux rename-window "lg.coord"
+    tmux send-keys "cd ${LG_COORD_WORKSPACE}" C-m
+    tmux send-keys "source ${LG_COORD_WORKSPACE}/crossbar-venv/bin/activate" C-m
+    tmux send-keys "crossbar start --config my-config.yaml" C-m
+
+    tmux new-window -n "lg.exporter"
+    tmux send-keys "docker run --rm -it --name excalidraw -p 5000:80 excalidraw/excalidraw:latest" C-m
 }

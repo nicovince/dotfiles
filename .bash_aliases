@@ -226,7 +226,7 @@ alias notilenv='source $HOME/work/NotiloPlus/notilo.env'
 alias siemaenv='source $HOME/work/siema.env'
 # This require an alias to be set up for gh with the proper gist id:
 # gh alias set vimwork 'gist edit <gist id>'
-alias vimwork='gh auth switch -u nvincent-vossloh && gh vimwork && gh auth switch'
+alias vimwork='gh auth switch -u nvincent-vossloh && gh vimwork && gh auth switch -u Nicolas-Vincent_vossloh'
 alias lesswork='gh lesswork'
 alias cdvigi='cd $HOME/work/siema/be/vigizone'
 alias cdinno='cd $HOME/work/siema/innovation'
@@ -251,6 +251,10 @@ alias get_tmux_sessions='source $HOME/.dotfiles/tmux_sessions.sh'
 alias stlink_serial_id="ls /dev/serial/by-id/ | sed 's/.*_//' | sed 's/-if02//'"
 alias cdsb='cdbe && cd src/sandbox'
 alias bw='NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/ca-vossloh.crt bw'
+samba_path_to_winpath()
+{
+  echo "$1" | sed 's#/media/smb_S#S:#g' | sed 's#/#\\#g'
+}
 
 br2vigitftp()
 {

@@ -280,6 +280,6 @@ tmux_tools()
     tmux send-keys "source ${LG_COORD_WORKSPACE}/crossbar-venv/bin/activate" C-m
     tmux send-keys "crossbar start --config my-config.yaml" C-m
 
-    tmux new-window -n "lg.exporter"
+    tmux new-window -n "excalidraw"
     tmux send-keys "docker run --rm -it --name excalidraw -p 5000:80 excalidraw/excalidraw:latest" C-m
 }

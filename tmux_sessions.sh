@@ -283,3 +283,21 @@ tmux_tools()
     tmux new-window -n "excalidraw"
     tmux send-keys "docker run --rm -it --name excalidraw -p 5000:80 excalidraw/excalidraw:latest" C-m
 }
+
+PM_DB_WORKSPACE="/home/nicolas/work/siema/be/PM-DB/src/pm-diagbox-embedded"
+tmux_pmdb()
+{
+    SESSION_NAME="pm-db"
+
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+    tmux rename-window "git.pm-db"
+    tmux send-keys "cd ${PM_DB_WORKSPACE}" C-m
+
+    tmux new-window -n "vim.pm-db"
+    tmux send-keys "cd ${PM_DB_WORKSPACE}" C-m
+}

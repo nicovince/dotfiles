@@ -265,9 +265,9 @@ tmux_labgrid()
 }
 
 LG_COORD_WORKSPACE="/home/nicolas/work/siema/be/src/labgrid"
-tmux_tools()
+tmux_launch_tnm_tools()
 {
-    SESSION_NAME="tools"
+    SESSION_NAME="tnm-tools"
 
     tmux attach-session -d -t ${SESSION_NAME}
     ret="$?"
@@ -300,4 +300,29 @@ tmux_pmdb()
 
     tmux new-window -n "vim.pm-db"
     tmux send-keys "cd ${PM_DB_WORKSPACE}" C-m
+}
+
+TNM_WORKSPACE="/home/nicolas/work/siema/be/Outils-Methodes"
+LOONY_WORKSPACE="/home/nicolas/work/siema/be/src/loony-tools/"
+tmux_tnm()
+{
+    SESSION_NAME="tnm"
+
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+    tmux rename-window "git.tnm"
+    tmux send-keys "cd ${TNM_WORKSPACE}/src/outils-methodes" C-m
+
+    tmux new-window -n "vim.tnm"
+    tmux send-keys "cd ${TNM_WORKSPACE}/src/outils-methodes" C-m
+
+    tmux new-window -n "git.loony"
+    tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
+
+    tmux new-window -n "vim.loony"
+    tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
 }

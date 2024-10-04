@@ -127,7 +127,7 @@ PROMPT_COMMAND=__get_prompt
 function __get_prompt()
 {
   rc=$?
-  exec_time=$(bash_getstoptime ${ROOTPID})
+  exec_time=$(bash_getstoptime "${ROOTPID}")
   PS1=""
   # Execution time of previous command (if greater than threshold)
   if [ "${exec_time}" -gt 30 ]; then
@@ -235,6 +235,10 @@ fi
 
 if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     . "${HOME}/.local/bin/virtualenvwrapper.sh"
+fi
+
+if [ -f "${VIRTUALENVWRAPPER_SCRIPT}" ]; then
+    . "${VIRTUALENVWRAPPER_SCRIPT}"
 fi
 
 if [ -f "/usr/share/doc/fzf/examples/key-bindings.bash" ]; then

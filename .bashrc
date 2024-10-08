@@ -177,6 +177,8 @@ function __get_prompt()
       HOST_COLOR="\[\e[30;42m\]"
     elif [ "${CURRENT_HOSTNAME}" = "PV-VLB-0022" ]; then
       HOST_COLOR="\[\e[30;47m\]"
+    elif [ "${CURRENT_HOSTNAME}" = "ishimura" ]; then
+      HOST_COLOR="\[\e[30;100m\]"
     else
       HOST_COLOR="${Yellow}"
     fi

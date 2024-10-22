@@ -255,4 +255,10 @@ if [ -f "$HOME/.virtualenvs/default/bin/activate" ]; then
     . "$HOME/.virtualenvs/default/bin/activate"
 fi
 
-export TERM=xterm-256color
+TERM=xterm-256color
+if command -v infocmp > /dev/null; then
+    if infocmp tmux-256color > /dev/null 2>&1; then
+        TERM=tmux-256color
+    fi
+fi
+export TERM

@@ -63,19 +63,19 @@ tmux_vog_dev()
     tmux send-keys -t "${TARGET_WINDOW}" "docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d" C-m
     tmux send-keys -t "${TARGET_WINDOW}" "enki"
 
-    tmux attach-session -t ${SESSION_NAME}
+    tmux attach-session -t "${SESSION_NAME}"
 }
 
 ZEPHYR_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/zephyrproject"
 tmux_zeph()
 {
     SESSION_NAME="zephyr"
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
 
     tmux rename-window "west"
     tmux send-keys "cd ${ZEPHYR_WORKSPACE}" C-m
@@ -95,18 +95,18 @@ tmux_zeph()
     tmux send-keys "cd ${ZEPHYR_WORKSPACE}" C-m
     tmux send-keys "picocom -b 115200 /dev/ttyACM0"
 
-    tmux attach-session -t ${SESSION_NAME}
+    tmux attach-session -t "${SESSION_NAME}"
 }
 GH_RUNNERS=/home/nicolas/work/siema/be/VOG/gh_runners
 tmux_gh_runners()
 {
     SESSION_NAME="gh_runners"
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
 
     tmux rename-window "cfg"
     tmux send-keys "cd ${VOG_WORKSPACE}" C-m
@@ -118,19 +118,19 @@ tmux_gh_runners()
     tmux send-keys "export RUNNER_BOARD_ENV=vog-zephyr-nodes/scripts/gh_runners_boards/firefly_nucleo_h743-env.sh" C-m
     tmux send-keys "./run.sh" C-m
 
-    tmux attach-session -t ${SESSION_NAME}
+    tmux attach-session -t "${SESSION_NAME}"
 }
 
 SIAM_WORKSPACE="${HOME}/work/siema/be/Siam-ST3"
 tmux_siam_i2c()
 {
     SESSION_NAME="siam-i2c"
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
 
     tmux rename-window "git.sd"
     tmux send-keys "cd ${SIAM_WORKSPACE}/src/siema_devices" C-m
@@ -157,7 +157,7 @@ tmux_siam_i2c()
     tmux new-window -n "vim.linux"
     tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
 
-    tmux attach-session -t ${SESSION_NAME}
+    tmux attach-session -t "${SESSION_NAME}"
 }
 
 tmux_r4ip()
@@ -169,12 +169,12 @@ tmux_r4ip()
     SESSION_NAME="build-r4ip${suffix}"
     R4IP_DIR="$(pwd)"
 
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
 
     tmux rename-window "mgmt.r4ip"
     tmux send-keys "cd ${R4IP_DIR}/output" C-m
@@ -203,19 +203,19 @@ tmux_r4ip()
     tmux new-window -n "vim.linux"
     tmux send-keys "cd ${SIAM_WORKSPACE}/src/linux-ucc32" C-m
 
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
 }
 
 ANYR_WORKSPACE="/home/nicolas/work/siema/be/BT-GSMR/anyr"
 tmux_anyr_esp32()
 {
     SESSION_NAME="anyr"
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
     tmux rename-window "git.esp32"
     tmux send-keys "cd ${ANYR_WORKSPACE}/anyr-esp32/anyr" C-m
 
@@ -246,7 +246,7 @@ tmux_anyr_esp32()
 tmux_labgrid()
 {
     SESSION_NAME="labgrid"
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
@@ -269,12 +269,12 @@ tmux_launch_tnm_tools()
 {
     SESSION_NAME="tnm-tools"
 
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
     tmux rename-window "lg.coord"
     tmux send-keys "cd ${LG_COORD_WORKSPACE}" C-m
     tmux send-keys "source ${LG_COORD_WORKSPACE}/crossbar-venv/bin/activate" C-m
@@ -289,12 +289,12 @@ tmux_pmdb()
 {
     SESSION_NAME="pm-db"
 
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
     tmux rename-window "git.pm-db"
     tmux send-keys "cd ${PM_DB_WORKSPACE}" C-m
 
@@ -303,17 +303,17 @@ tmux_pmdb()
 }
 
 TNM_WORKSPACE="/home/nicolas/work/siema/be/Outils-Methodes"
-LOONY_WORKSPACE="/home/nicolas/work/siema/be/src/loony-tools/"
+LOONY_WORKSPACE="/home/nicolas/work/siema/be/Outils-Methodes/src/loony-tools/"
 tmux_tnm()
 {
     SESSION_NAME="tnm"
 
-    tmux attach-session -d -t ${SESSION_NAME}
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
     tmux rename-window "git.tnm"
     tmux send-keys "cd ${TNM_WORKSPACE}/src/outils-methodes" C-m
 
@@ -324,5 +324,32 @@ tmux_tnm()
     tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
 
     tmux new-window -n "vim.loony"
+    tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
+}
+
+VAD_WORKSPACE="/home/nicolas/work/siema/be/VAD/src/vad-zephyr"
+tmux_vad()
+{
+    SESSION_NAME="vad"
+
+    tmux attach-session -d -t ${SESSION_NAME}
+    ret="$?"
+    if [[ "${ret}" == 0 ]]; then
+        return
+    fi
+    tmux new-session -d -s ${SESSION_NAME}
+    tmux rename-window "west"
+    tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+    tmux send-keys "workon vad-lg" C-m
+
+    tmux new-window -n "vim.vad"
+    tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+    tmux send-keys "workon vad-lg" C-m
+
+    tmux new-window -n "git.vad"
+    tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+    tmux send-keys "workon vad-lg" C-m
+
+    tmux new-window -n "serial"
     tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
 }

@@ -235,6 +235,10 @@ if [ -f "/usr/share/bash-completion/completions/fzf" ]; then
   . /usr/share/bash-completion/completions/fzf
 fi
 
+if command -v mkvirtualenv > /dev/null 2>&1 ; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+fi
+
 if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then
     . "${HOME}/.local/bin/virtualenvwrapper.sh"
 fi

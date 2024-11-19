@@ -51,6 +51,7 @@
 [push]
 	default = upstream
 	recurseSubmodules = check
+	autoSetupRemote = true
 [include]
 	path = ~/.gitconfig_user
 [credential]

@@ -38,6 +38,7 @@
 	cifu = "!commit_fixup() { git commit --fixup=\"$1\"; git rebase -i --autosquash \"$1\"^; }; commit_fixup"
 	# commit -a fixup and rebase autosquash
 	ciafu = "!commit_fixup() { git commit -a --fixup=\"$1\"; git rebase -i --autosquash \"$1\"^; }; commit_fixup"
+	last-sha1 = "log -1 --pretty=format:%H"
 
 
 [color]

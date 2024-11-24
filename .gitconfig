@@ -45,7 +45,7 @@
 	ui = true
 [core]
 	excludesfile = ~/.gitignore_global
-	editor = nvim
+	editor = vim
 [merge]
 	defaulttoupstream = true
 [push]

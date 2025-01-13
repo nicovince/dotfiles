@@ -304,6 +304,7 @@ tmux_pmdb()
 
 TNM_WORKSPACE="/home/nicolas/work/siema/be/Outils-Methodes"
 LOONY_WORKSPACE="/home/nicolas/work/siema/be/Outils-Methodes/src/loony-tools/"
+VOSSLOH_GH_ACTIONS="/home/nicolas/work/siema/be/Outils-Methodes/src/vossloh-gh-actions"
 tmux_tnm()
 {
     SESSION_NAME="tnm"
@@ -325,6 +326,12 @@ tmux_tnm()
 
     tmux new-window -n "vim.loony"
     tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
+
+    tmux new-window -n "git.vos.gha"
+    tmux send-keys "cd ${VOSSLOH_GH_ACTIONS}" C-m
+
+    tmux new-window -n "vim.vos.gha"
+    tmux send-keys "cd ${VOSSLOH_GH_ACTIONS}" C-m
 }
 
 VAD_WORKSPACE="/home/nicolas/work/siema/be/VAD/src/vad-zephyr"
@@ -350,6 +357,15 @@ tmux_vad()
     tmux send-keys "cd ${VAD_WORKSPACE}" C-m
     tmux send-keys "workon vad-lg" C-m
 
-    tmux new-window -n "serial"
-    tmux send-keys "cd ${LOONY_WORKSPACE}" C-m
+    tmux new-window -n "docker.test"
+    tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+
+    if [ "$(hostname)" == "firefly" ]; then
+        tmux new-window -n "lg.exporter"
+        tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+        tmux send-keys "ssh vosslohcicd@localhost" C-m
+        tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+        tmux send-keys "workon vad-lg" C-m
+        tmux send-keys "labgrid-exporter vad-zephyr-nodes/labgrid/firefly-exporter.yml --hostname vosslohcicd@firefly.railway.ad --crossbar ws://labgrid.railway.ad:20408/ws" C-m
+    fi
 }

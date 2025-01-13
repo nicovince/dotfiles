@@ -38,6 +38,7 @@ wakeup() {
     return ${status}
 }
 alias tea='echo "notify-send -t 2000 \"Tea is ready\" -u critical -i kteatime" | at now +6 minutes'
+alias kids='echo "notify-send -t 2000 \"Pickup Kids\" -u critical -i bluefish" | at 17:18'
 
 # vim/nvim, check if nvim is installed
 if command -v nvim &> /dev/null; then
@@ -505,4 +506,9 @@ function _install_nvim() {
     ln -sf ~/.local/share/nvim-linux64/bin/nvim nvim
     git clone --recurse-submodules https://github.com/nicovince/nvim.git "$HOME/.config/nvim"
     popd || return
+}
+
+function strip_colors() {
+    local f="$1"
+    sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" "${f}" > "${f}.nocolors"
 }

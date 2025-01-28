@@ -358,7 +358,7 @@ tmux_vad()
     tmux send-keys "workon vad-lg" C-m
 
     tmux new-window -n "git.vad"
-    tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+    tmux send-keys "cd ${VAD_WORKSPACE}/vad-zephyr-nodes" C-m
     tmux send-keys "workon vad-lg" C-m
 
     tmux new-window -n "docker.test"

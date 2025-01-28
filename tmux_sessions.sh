@@ -38,7 +38,7 @@ tmux_vog()
     tmux attach-session -t ${SESSION_NAME}
 }
 # shellcheck disable=SC2139
-alias _tmux_vog_bis="tmux new-sessions -s ${VOG_SN}-bis -t ${VOG_SN}"
+alias _tmux_vog_bis="tmux new-session -s ${VOG_SN}-bis -t ${VOG_SN}"
 
 tmux_vog_dev()
 {
@@ -374,4 +374,4 @@ tmux_vad()
     fi
 }
 # shellcheck disable=SC2139
-alias _tmux_vad_bis="tmux new-sessions -s ${VAD_SN}-bis -t ${VAD_SN}"
+alias _tmux_vad_bis="tmux new-session -s ${VAD_SN}-bis -t ${VAD_SN}"

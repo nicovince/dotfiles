@@ -1,9 +1,10 @@
 #!/bin/bash
 # Tmux sessions
 VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
-tmux_vogzeph()
+VOG_SN="vog"
+tmux_vog()
 {
-    SESSION_NAME="vog-devel"
+    SESSION_NAME="${VOG_SN}"
     tmux attach-session -d -t ${SESSION_NAME}
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
@@ -36,6 +37,8 @@ tmux_vogzeph()
 
     tmux attach-session -t ${SESSION_NAME}
 }
+# shellcheck disable=SC2139
+alias _tmux_vog_bis="tmux new-session -s ${VOG_SN}-bis -t ${VOG_SN}"
 
 tmux_vog_dev()
 {
@@ -335,9 +338,10 @@ tmux_tnm()
 }
 
 VAD_WORKSPACE="/home/nicolas/work/siema/be/VAD/src/vad-zephyr"
+VAD_SN="vad"
 tmux_vad()
 {
-    SESSION_NAME="vad"
+    SESSION_NAME="${VAD_SN}"
 
     tmux attach-session -d -t ${SESSION_NAME}
     ret="$?"
@@ -354,7 +358,7 @@ tmux_vad()
     tmux send-keys "workon vad-lg" C-m
 
     tmux new-window -n "git.vad"
-    tmux send-keys "cd ${VAD_WORKSPACE}" C-m
+    tmux send-keys "cd ${VAD_WORKSPACE}/vad-zephyr-nodes" C-m
     tmux send-keys "workon vad-lg" C-m
 
     tmux new-window -n "docker.test"
@@ -369,3 +373,5 @@ tmux_vad()
         tmux send-keys "labgrid-exporter vad-zephyr-nodes/labgrid/firefly-exporter.yml --hostname vosslohcicd@firefly.railway.ad --crossbar ws://labgrid.railway.ad:20408/ws" C-m
     fi
 }
+# shellcheck disable=SC2139
+alias _tmux_vad_bis="tmux new-session -s ${VAD_SN}-bis -t ${VAD_SN}"

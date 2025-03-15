@@ -41,7 +41,7 @@ alias tea='echo "notify-send -t 2000 \"Tea is ready\" -u critical -i kteatime" |
 alias kids='echo "notify-send -t 2000 \"Pickup Kids\" -u critical -i bluefish" | at 17:18'
 
 # vim/nvim, check if nvim is installed
-if command -v nvim &> /dev/null; then
+if command -v nvim &> /dev/null || [ -f "${HOME}/.local/bin/nvim" ]; then
   alias vim='nvim'
   alias v='nvim'
   alias vi='nvim'

@@ -510,6 +510,16 @@ function _install_nvim() {
     popd || return
 }
 
+function _install_fzf() {
+  fzf_version="0.60.3"
+  tarball="fzf-${fzf_version}-linux_amd64.tar.gz"
+  url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/${tarball}"
+  wget "${url}"
+  mkdir -p "${HOME}/.local/bin"
+  tar xzf ${tarball} -C "${HOME}/.local/bin"
+  rm -f "${tarball}"
+}
+
 function strip_colors() {
     local f="$1"
     sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" "${f}" > "${f}.nocolors"

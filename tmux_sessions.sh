@@ -1,42 +1,57 @@
 #!/bin/bash
 # Tmux sessions
-VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
-VOG_SN="vog"
-tmux_vog()
+_tmux_vog()
 {
-    SESSION_NAME="${VOG_SN}"
-    tmux attach-session -d -t ${SESSION_NAME}
+    sn="$1"
+    ws="$2"
+    SESSION_NAME="${sn}"
+    tmux attach-session -d -t "${SESSION_NAME}"
     ret="$?"
     if [[ "${ret}" == 0 ]]; then
         return
     fi
-    tmux new-session -d -s ${SESSION_NAME}
+    tmux new-session -d -s "${SESSION_NAME}"
 
     tmux rename-window "west"
-    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "cd ${ws}" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "workon vog_zephyr_3.4" C-m
-    tmux send-keys "docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d" C-m
+    tmux send-keys "echo docker compose -f vog-zephyr-nodes/scripts/vog-cpu-emulator/mqtts-docker-compose.yml up -d" C-m
 
     tmux new-window -n "vim.vog"
-    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "cd ${ws}" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "workon vog_zephyr_3.4" C-m
 
     tmux new-window -n "git.vog"
-    tmux send-keys "cd ${VOG_WORKSPACE}/vog-zephyr-nodes" C-m
+    tmux send-keys "cd ${ws}/vog-zephyr-nodes" C-m
     tmux send-keys "workon vog_zephyr_3.4" C-m
     tmux send-keys "source env.sh" C-m
     tmux send-keys "get_gh_completion" C-m
 
     tmux new-window -n "pytest"
-    tmux send-keys "cd ${VOG_WORKSPACE}" C-m
+    tmux send-keys "cd ${ws}" C-m
     tmux send-keys "workon vog_zephyr_3.4" C-m
     tmux send-keys "get_stm32" C-m
     tmux send-keys "source vog-zephyr-nodes/env.sh" C-m
 
-    tmux attach-session -t ${SESSION_NAME}
+    tmux attach-session -t "${SESSION_NAME}"
 }
+
+VOG_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr"
+VOG_SN="vog"
+VOG_BIS_WORKSPACE="/home/nicolas/work/siema/be/VOG/src/vog-zephyr-bis"
+VOG_BIS_SN="vog2"
+tmux_vog()
+{
+    _tmux_vog "${VOG_SN}" "${VOG_WORKSPACE}"
+}
+
+tmux_vog2()
+{
+    _tmux_vog "${VOG_BIS_SN}" "${VOG_BIS_WORKSPACE}"
+}
+
 # shellcheck disable=SC2139
 alias _tmux_vog_bis="tmux new-session -s ${VOG_SN}-bis -t ${VOG_SN}"
 

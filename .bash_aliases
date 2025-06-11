@@ -38,6 +38,7 @@ wakeup() {
     return ${status}
 }
 alias tea='echo "notify-send -t 2000 \"Tea is ready\" -u critical -i kteatime" | at now +6 minutes'
+alias prepare_tea='echo "notify-send -t 2000 \"Time to prepare your tea\" -u critical -i kteatime" | at 14:50'
 alias kids='echo "notify-send -t 2000 \"Pickup Kids\" -u critical -i bluefish" | at 17:18'
 
 # vim/nvim, check if nvim is installed

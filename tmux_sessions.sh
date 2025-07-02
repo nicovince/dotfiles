@@ -300,6 +300,9 @@ tmux_launch_tnm_tools()
 
     tmux new-window -n "excalidraw"
     tmux send-keys "docker run --rm -it --name excalidraw -p 5000:80 excalidraw/excalidraw:latest" C-m
+
+    tmux new-window -n "drawio"
+    tmux send-keys "docker run -it --rm --name=\"draw\" -p 8080:8080 -p 8443:8443 jgraph/drawio" C-m
 }
 
 PM_DB_WORKSPACE="/home/nicolas/work/siema/be/PM-DB/src/pm-diagbox-embedded"

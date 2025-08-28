@@ -378,15 +378,6 @@ tmux_vad()
 
     tmux new-window -n "docker.test"
     tmux send-keys "cd ${VAD_WORKSPACE}" C-m
-
-    if [ "$(hostname)" == "firefly" ]; then
-        tmux new-window -n "lg.exporter"
-        tmux send-keys "cd ${VAD_WORKSPACE}" C-m
-        tmux send-keys "ssh vosslohcicd@localhost" C-m
-        tmux send-keys "cd ${VAD_WORKSPACE}" C-m
-        tmux send-keys "workon vad-lg" C-m
-        tmux send-keys "labgrid-exporter vad-zephyr-nodes/labgrid/firefly-exporter.yml --hostname vosslohcicd@firefly.railway.ad --crossbar ws://labgrid.railway.ad:20408/ws" C-m
-    fi
 }
 # shellcheck disable=SC2139
 alias _tmux_vad_bis="tmux new-session -s ${VAD_SN}-bis -t ${VAD_SN}"

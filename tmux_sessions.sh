@@ -303,6 +303,10 @@ tmux_launch_tnm_tools()
 
     tmux new-window -n "drawio"
     tmux send-keys "docker run -it --rm --name=\"draw\" -p 8080:8080 -p 8443:8443 jgraph/drawio" C-m
+
+    tmux new-window -n "tnm-www-loony"
+    tmux send-keys "cd /home/nicolas/work/siema/be/Outils-Methodes/src/loony-tools" C-m
+    tmux send-keys "python3 -m http.server 3003" C-m
 }
 
 PM_DB_WORKSPACE="/home/nicolas/work/siema/be/PM-DB/src/pm-diagbox-embedded"

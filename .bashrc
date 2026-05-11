@@ -236,7 +236,7 @@ if [ -f "/usr/share/bash-completion/completions/fzf" ]; then
 fi
 
 if command -v mkvirtualenv > /dev/null 2>&1 ; then
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 fi
 
 if [ -f "${HOME}/.local/bin/virtualenvwrapper.sh" ]; then

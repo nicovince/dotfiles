@@ -509,7 +509,9 @@ function _install_nvim() {
     mkdir -p ~/.local/bin
     pushd ~/.local/bin/ || return
     ln -sf ~/.local/share/nvim-linux-x86_64/bin/nvim nvim
-    git clone --recurse-submodules https://github.com/nicovince/nvim.git "$HOME/.config/nvim"
+    if [ ! -d "${HOME}/.config/nvim" ]; then
+        git clone --recurse-submodules https://github.com/nicovince/nvim.git "$HOME/.config/nvim"
+    fi
     popd || return
 }
 

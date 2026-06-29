@@ -529,3 +529,31 @@ function strip_colors() {
     local f="$1"
     sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g" "${f}" > "${f}.nocolors"
 }
+
+tmux_send_all_windows() {
+  local session="$1"
+  local cmd="$2"
+  tmux list-windows -t "${session}" | cut -d: -f1 | xargs -I{} tmux send-keys -t "${session}":{} "${cmd}" c-m
+}
+
+run_later() {
+  local delay="$1"
+  shift
+
+  if [ -z "$delay" ] || [ $# -eq 0 ]; then
+    echo "Usage: run_later <delay> <command>"
+    echo '  - run_later "5 minutes" "touch this"'
+    echo '  - run_later "1 hours" "rm this && touch that"'
+    return 1
+  fi
+
+  local cmd="$*"
+  local cwd="$PWD"
+  local current_path="$PATH"
+
+  at now + "$delay" <<EOF
+cd "$cwd" || exit 1
+export PATH="$current_path"
+$cmd
+EOF
+}

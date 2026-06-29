@@ -501,7 +501,8 @@ function _setup_gh_copilot() {
 # Install nvim for local user
 function _install_nvim() {
     #wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-    filename="nvim-linux-x86_64.tar.gz"
+    local filename="nvim-linux-x86_64.tar.gz"
+    local nvim_cfg_folder="${HOME}/.config/nvim"
     wget "https://github.com/neovim/neovim/releases/latest/download/${filename}"
     mkdir -p ~/.local/share
     tar xzf "${filename}" -C ~/.local/share
@@ -509,8 +510,9 @@ function _install_nvim() {
     mkdir -p ~/.local/bin
     pushd ~/.local/bin/ || return
     ln -sf ~/.local/share/nvim-linux-x86_64/bin/nvim nvim
-    if [ ! -d "${HOME}/.config/nvim" ]; then
-        git clone --recurse-submodules https://github.com/nicovince/nvim.git "$HOME/.config/nvim"
+
+    if [ ! -d "${nvim_cfg_folder}" ]; then
+      git clone --recurse-submodules https://github.com/nicovince/nvim.git "${nvim_cfg_folder}"
     fi
     popd || return
 }
